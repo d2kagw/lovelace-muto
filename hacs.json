@@ -1,6 +1,6 @@
 {
-    "name": "MultiTool",
-    "filename": "multitool.js",
+    "name": "Muto",
+    "filename": "muto.js",
     "homeassistant": "2023.12.7",
     "render_readme": true
 }

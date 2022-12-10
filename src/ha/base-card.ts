@@ -10,7 +10,7 @@ export function computeDarkMode(hass?: HomeAssistant): boolean {
     if (!hass) return false;
     return (hass.themes as any).darkMode as boolean;
 }
-export class MultiToolBaseElement extends LitElement {
+export class MutoBaseElement extends LitElement {
     @property({ attribute: false }) public hass!: HomeAssistant;
 
     protected updated(changedProps: PropertyValues): void {
@@ -34,7 +34,7 @@ export class MultiToolBaseElement extends LitElement {
 }
 
 
-export class MultiToolBaseCard extends MultiToolBaseElement {
+export class MutoBaseCard extends MutoBaseElement {
     getCardSize(): number | Promise<number> {
         return 1;
     }

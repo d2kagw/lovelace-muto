@@ -1,1 +1,1 @@
-export const PREFIX_NAME = "multitool";
+export const PREFIX_NAME = "muto";

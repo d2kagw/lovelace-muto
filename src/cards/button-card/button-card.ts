@@ -1,15 +1,14 @@
 import { css, CSSResultGroup, html, TemplateResult } from "lit";
 import { customElement } from "lit/decorators.js";
 import { LovelaceCard, LovelaceCardConfig } from "../../ha";
-import { MultiToolBaseCard } from "../../ha/base-card";
+import { MutoBaseCard } from "../../ha/base-card";
 import { ButtonCardConfig } from "./button-card-config";
 import {
     BUTTON_CARD_NAME,
 } from "./const";
 
-
 @customElement(BUTTON_CARD_NAME)
-export class ButtonCard extends MultiToolBaseCard implements LovelaceCard {
+export class ButtonCard extends MutoBaseCard implements LovelaceCard {
     private _config!: any;
 
     setConfig(config: ButtonCardConfig): void {
