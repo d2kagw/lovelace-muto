@@ -48,7 +48,7 @@ const plugins = [
 
 export default [
     {
-        input: "src/multitool.ts",
+        input: "src/muto.ts",
         output: {
             dir: "dist",
             format: "es",

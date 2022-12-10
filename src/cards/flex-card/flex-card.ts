@@ -1,14 +1,14 @@
 import { css, CSSResultGroup, html, TemplateResult } from "lit";
 import { customElement } from "lit/decorators.js";
 import { LovelaceCard, LovelaceCardConfig } from "../../ha";
-import { MultiToolBaseCard } from "../../ha/base-card";
+import { MutoBaseCard } from "../../ha/base-card";
 import { FlexCardConfig } from "./flex-card-config";
 import {
     FLEX_COLUMN_CARD_NAME,
     FLEX_ROW_CARD_NAME,
 } from "./const";
 
-export class FlexCard extends MultiToolBaseCard implements LovelaceCard {
+export class FlexCard extends MutoBaseCard implements LovelaceCard {
     private _config!: FlexCardConfig;
 
     setConfig(config: FlexCardConfig): void {

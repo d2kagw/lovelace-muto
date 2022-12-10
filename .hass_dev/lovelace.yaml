@@ -1,8 +1,8 @@
   mode: storage
   dashboards:
-    lovelace-multitool-showcase:
+    lovelace-muto-showcase:
       mode: yaml
       title: Showcase
       icon: mdi:hammer-wrench
       show_in_sidebar: true
-      filename: lovelace-multitool-showcase.yaml
+      filename: lovelace-muto-showcase.yaml
