@@ -3,10 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import { LovelaceCard, LovelaceCardConfig, HomeAssistant } from "../../ha";
 import { MutoBaseCard } from "../../ha/base-card";
 import { FlexCardConfig } from "./flex-card-config";
-import {
-    FLEX_COLUMN_CARD_NAME,
-    FLEX_ROW_CARD_NAME,
-} from "./const";
+import { FLEX_COLUMN_CARD_NAME, FLEX_ROW_CARD_NAME } from "./const";
 
 export class FlexCard extends MutoBaseCard implements LovelaceCard {
     @property() private _cards: LovelaceCard[];
@@ -22,46 +19,42 @@ export class FlexCard extends MutoBaseCard implements LovelaceCard {
 
     set hass(hass: HomeAssistant) {
         this._hass = hass;
-        this._cards.forEach(card => card.hass = hass);
+        this._cards.forEach((card) => (card.hass = hass));
     }
-  
+
     protected updated(changedProperties: PropertyValues): void {
-      super.updated(changedProperties);
-      if (this._cards.length == 0) return;
+        super.updated(changedProperties);
+        if (this._cards.length == 0) return;
     }
-  
+
     public setConfig(config: FlexCardConfig): void {
-      if (!config.cards) {
-        throw new Error(`No cards provided`);
-      }
-      
-      this._config = {
-        ...config,
-      };
-  
-      this._createCards();
+        if (!config.cards) {
+            throw new Error(`No cards provided`);
+        }
+
+        this._config = {
+            ...config,
+        };
+
+        this._createCards();
     }
-  
+
     private async _createCards() {
-      this._cards = await Promise.all(this._config!.cards.map(async (card) =>
-        this._createCard(card)
-      ));
+        this._cards = await Promise.all(
+            this._config!.cards.map(async (card) => this._createCard(card))
+        );
     }
-  
+
     protected render(): TemplateResult {
-      if (!this._hass || !this._config) {
-        return html``;
-      }
-  
-      return html`
-        <ha-card>
-            <div class="muto-flex ${this.classType}" style=${this._config.css??""}>
-                ${this._cards.map((card) =>
-                    html`<div class="muto-flex-row">${card}</div>`
-                )}
+        if (!this._hass || !this._config) {
+            return html``;
+        }
+
+        return html`
+            <div class="muto-flex ${this.classType}" style=${this._config.css ?? ""}>
+                ${this._cards.map((card) => card)}
             </div>
-        </ha-card>
-      `;
+        `;
     }
 
     static get styles(): CSSResultGroup {
@@ -72,7 +65,7 @@ export class FlexCard extends MutoBaseCard implements LovelaceCard {
                     display: flex;
                     flex-wrap: no-wrap;
                     justify-content: flex-start;
-                    align-items: flex-start;
+                    align-items: stretch;
                     gap: 1rem;
                 }
                 .muto-flex-row {
@@ -80,6 +73,9 @@ export class FlexCard extends MutoBaseCard implements LovelaceCard {
                 }
                 .muto-flex-column {
                     flex-direction: column;
+                }
+                .muto-flex-child {
+                    width: 100%;
                 }
             `,
         ];
@@ -89,7 +85,7 @@ export class FlexCard extends MutoBaseCard implements LovelaceCard {
 @customElement(FLEX_ROW_CARD_NAME)
 export class FlexRowCard extends FlexCard implements LovelaceCard {
     constructor() {
-        super()
+        super();
         this.classType = "muto-flex-row";
     }
 }
@@ -97,7 +93,7 @@ export class FlexRowCard extends FlexCard implements LovelaceCard {
 @customElement(FLEX_COLUMN_CARD_NAME)
 export class FlexColumnCard extends FlexCard implements LovelaceCard {
     constructor() {
-        super()
+        super();
         this.classType = "muto-flex-column";
     }
 }
