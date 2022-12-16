@@ -1,2 +1,2 @@
 export * from "./types";
-export * from "./lovelace"
+export * from "./lovelace";
