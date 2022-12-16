@@ -15,10 +15,14 @@ cards:
           - type: picture
             image: /local/muto.png
       - type: custom:muto-flex-column-card
+        css: >
+          background-color: #0f0;
         cards:
           - type: picture
             image: /local/muto.png
       - type: custom:muto-flex-row-card
+        css: >
+          background-color: #00f;
         cards:
           - type: picture
             image: /local/muto.png
