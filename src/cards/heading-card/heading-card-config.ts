@@ -1,4 +1,4 @@
-import { LovelaceCardConfig } from "../../ha";
+import { LovelaceCardConfig } from "custom-card-helpers";
 
 export type HeadingCardConfig = LovelaceCardConfig & {
     size?: string;

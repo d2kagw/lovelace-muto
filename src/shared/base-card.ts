@@ -1,10 +1,12 @@
-import { HassEntity } from "home-assistant-js-websocket";
-import { html, TemplateResult, css, CSSResultGroup, LitElement, PropertyValues } from "lit";
-import { property } from "lit/decorators.js";
-import { HomeAssistant } from "./types";
-import { themeVariables, themeColorCss } from "../theme";
-import { LovelaceCard, LovelaceCardConfig } from ".";
-import { createThing } from "custom-card-helpers";
+import { css, CSSResultGroup, LitElement, PropertyValues } from "lit";
+import { motoCSS, colorsCSS, themeCSS } from "../theme";
+import {
+    HomeAssistant,
+    createThing,
+    handleClick,
+    LovelaceCard,
+    LovelaceCardConfig,
+} from "custom-card-helpers";
 
 export class MutoBaseElement extends LitElement {
     public _hass?: HomeAssistant;
@@ -36,9 +38,10 @@ export class MutoBaseElement extends LitElement {
 
     static get styles(): CSSResultGroup {
         return css`
+            ${motoCSS}
             :host {
-                ${themeColorCss};
-                ${themeVariables};
+                ${colorsCSS};
+                ${themeCSS};
             }
         `;
     }

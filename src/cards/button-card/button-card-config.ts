@@ -1,33 +1,9 @@
-import { assign, boolean, object, optional } from "superstruct";
-import { LovelaceCardConfig } from "../../ha";
-// import { ActionsSharedConfig, actionsSharedConfigStruct } from "../../shared/config/actions-config";
-// import {
-//     AppearanceSharedConfig,
-//     appearanceSharedConfigStruct,
-// } from "../../shared/config/appearance-config";
-// import { EntitySharedConfig, entitySharedConfigStruct } from "../../shared/config/entity-config";
-// import { lovelaceCardConfigStruct } from "../../shared/config/lovelace-card-config";
+import { LovelaceCardConfig } from "custom-card-helpers";
 
-export type ButtonCardConfig = LovelaceCardConfig &
-    // EntitySharedConfig &
-    // AppearanceSharedConfig &
-    // ActionsSharedConfig & {
-    {
-        show_brightness_control?: boolean;
-        show_color_temp_control?: boolean;
-        show_color_control?: boolean;
-        collapsible_controls?: boolean;
-        use_light_color?: boolean;
-    };
-
-// export const lightCardConfigStruct = assign(
-//     lovelaceCardConfigStruct,
-//     assign(entitySharedConfigStruct, appearanceSharedConfigStruct, actionsSharedConfigStruct),
-//     object({
-//         show_brightness_control: optional(boolean()),
-//         show_color_temp_control: optional(boolean()),
-//         show_color_control: optional(boolean()),
-//         collapsible_controls: optional(boolean()),
-//         use_light_color: optional(boolean()),
-//     })
-// );
+export type ButtonCardConfig = LovelaceCardConfig & {
+    entity?: string;
+    label?: string;
+    icon?: string;
+    aspect?: string;
+    css?: Text;
+};

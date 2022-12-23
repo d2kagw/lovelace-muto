@@ -2,31 +2,31 @@ title: Flex Views
 icon: mdi:arm-flex
 panel: true
 cards:
-  - type: custom:muto-flex-column-card
+  - type: custom:muto-layout-card
     cards:
-      - type: custom:muto-flex-row-card
-        css: >
-          background-color: #f00;
-        cards:
-          - type: picture
-            image: /local/muto.png
-          - type: picture
-            image: /local/muto.png
-          - type: picture
-            image: /local/muto.png
       - type: custom:muto-flex-column-card
-        css: >
-          background-color: #0f0;
         cards:
-          - type: picture
-            image: /local/muto.png
-      - type: custom:muto-flex-row-card
-        css: >
-          background-color: #00f;
-        cards:
-          - type: picture
-            image: /local/muto.png
-          - type: picture
-            image: /local/muto.png
-          - type: picture
-            image: /local/muto.png
+          - type: custom:muto-flex-row-card
+            css: >
+              background-color: #f00;
+            cards:
+              - type: picture
+                image: /local/muto.png
+              - type: picture
+                image: /local/muto.png
+              - type: picture
+                image: /local/muto.png
+          - type: custom:muto-flex-column-card
+            css: >
+              background-color: #0f0;
+            cards:
+              - type: picture
+                image: /local/muto.png
+          - type: custom:muto-flex-row-card
+            css: >
+              background-color: #00f;
+            cards:
+              - type: picture
+                image: /local/muto.png
+              - type: picture
+                image: /local/muto.png

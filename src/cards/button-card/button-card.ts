@@ -1,54 +1,59 @@
-import { css, CSSResultGroup, html, TemplateResult } from "lit";
-import { customElement } from "lit/decorators.js";
-import { LovelaceCard, LovelaceCardConfig } from "../../ha";
-import { MutoBaseCard } from "../../ha/base-card";
+import { css, CSSResultGroup, html, PropertyValues, TemplateResult } from "lit";
+import { customElement, property } from "lit/decorators.js";
+import { MutoBaseCard } from "../../shared/base-card";
+import "../../shared/icon";
+import { classMap } from "lit/directives/class-map.js";
 import { ButtonCardConfig } from "./button-card-config";
-import {
-    BUTTON_CARD_NAME,
-} from "./const";
+import { BUTTON_CARD_NAME } from "./const";
+import { colorForEntityState } from "../../shared/states";
+import { fireEvent, handleClick, LovelaceCard } from "custom-card-helpers";
 
 @customElement(BUTTON_CARD_NAME)
 export class ButtonCard extends MutoBaseCard implements LovelaceCard {
-    private _config!: any;
-
-    setConfig(config: ButtonCardConfig): void {
-        this._config = {
-            tap_action: {
-                action: "toggle",
-            },
-            hold_action: {
-                action: "more-info",
-            },
-            ...config,
-        };
-        // this.updateControls();
-        // this.updateBrightness();
-    }
-    
-    getCardSize(): number | Promise<number> {
-        return 1;
-    }
+    private _config!: ButtonCardConfig;
 
     constructor() {
         super();
-  
         this._config = this._config || {};
-      }
+    }
+
+    public setConfig(config: ButtonCardConfig): void {
+        this._config = {
+            aspect: "fixed",
+            ...config,
+        };
+    }
+
+    private _handleAction(): void {
+        fireEvent(this, "hass-more-info", { entityId: this._config.entity });
+    }
 
     protected render(): TemplateResult {
-        if (!this.hass || !this._config || !this._config.entity) {
+        if (!this._hass || !this._config) {
             return html``;
         }
 
-        const entity_id = this._config.entity;
-        const entity = this.hass.states[entity_id];
-
-        const name = this._config.name || entity.attributes.friendly_name || "";
+        let cssColor: string = "";
+        if (this._config.entity) {
+            cssColor = colorForEntityState(this._hass.states[this._config.entity]);
+        }
 
         return html`
-            <ha-card class="what">
-                <h1>hello world</h1>
-            </ha-card>
+            <muto-button
+                class=${classMap({
+                    muto: true,
+                    "muto-panel": true,
+                    "muto-button": true,
+                    "muto-button-fixedaspect": this._config.aspect == "fixed",
+                })}
+                style="${cssColor} ${this._config.css ?? ""}"
+                @click=${this._handleAction}
+            >
+                ${this._config.icon
+                    ? html`<muto-icon icon="${this._config.icon}"></muto-icon>`
+                    : ""}
+                ${this._config.label ? html`<label>${this._config.label}</label>` : ""}
+            </muto-button>
         `;
     }
 
@@ -56,9 +61,28 @@ export class ButtonCard extends MutoBaseCard implements LovelaceCard {
         return [
             super.styles,
             css`
-                .what {
-                    aspect-ratio: 1/1;
-                    background: #0f0;
+                :host {
+                    width: 100%;
+                    aspect-ratio: 1 / 1;
+                    display: block;
+                }
+                .muto-button {
+                    background: var(--muto-card-background);
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+
+                    overflow: hidden;
+                }
+                .muto-button label {
+                    text-align: center;
+                }
+                .muto-button.muto-button-fixedaspect {
+                    /* aspect-ratio: 1 / 1; */
                 }
             `,
         ];

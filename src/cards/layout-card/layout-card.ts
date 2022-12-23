@@ -1,18 +1,17 @@
 import { css, CSSResultGroup, html, PropertyValues, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { MutoBaseCard } from "../../shared/base-card";
-import { FlexCardConfig } from "./flex-card-config";
-import { FLEX_COLUMN_CARD_NAME, FLEX_ROW_CARD_NAME } from "./const";
+import { LayoutCardConfig } from "./layout-card-config";
+import { LAYOUT_CARD_NAME } from "./const";
 import { HomeAssistant, LovelaceCard } from "custom-card-helpers";
 
-export class FlexCard extends MutoBaseCard implements LovelaceCard {
+@customElement(LAYOUT_CARD_NAME)
+export class LayoutCard extends MutoBaseCard implements LovelaceCard {
     @property() private _cards: LovelaceCard[];
-    private _config!: FlexCardConfig;
-    classType: string;
+    private _config!: LayoutCardConfig;
 
     constructor() {
         super();
-        this.classType = "super";
         this._cards = [];
         this._config = this._config || {};
     }
@@ -27,7 +26,7 @@ export class FlexCard extends MutoBaseCard implements LovelaceCard {
         if (this._cards.length == 0) return;
     }
 
-    public setConfig(config: FlexCardConfig): void {
+    public setConfig(config: LayoutCardConfig): void {
         if (!config.cards) {
             throw new Error(`No cards provided`);
         }
@@ -51,9 +50,9 @@ export class FlexCard extends MutoBaseCard implements LovelaceCard {
         }
 
         return html`
-            <muto-flex class="muto ${this.classType}" style=${this._config.css ?? ""}>
+            <div class="muto muto-layout" style=${this._config.css ?? ""}>
                 ${this._cards.map((card) => card)}
-            </muto-flex>
+            </div>
         `;
     }
 
@@ -61,36 +60,10 @@ export class FlexCard extends MutoBaseCard implements LovelaceCard {
         return [
             super.styles,
             css`
-                muto-flex {
-                    display: flex;
-                    flex-wrap: no-wrap;
-                    justify-content: flex-start;
-                    align-items: stretch;
-                    gap: var(--muto-spacing, 16px);
-                }
-                .muto-flex-row {
-                    flex-direction: row;
-                }
-                .muto-flex-column {
-                    flex-direction: column;
+                .muto-layout {
+                    padding: var(--muto-spacing);
                 }
             `,
         ];
-    }
-}
-
-@customElement(FLEX_ROW_CARD_NAME)
-export class FlexRowCard extends FlexCard implements LovelaceCard {
-    constructor() {
-        super();
-        this.classType = "muto-flex-row";
-    }
-}
-
-@customElement(FLEX_COLUMN_CARD_NAME)
-export class FlexColumnCard extends FlexCard implements LovelaceCard {
-    constructor() {
-        super();
-        this.classType = "muto-flex-column";
     }
 }

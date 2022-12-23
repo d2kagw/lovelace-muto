@@ -1,6 +1,6 @@
 import { LovelaceCardConfig } from "custom-card-helpers";
 
-export type FlexCardConfig = LovelaceCardConfig & {
+export type LayoutCardConfig = LovelaceCardConfig & {
     cards: LovelaceCardConfig[];
     css?: Text;
 };

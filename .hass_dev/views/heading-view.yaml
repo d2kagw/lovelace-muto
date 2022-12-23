@@ -1,39 +1,44 @@
 title: Heading
 icon: mdi:format-color-text
+panel: true
 cards:
-  - type: custom:muto-heading-card
-    size: h1
-    text: Heading One
-  - type: custom:muto-heading-card
-    size: h2
-    text: Heading Two
-  - type: custom:muto-heading-card
-    size: h3
-    text: Heading Three
-  - type: custom:muto-heading-card
-    size: h1
-    text: Heading One /w Icon
-    icon: mdi:account-check
-  - type: custom:muto-heading-card
-    size: h1
-    icon: mdi:account-check
-  - type: custom:muto-heading-card
-    size: h2
-    text: Heading Two /w Icon
-    icon: mdi:account-check
-  - type: custom:muto-heading-card
-    size: h2
-    icon: mdi:account-check
-  - type: custom:muto-heading-card
-    size: h3
-    text: Heading Three /w Icon
-    icon: mdi:account-check
-  - type: custom:muto-heading-card
-    size: h3
-    icon: mdi:account-check
-  - type: custom:muto-heading-card
-    size: h1
-    text: Custom CSS
-    css: >
-      background: #0f0;
-      color: #f00;
+  - type: custom:muto-layout-card
+    cards:
+      - type: custom:muto-flex-column-card
+        cards:
+          - type: custom:muto-heading-card
+            size: h1
+            text: Heading One
+          - type: custom:muto-heading-card
+            size: h2
+            text: Heading Two
+          - type: custom:muto-heading-card
+            size: h3
+            text: Heading Three
+          - type: custom:muto-heading-card
+            size: h1
+            text: Heading One /w Icon
+            icon: mdi:account-check
+          - type: custom:muto-heading-card
+            size: h1
+            icon: mdi:account-check
+          - type: custom:muto-heading-card
+            size: h2
+            text: Heading Two /w Icon
+            icon: mdi:account-check
+          - type: custom:muto-heading-card
+            size: h2
+            icon: mdi:account-check
+          - type: custom:muto-heading-card
+            size: h3
+            text: Heading Three /w Icon
+            icon: mdi:account-check
+          - type: custom:muto-heading-card
+            size: h3
+            icon: mdi:account-check
+          - type: custom:muto-heading-card
+            size: h1
+            text: Custom CSS
+            css: >
+              background: #0f0;
+              color: #f00;
