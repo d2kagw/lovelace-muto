@@ -18,7 +18,7 @@ cards:
                     entity: light.kitchen_lights
                     tap_action:
                       action: toggle
-                  - type: custom:muto-button-card
+                  - type: custom:muto-light-button-card
                     icon: mdi:lightbulb-outline
                     entity: light.bed_light
                     tap_action:
@@ -28,7 +28,7 @@ cards:
                     entity: fan.ceiling_fan
                     tap_action:
                       action: toggle
-                  - type: custom:muto-button-card
+                  - type: custom:muto-light-button-card
                     icon: mdi:walk
                     entity: binary_sensor.movement_backyard
                     tap_action:

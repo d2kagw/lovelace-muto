@@ -3,7 +3,7 @@ import { customElement, property } from "lit/decorators.js";
 import "../../shared/icon";
 import { classMap } from "lit/directives/class-map.js";
 import { ButtonCardConfig } from "./button-card-config";
-import { BUTTON_CARD_NAME } from "./const";
+import { LIGHT_BUTTON_CARD_NAME } from "./const";
 import { colorForEntityState } from "../../shared/states";
 import {
     createThing,
@@ -14,8 +14,8 @@ import {
 } from "custom-card-helpers";
 import { MutoBaseCard } from "../../shared/base-card";
 
-@customElement(BUTTON_CARD_NAME)
-export class ButtonCard extends MutoBaseCard {
+@customElement(LIGHT_BUTTON_CARD_NAME)
+export class LightButtonCard extends MutoBaseCard {
     constructor() {
         super();
         this.config = this.config || {};

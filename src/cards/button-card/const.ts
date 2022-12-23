@@ -1,6 +1,7 @@
 import { PREFIX_NAME } from "../../const";
 
 export const BUTTON_CARD_NAME = `${PREFIX_NAME}-button-card`;
+export const LIGHT_BUTTON_CARD_NAME = `${PREFIX_NAME}-light-button-card`;
 
 export const BUTTON_CARD_STATE_COLOR = {
     default: "var(--rgb-muto-default)",

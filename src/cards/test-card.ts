@@ -20,12 +20,12 @@ export class MTRowCard extends MutoBaseCard implements LovelaceCard {
         this._config = this._config || {};
     }
 
-    set hass(hass: HomeAssistant) {
-        this._hass = hass;
-        this._cards.forEach((card) => (card.hass = hass));
-    }
+    // set hass(hass: HomeAssistant) {
+    //     this.hass = hass;
+    //     this._cards.forEach((card) => (card.hass = hass));
+    // }
 
-    protected updated(changedProperties: PropertyValues): void {
+    updated(changedProperties: PropertyValues): void {
         super.updated(changedProperties);
         if (this._cards.length == 0) return;
     }
@@ -49,7 +49,7 @@ export class MTRowCard extends MutoBaseCard implements LovelaceCard {
     }
 
     protected render(): TemplateResult {
-        if (!this._hass || !this._config) {
+        if (!this.hass || !this.config) {
             return html``;
         }
 
@@ -87,7 +87,7 @@ export class MTButtonCard extends MutoBaseCard implements LovelaceCard {
     }
 
     protected render(): TemplateResult {
-        if (!this._hass || !this._config) {
+        if (!this.hass || !this._config) {
             return html``;
         }
 

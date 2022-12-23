@@ -7,24 +7,23 @@ import { HomeAssistant, LovelaceCard } from "custom-card-helpers";
 
 export class FlexCard extends MutoBaseCard implements LovelaceCard {
     @property() private _cards: LovelaceCard[];
-    private _config!: FlexCardConfig;
+    // private config!: FlexCardConfig;
     classType: string;
 
     constructor() {
         super();
         this.classType = "super";
         this._cards = [];
-        this._config = this._config || {};
+        this.config = this.config || {};
     }
 
-    set hass(hass: HomeAssistant) {
-        this._hass = hass;
-        this._cards.forEach((card) => (card.hass = hass));
-    }
-
-    protected updated(changedProperties: PropertyValues): void {
+    updated(changedProperties: PropertyValues): void {
         super.updated(changedProperties);
         if (this._cards.length == 0) return;
+    }
+
+    hassChanged(): void {
+        this._cards.forEach((card) => (card.hass = this.hass));
     }
 
     public setConfig(config: FlexCardConfig): void {
@@ -32,7 +31,7 @@ export class FlexCard extends MutoBaseCard implements LovelaceCard {
             throw new Error(`No cards provided`);
         }
 
-        this._config = {
+        this.config = {
             ...config,
         };
 
@@ -41,17 +40,17 @@ export class FlexCard extends MutoBaseCard implements LovelaceCard {
 
     private async _createCards() {
         this._cards = await Promise.all(
-            this._config!.cards.map(async (card) => this._createCard(card))
+            this.config!.cards.map(async (card) => this._createCard(card))
         );
     }
 
     protected render(): TemplateResult {
-        if (!this._hass || !this._config) {
+        if (!this.hass || !this.config) {
             return html``;
         }
 
         return html`
-            <muto-flex class="muto ${this.classType}" style=${this._config.css ?? ""}>
+            <muto-flex class="muto ${this.classType}" style=${this.config.css ?? ""}>
                 ${this._cards.map((card) => card)}
             </muto-flex>
         `;

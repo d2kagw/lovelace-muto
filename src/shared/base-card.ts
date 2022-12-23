@@ -1,17 +1,31 @@
 import { css, CSSResultGroup, LitElement, PropertyValues } from "lit";
 import { motoCSS, colorsCSS, themeCSS } from "../theme";
-import {
-    HomeAssistant,
-    createThing,
-    handleClick,
-    LovelaceCard,
-    LovelaceCardConfig,
-} from "custom-card-helpers";
+import { createThing, HomeAssistant, LovelaceCard, LovelaceCardConfig } from "custom-card-helpers";
+import { property } from "lit/decorators.js";
 
-export class MutoBaseElement extends LitElement {
-    public _hass?: HomeAssistant;
-    set hass(hass: HomeAssistant) {
-        this._hass = hass;
+export class MutoBaseCard extends LitElement implements LovelaceCard {
+    @property({
+        attribute: false,
+    })
+    hass!: HomeAssistant;
+    @property() config!: any;
+
+    updated(changedProperties: PropertyValues) {
+        if (changedProperties.has("hass")) {
+            this.hassChanged();
+        }
+    }
+
+    getCardSize(): number | Promise<number> {
+        return 1;
+    }
+
+    public hassChanged(): void {}
+
+    public setConfig(config: any): void {
+        this.config = {
+            ...config,
+        };
     }
 
     private HELPERS = (window as any).loadCardHelpers
@@ -24,35 +38,21 @@ export class MutoBaseElement extends LitElement {
         } else {
             element = createThing(config);
         }
-        if (this._hass) {
-            element.hass = this._hass;
+        if (this.hass) {
+            element.hass = this.hass;
         }
         return element;
     }
 
-    protected updated(changedProps: PropertyValues): void {
-        super.updated(changedProps);
-        if (changedProps.has("hass") && this.hass) {
-        }
-    }
-
     static get styles(): CSSResultGroup {
-        return css`
-            ${motoCSS}
-            :host {
-                ${colorsCSS};
-                ${themeCSS};
-            }
-        `;
-    }
-}
-
-export class MutoBaseCard extends MutoBaseElement {
-    getCardSize(): number | Promise<number> {
-        return 1;
-    }
-
-    constructor() {
-        super();
+        return [
+            css`
+                ${motoCSS}
+                :host {
+                    ${colorsCSS};
+                    ${themeCSS};
+                }
+            `,
+        ];
     }
 }

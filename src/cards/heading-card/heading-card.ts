@@ -8,15 +8,15 @@ import { LovelaceCard } from "custom-card-helpers";
 
 @customElement(HEADING_CARD_NAME)
 export class HeadingCard extends MutoBaseCard implements LovelaceCard {
-    private _config!: HeadingCardConfig;
+    // private config!: HeadingCardConfig;
 
     constructor() {
         super();
-        this._config = this._config || {};
+        this.config = this.config || {};
     }
 
     public setConfig(config: HeadingCardConfig): void {
-        this._config = {
+        this.config = {
             size: "h1",
             ...config,
         };
@@ -24,32 +24,32 @@ export class HeadingCard extends MutoBaseCard implements LovelaceCard {
 
     public tagContent(): TemplateResult {
         return html`
-            ${this._config.icon ? html`<muto-icon icon="${this._config.icon}"></muto-icon>` : ""}
-            ${this._config.text ?? ""}
+            ${this.config.icon ? html`<muto-icon icon="${this.config.icon}"></muto-icon>` : ""}
+            ${this.config.text ?? ""}
         `;
     }
 
     protected render(): TemplateResult {
-        if (!this._hass || !this._config) {
+        if (!this.hass || !this.config) {
             return html``;
         }
 
         let tag: TemplateResult;
-        switch (this._config.size) {
+        switch (this.config.size) {
             case "h2":
-                tag = html`<h2 class="muto muto-heading" style="${this._config.css ?? ""}">
+                tag = html`<h2 class="muto muto-heading" style="${this.config.css ?? ""}">
                     ${this.tagContent()}
                 </h2>`;
                 break;
 
             case "h3":
-                tag = html`<h3 class="muto muto-heading" style="${this._config.css ?? ""}">
+                tag = html`<h3 class="muto muto-heading" style="${this.config.css ?? ""}">
                     ${this.tagContent()}
                 </h3>`;
                 break;
 
             default: // or h1
-                tag = html`<h1 class="muto muto-heading" style="${this._config.css ?? ""}">
+                tag = html`<h1 class="muto muto-heading" style="${this.config.css ?? ""}">
                     ${this.tagContent()}
                 </h1>`;
         }
