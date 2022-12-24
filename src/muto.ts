@@ -7,5 +7,6 @@ export { SensorButtonCard } from "./cards/button-card/sensor-button-card";
 export { FlexRowCard, FlexColumnCard } from "./cards/flex-card/flex-card";
 export { HeadingCard } from "./cards/heading-card/heading-card";
 export { LayoutCard } from "./cards/layout-card/layout-card";
+export { ImageCard } from "./cards/image-card/image-card";
 
 console.info(`%c🛠️ Muto 🛠️ - ${version}`, "color: #ef5350; font-weight: 700;");
