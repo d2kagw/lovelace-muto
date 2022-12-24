@@ -3,12 +3,11 @@ import { customElement, property } from "lit/decorators.js";
 import { MutoBaseCard } from "../../shared/base-card";
 import { LayoutCardConfig } from "./layout-card-config";
 import { LAYOUT_CARD_NAME } from "./const";
-import { HomeAssistant, LovelaceCard } from "custom-card-helpers";
+import { LovelaceCard } from "custom-card-helpers";
 
 @customElement(LAYOUT_CARD_NAME)
 export class LayoutCard extends MutoBaseCard implements LovelaceCard {
     @property() private _cards: LovelaceCard[];
-    // private config!: LayoutCardConfig;
 
     constructor() {
         super();

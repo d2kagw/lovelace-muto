@@ -40,6 +40,12 @@ export class MutoBaseCard extends LitElement implements LovelaceCard {
         };
     }
 
+    public toggleSwitch(): Function {
+        return () => {
+            this.hass.callService("switch", "toggle", { entity_id: this.config.entity });
+        };
+    }
+
     public setConfig(config: any): void {
         this.config = {
             ...config,

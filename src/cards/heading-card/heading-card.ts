@@ -1,5 +1,5 @@
-import { css, CSSResultGroup, html, PropertyValues, TemplateResult } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { css, CSSResultGroup, html, TemplateResult } from "lit";
+import { customElement } from "lit/decorators.js";
 import { MutoBaseCard } from "../../shared/base-card";
 import "../../shared/icon";
 import { HeadingCardConfig } from "./heading-card-config";
@@ -8,8 +8,6 @@ import { LovelaceCard } from "custom-card-helpers";
 
 @customElement(HEADING_CARD_NAME)
 export class HeadingCard extends MutoBaseCard implements LovelaceCard {
-    // private config!: HeadingCardConfig;
-
     constructor() {
         super();
         this.config = this.config || {};

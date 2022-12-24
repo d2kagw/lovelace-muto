@@ -6,7 +6,7 @@ import { ButtonCardConfig } from "./button-card-config";
 import { BUTTON_CARD_NAME } from "./const";
 import { colorForEntityState } from "../../shared/states";
 import { MutoBaseCard } from "../../shared/base-card";
-import { iconForEntity } from "../../shared/helpers";
+import { deviceTypeForEntity, iconForEntity } from "../../shared/helpers";
 
 @customElement(BUTTON_CARD_NAME)
 export class ButtonCard extends MutoBaseCard {
@@ -30,7 +30,7 @@ export class ButtonCard extends MutoBaseCard {
         return html`
             ${this.config.icon ? html`<muto-icon icon="${this.config.icon}"></muto-icon>` : ""}
             ${this.config.label ? html`<label>${this.config.label}</label>` : ""}
-            ${this.config.icon || this.config.label
+            ${this.config.image || this.config.icon || this.config.label
                 ? ""
                 : html`<muto-icon
                       icon="${iconForEntity(this.hass, this.config.entity)}"
@@ -39,7 +39,14 @@ export class ButtonCard extends MutoBaseCard {
     }
 
     public clickAction(): Function {
-        return this.moreInfoAction();
+        switch (deviceTypeForEntity(this.hass.states[this.config.entity])) {
+            case "switch":
+                return this.toggleSwitch();
+            case "light":
+                return this.toggleLight();
+            default:
+                return this.moreInfoAction();
+        }
     }
 
     protected render(): TemplateResult {
@@ -52,15 +59,30 @@ export class ButtonCard extends MutoBaseCard {
             cssColor = colorForEntityState(this.hass.states[this.config.entity]);
         }
 
+        let backgroundImage: string = "";
+        if (this.config.image) {
+            backgroundImage = `background-image:url(${this.config.image});`;
+        }
+
+        let stateIsOff: boolean = false;
+        if (
+            this.hass.states[this.config.entity] &&
+            "state" in this.hass.states[this.config.entity]
+        ) {
+            stateIsOff = this.hass.states[this.config.entity].state == "off";
+        }
+
         return html`
             <muto-button
                 class=${classMap({
                     muto: true,
                     "muto-panel": true,
                     "muto-button": true,
+                    "muto-button-state-off": stateIsOff,
+                    "muto-button-image": this.config.image,
                     "muto-button-fixedaspect": this.config.aspect == "fixed",
                 })}
-                style="${cssColor} ${this.config.css ?? ""}"
+                style="${cssColor} ${backgroundImage} ${this.config.css ?? ""}"
                 @click=${this.clickAction()}
             >
                 ${this.buttonContent()}
@@ -88,12 +110,26 @@ export class ButtonCard extends MutoBaseCard {
                     height: 100%;
 
                     overflow: hidden;
+
+                    filter: brightness(1);
+                }
+                .muto-button:active {
+                    filter: brightness(1.5);
+                }
+                .muto-button.muto-button-image {
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
+                .muto-button.muto-button-image.muto-button-state-off {
+                    opacity: 0.75;
+                    filter: saturate(0);
                 }
                 .muto-button label {
                     text-align: center;
                 }
                 .muto-button.muto-button-fixedaspect {
-                    /* aspect-ratio: 1 / 1; */
+                    aspect-ratio: 1 / 1;
                 }
             `,
         ];

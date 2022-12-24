@@ -3,11 +3,10 @@ import { customElement, property } from "lit/decorators.js";
 import { MutoBaseCard } from "../../shared/base-card";
 import { FlexCardConfig } from "./flex-card-config";
 import { FLEX_COLUMN_CARD_NAME, FLEX_ROW_CARD_NAME } from "./const";
-import { HomeAssistant, LovelaceCard } from "custom-card-helpers";
+import { LovelaceCard } from "custom-card-helpers";
 
 export class FlexCard extends MutoBaseCard implements LovelaceCard {
     @property() private _cards: LovelaceCard[];
-    // private config!: FlexCardConfig;
     classType: string;
 
     constructor() {

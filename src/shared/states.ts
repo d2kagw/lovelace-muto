@@ -3,9 +3,11 @@ import { deviceTypeForEntity } from "./helpers";
 
 export const stateColors = {
     blank: false,
-    positive: "#99DD2A",
-    negative: "#ED2664",
-    alert: "#D6C64B",
+    positive: "var(--muto-color-positive)",
+    negative: "var(--muto-color-negative)",
+    alert: "var(--muto-color-alert)",
+    cold: "var(--muto-color-cold)",
+    warm: "var(--muto-color-warm)",
 };
 
 const defaultStateColors = {
@@ -31,7 +33,7 @@ const defaultStateColors = {
     },
 };
 
-export const noStateColor = ["unknown", "temperature", "humidity", "carbon_dioxide"];
+export const ignoreStateColor = ["unknown", "temperature", "humidity", "carbon_dioxide"];
 
 export const deviceStateColor = {
     unknown: defaultStateColors.on_is_good,
@@ -59,6 +61,9 @@ export const deviceStateColor = {
     power: defaultStateColors.on_is_good,
     fan: defaultStateColors.on_is_good,
 
+    climate: defaultStateColors.on_is_good,
+    switch: defaultStateColors.on_is_good,
+
     battery_charging: defaultStateColors.off_is_good,
     connectivity: defaultStateColors.off_is_bad,
 
@@ -76,16 +81,52 @@ export function colorForEntityState(entity: HassEntity): string {
     let deviceType = deviceTypeForEntity(entity);
     let deviceStateColors = deviceStateColor[deviceType];
 
-    if (noStateColor.includes(deviceType)) {
+    if (ignoreStateColor.includes(deviceType)) {
         return "";
     } else {
         if (deviceStateColors) {
             cssColor = deviceStateColors[entity.state];
             if (cssColor) {
-                styleString = `background: ${cssColor}`;
+                styleString = `background-color: ${cssColor};`;
             }
         } else {
             console.error("Could not find device type", deviceType);
+        }
+    }
+
+    if (deviceType == "climate") {
+        switch (entity.state) {
+            case "heat":
+                styleString = `background-color: ${stateColors.warm};`;
+                break;
+
+            case "cool":
+                styleString = `background-color: ${stateColors.cold};`;
+                break;
+
+            case "dry":
+                styleString = `background-color: ${stateColors.positive};`;
+                break;
+
+            case "fan_only":
+                styleString = `background-color: ${stateColors.positive};`;
+                break;
+
+            case "heat_dry":
+                styleString = `background-color: ${stateColors.positive};`;
+                break;
+
+            case "heat_cool":
+                styleString = `background-color: ${stateColors.positive};`;
+                break;
+
+            case "auto":
+                styleString = `background-color: ${stateColors.positive};`;
+                break;
+
+            default:
+                console.info("Unsupported climate state", entity.state);
+                break;
         }
     }
 

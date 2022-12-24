@@ -17,7 +17,14 @@ cards:
                     icon: mdi:party-popper
                     entity: light.kitchen_lights
                   - type: custom:muto-light-button-card
-                    label: Bed
+                    label: Kitchen
+                    entity: light.kitchen_lights
+                  - type: custom:muto-light-button-card
+                    image: /local/muto.png
+                    entity: light.kitchen_lights
+                  - type: custom:muto-light-button-card
+                    entity: light.kitchen_lights
+                  - type: custom:muto-light-button-card
                     entity: light.bed_light
                   - type: custom:muto-light-button-card
                     entity: light.ceiling_lights
@@ -35,11 +42,36 @@ cards:
                 text: Binary Sensors
               - type: custom:muto-flex-row-card
                 cards:
-                  - type: custom:muto-binary-sensor-button-card
+                  - type: custom:muto-button-card
                     entity: binary_sensor.basement_floor_wet
-                  - type: custom:muto-binary-sensor-button-card
+                  - type: custom:muto-button-card
                     entity: binary_sensor.movement_backyard
           
+      - type: custom:muto-flex-row-card
+        cards:
+          - type: custom:muto-flex-column-card
+            cards:
+              - type: custom:muto-heading-card
+                size: h1
+                text: Switches
+              - type: custom:muto-flex-row-card
+                cards:
+                  - type: custom:muto-button-card
+                    entity: switch.decorative_lights
+
+          - type: custom:muto-flex-column-card
+            cards:
+              - type: custom:muto-heading-card
+                size: h1
+                text: Climate
+              - type: custom:muto-flex-row-card
+                cards:
+                  - type: custom:muto-climate-button-card
+                    entity: climate.heatpump
+                  - type: custom:muto-climate-button-card
+                    entity: climate.hvac
+                  - type: custom:muto-climate-button-card
+                    entity: climate.ecobee
 
           - type: custom:muto-flex-column-card
             cards:
@@ -48,17 +80,23 @@ cards:
                 text: Metric Sensors
               - type: custom:muto-flex-row-card
                 cards:
-                  - type: custom:muto-metric-sensor-button-card
+                  - type: custom:muto-sensor-button-card
                     entity: sensor.outside_temperature
-                  - type: custom:muto-metric-sensor-button-card
+                  - type: custom:muto-sensor-button-card
                     entity: sensor.outside_humidity
-                  - type: custom:muto-metric-sensor-button-card
+                  - type: custom:muto-sensor-button-card
                     entity: sensor.carbon_monoxide
-                  - type: custom:muto-metric-sensor-button-card
+                  - type: custom:muto-sensor-button-card
                     entity: sensor.carbon_dioxide
-                  - type: custom:muto-metric-sensor-button-card
+                  - type: custom:muto-sensor-button-card
                     entity: sensor.power_consumption
-                  - type: custom:muto-metric-sensor-button-card
+                  - type: custom:muto-sensor-button-card
+                    entity: sensor.total_energy_1
+                  - type: custom:muto-sensor-button-card
+                    entity: sensor.total_energy_2
+                  - type: custom:muto-sensor-button-card
+                    entity: sensor.total_gas_1
+                  - type: custom:muto-sensor-button-card
+                    entity: sensor.total_gas_2
+                  - type: custom:muto-sensor-button-card
                     entity: sensor.thermostat_mode
-          
-          

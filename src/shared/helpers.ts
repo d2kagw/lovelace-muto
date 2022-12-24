@@ -27,6 +27,10 @@ export function iconForEntity(hass: HomeAssistant, entity: string): string {
                 return "mdi:lightbulb";
             case "binary_sensor":
                 return "mdi:bell-outline";
+            case "climate":
+                return "mdi:air-conditioner";
+            case "switch":
+                return "mdi:toggle-switch-off-outline";
             default:
                 console.warn("Unknown entity icon type:", type);
                 return "mdi:help-circle-outline";
