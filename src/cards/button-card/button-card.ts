@@ -1,31 +1,23 @@
-import { css, CSSResultGroup, html, LitElement, PropertyValues, TemplateResult } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { css, CSSResultGroup, html, TemplateResult } from "lit";
+import { customElement } from "lit/decorators.js";
 import "../../shared/icon";
 import { classMap } from "lit/directives/class-map.js";
 import { ButtonCardConfig } from "./button-card-config";
 import { BUTTON_CARD_NAME } from "./const";
 import { colorForEntityState } from "../../shared/states";
-import {
-    createThing,
-    fireEvent,
-    HomeAssistant,
-    LovelaceCard,
-    LovelaceCardConfig,
-} from "custom-card-helpers";
 import { MutoBaseCard } from "../../shared/base-card";
+import { iconForEntity } from "../../shared/helpers";
 
 @customElement(BUTTON_CARD_NAME)
 export class ButtonCard extends MutoBaseCard {
-    constructor() {
-        super();
-        this.config = this.config || {};
-    }
+    // constructor() {
+    //     super();
+    //     this.config = this.config || {};
+    // }
 
-    updated(changedProps: PropertyValues): void {
-        super.updated(changedProps);
-
-        console.warn("updated", changedProps);
-    }
+    // updated(changedProps: PropertyValues): void {
+    //     super.updated(changedProps);
+    // }
 
     public setConfig(config: ButtonCardConfig): void {
         this.config = {
@@ -34,8 +26,20 @@ export class ButtonCard extends MutoBaseCard {
         };
     }
 
-    private _handleAction(): void {
-        fireEvent(this, "hass-more-info", { entityId: this.config.entity });
+    public buttonContent(): TemplateResult {
+        return html`
+            ${this.config.icon ? html`<muto-icon icon="${this.config.icon}"></muto-icon>` : ""}
+            ${this.config.label ? html`<label>${this.config.label}</label>` : ""}
+            ${this.config.icon || this.config.label
+                ? ""
+                : html`<muto-icon
+                      icon="${iconForEntity(this.hass, this.config.entity)}"
+                  ></muto-icon>`}
+        `;
+    }
+
+    public clickAction(): Function {
+        return this.moreInfoAction();
     }
 
     protected render(): TemplateResult {
@@ -57,10 +61,9 @@ export class ButtonCard extends MutoBaseCard {
                     "muto-button-fixedaspect": this.config.aspect == "fixed",
                 })}
                 style="${cssColor} ${this.config.css ?? ""}"
-                @click=${this._handleAction}
+                @click=${this.clickAction()}
             >
-                ${this.config.icon ? html`<muto-icon icon="${this.config.icon}"></muto-icon>` : ""}
-                ${this.config.label ? html`<label>${this.config.label}</label>` : ""}
+                ${this.buttonContent()}
             </muto-button>
         `;
     }

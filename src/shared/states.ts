@@ -31,6 +31,8 @@ const defaultStateColors = {
     },
 };
 
+export const noStateColor = ["unknown", "temperature", "humidity", "carbon_dioxide"];
+
 export const deviceStateColor = {
     unknown: defaultStateColors.on_is_good,
 
@@ -74,13 +76,17 @@ export function colorForEntityState(entity: HassEntity): string {
     let deviceType = deviceTypeForEntity(entity);
     let deviceStateColors = deviceStateColor[deviceType];
 
-    if (deviceStateColors) {
-        cssColor = deviceStateColors[entity.state];
-        if (cssColor) {
-            styleString = `background: ${cssColor}`;
-        }
+    if (noStateColor.includes(deviceType)) {
+        return "";
     } else {
-        console.error("Could not find device type", deviceType);
+        if (deviceStateColors) {
+            cssColor = deviceStateColors[entity.state];
+            if (cssColor) {
+                styleString = `background: ${cssColor}`;
+            }
+        } else {
+            console.error("Could not find device type", deviceType);
+        }
     }
 
     return styleString;

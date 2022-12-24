@@ -1,6 +1,12 @@
 import { css, CSSResultGroup, LitElement, PropertyValues } from "lit";
 import { motoCSS, colorsCSS, themeCSS } from "../theme";
-import { createThing, HomeAssistant, LovelaceCard, LovelaceCardConfig } from "custom-card-helpers";
+import {
+    createThing,
+    fireEvent,
+    HomeAssistant,
+    LovelaceCard,
+    LovelaceCardConfig,
+} from "custom-card-helpers";
 import { property } from "lit/decorators.js";
 
 export class MutoBaseCard extends LitElement implements LovelaceCard {
@@ -21,6 +27,18 @@ export class MutoBaseCard extends LitElement implements LovelaceCard {
     }
 
     public hassChanged(): void {}
+
+    public moreInfoAction(): Function {
+        return () => {
+            fireEvent(this, "hass-more-info", { entityId: this.config.entity });
+        };
+    }
+
+    public toggleLight(): Function {
+        return () => {
+            this.hass.callService("light", "toggle", { entity_id: this.config.entity });
+        };
+    }
 
     public setConfig(config: any): void {
         this.config = {

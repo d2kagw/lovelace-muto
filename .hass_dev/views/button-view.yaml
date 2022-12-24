@@ -10,71 +10,55 @@ cards:
             cards:
               - type: custom:muto-heading-card
                 size: h1
-                text: Entity States
+                text: Lights
               - type: custom:muto-flex-row-card
                 cards:
-                  - type: custom:muto-button-card
-                    icon: mdi:lightbulb
+                  - type: custom:muto-light-button-card
+                    icon: mdi:party-popper
                     entity: light.kitchen_lights
-                    tap_action:
-                      action: toggle
                   - type: custom:muto-light-button-card
-                    icon: mdi:lightbulb-outline
+                    label: Bed
                     entity: light.bed_light
-                    tap_action:
-                      action: toggle
-                  - type: custom:muto-button-card
-                    icon: mdi:fan
-                    entity: fan.ceiling_fan
-                    tap_action:
-                      action: toggle
                   - type: custom:muto-light-button-card
-                    icon: mdi:walk
-                    entity: binary_sensor.movement_backyard
-                    tap_action:
-                      action: more-info
-          
-          - type: custom:muto-flex-column-card
-            cards:
-              - type: custom:muto-heading-card
-                size: h1
-                text: Basic Presentation
-              - type: custom:muto-flex-row-card
-                cards:
-                  - type: custom:muto-button-card
-                    icon: mdi:button-cursor
-                    label: button
-                  - type: custom:muto-button-card
-                    entity: light.bed_light
-                    icon: mdi:lightbulb-outline
-                  - type: custom:muto-button-card
-                    entity: light.bed_light
-                    label: light
+                    entity: light.ceiling_lights
+                  - type: custom:muto-light-button-card
+                    entity: light.office_rgbw_lights
+                  - type: custom:muto-light-button-card
+                    entity: light.living_room_rgbww_lights
+                  - type: custom:muto-light-button-card
+                    entity: light.entrance_color_white_lights
 
           - type: custom:muto-flex-column-card
             cards:
               - type: custom:muto-heading-card
                 size: h1
-                text: Aspect Ratio
+                text: Binary Sensors
               - type: custom:muto-flex-row-card
                 cards:
-                  - type: custom:muto-button-card
-                    label: test
-                    icon: mdi:lightbulb-outline
-                  - type: custom:muto-button-card
-                    label: a very long test
-                    icon: mdi:lightbulb-outline
-                    aspect: auto
-                    css: >
-                      background: #0f0;
-                  - type: custom:muto-button-card
-                    icon: mdi:lightbulb-outline
-                    aspect: auto
-                    css: >
-                      background: #0f0;
-                  - type: custom:muto-button-card
-                    label: test
-                    icon: mdi:lightbulb-outline
-                    aspect: auto
-                    css: >
-                      background: #0f0;
+                  - type: custom:muto-binary-sensor-button-card
+                    entity: binary_sensor.basement_floor_wet
+                  - type: custom:muto-binary-sensor-button-card
+                    entity: binary_sensor.movement_backyard
+          
+
+          - type: custom:muto-flex-column-card
+            cards:
+              - type: custom:muto-heading-card
+                size: h1
+                text: Metric Sensors
+              - type: custom:muto-flex-row-card
+                cards:
+                  - type: custom:muto-metric-sensor-button-card
+                    entity: sensor.outside_temperature
+                  - type: custom:muto-metric-sensor-button-card
+                    entity: sensor.outside_humidity
+                  - type: custom:muto-metric-sensor-button-card
+                    entity: sensor.carbon_monoxide
+                  - type: custom:muto-metric-sensor-button-card
+                    entity: sensor.carbon_dioxide
+                  - type: custom:muto-metric-sensor-button-card
+                    entity: sensor.power_consumption
+                  - type: custom:muto-metric-sensor-button-card
+                    entity: sensor.thermostat_mode
+          
+          
