@@ -1,10 +1,9 @@
-title: Heading
-icon: mdi:format-color-text
+title: Headings
 panel: true
 cards:
   - type: custom:muto-layout-card
-    cards:
-      - type: custom:muto-flex-column-card
+    columns:
+      - type: custom:muto-layout-column-card
         cards:
           - type: custom:muto-heading-card
             size: h1

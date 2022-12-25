@@ -1,17 +1,15 @@
-title: Button
-icon: mdi:button-cursor
+title: Buttons
 panel: true
 cards:
   - type: custom:muto-layout-card
-    cards:
-      - type: custom:muto-flex-row-card
-        cards:
-          - type: custom:muto-flex-column-card
+    columns:
+      - cards:
+          - type: custom:muto-layout-column-card
             cards:
               - type: custom:muto-heading-card
                 size: h1
                 text: Lights
-              - type: custom:muto-flex-row-card
+              - type: custom:muto-layout-row-card
                 cards:
                   - type: custom:muto-light-button-card
                     icon: mdi:party-popper
@@ -35,68 +33,64 @@ cards:
                   - type: custom:muto-light-button-card
                     entity: light.entrance_color_white_lights
 
-          - type: custom:muto-flex-column-card
+          - type: custom:muto-heading-card
+            size: h1
+            text: Binary Sensors
+          - type: custom:muto-layout-row-card
             cards:
-              - type: custom:muto-heading-card
-                size: h1
-                text: Binary Sensors
-              - type: custom:muto-flex-row-card
-                cards:
-                  - type: custom:muto-button-card
-                    entity: binary_sensor.basement_floor_wet
-                  - type: custom:muto-button-card
-                    entity: binary_sensor.movement_backyard
-          
-      - type: custom:muto-flex-row-card
-        cards:
-          - type: custom:muto-flex-column-card
-            cards:
-              - type: custom:muto-heading-card
-                size: h1
-                text: Switches
-              - type: custom:muto-flex-row-card
-                cards:
-                  - type: custom:muto-button-card
-                    entity: switch.decorative_lights
+              - type: custom:muto-button-card
+                entity: binary_sensor.basement_floor_wet
+              - type: custom:muto-button-card
+                entity: binary_sensor.movement_backyard
+      - cards:
+        - type: custom:muto-layout-column-card
+          cards:
+            - type: custom:muto-heading-card
+              size: h1
+              text: Switches
+            - type: custom:muto-layout-row-card
+              cards:
+                - type: custom:muto-button-card
+                  entity: switch.decorative_lights
 
-          - type: custom:muto-flex-column-card
-            cards:
-              - type: custom:muto-heading-card
-                size: h1
-                text: Climate
-              - type: custom:muto-flex-row-card
-                cards:
-                  - type: custom:muto-climate-button-card
-                    entity: climate.heatpump
-                  - type: custom:muto-climate-button-card
-                    entity: climate.hvac
-                  - type: custom:muto-climate-button-card
-                    entity: climate.ecobee
+        - type: custom:muto-layout-column-card
+          cards:
+            - type: custom:muto-heading-card
+              size: h1
+              text: Climate
+            - type: custom:muto-layout-row-card
+              cards:
+                - type: custom:muto-climate-button-card
+                  entity: climate.heatpump
+                - type: custom:muto-climate-button-card
+                  entity: climate.hvac
+                - type: custom:muto-climate-button-card
+                  entity: climate.ecobee
 
-          - type: custom:muto-flex-column-card
-            cards:
-              - type: custom:muto-heading-card
-                size: h1
-                text: Metric Sensors
-              - type: custom:muto-flex-row-card
-                cards:
-                  - type: custom:muto-sensor-button-card
-                    entity: sensor.outside_temperature
-                  - type: custom:muto-sensor-button-card
-                    entity: sensor.outside_humidity
-                  - type: custom:muto-sensor-button-card
-                    entity: sensor.carbon_monoxide
-                  - type: custom:muto-sensor-button-card
-                    entity: sensor.carbon_dioxide
-                  - type: custom:muto-sensor-button-card
-                    entity: sensor.power_consumption
-                  - type: custom:muto-sensor-button-card
-                    entity: sensor.total_energy_1
-                  - type: custom:muto-sensor-button-card
-                    entity: sensor.total_energy_2
-                  - type: custom:muto-sensor-button-card
-                    entity: sensor.total_gas_1
-                  - type: custom:muto-sensor-button-card
-                    entity: sensor.total_gas_2
-                  - type: custom:muto-sensor-button-card
-                    entity: sensor.thermostat_mode
+        - type: custom:muto-layout-column-card
+          cards:
+            - type: custom:muto-heading-card
+              size: h1
+              text: Metric Sensors
+            - type: custom:muto-layout-row-card
+              cards:
+                - type: custom:muto-sensor-button-card
+                  entity: sensor.outside_temperature
+                - type: custom:muto-sensor-button-card
+                  entity: sensor.outside_humidity
+                - type: custom:muto-sensor-button-card
+                  entity: sensor.carbon_monoxide
+                - type: custom:muto-sensor-button-card
+                  entity: sensor.carbon_dioxide
+                - type: custom:muto-sensor-button-card
+                  entity: sensor.power_consumption
+                - type: custom:muto-sensor-button-card
+                  entity: sensor.total_energy_1
+                - type: custom:muto-sensor-button-card
+                  entity: sensor.total_energy_2
+                - type: custom:muto-sensor-button-card
+                  entity: sensor.total_gas_1
+                - type: custom:muto-sensor-button-card
+                  entity: sensor.total_gas_2
+                - type: custom:muto-sensor-button-card
+                  entity: sensor.thermostat_mode

@@ -1,20 +1,16 @@
-title: Button
-icon: mdi:image-multiple
+title: Images
 panel: true
 cards:
   - type: custom:muto-layout-card
-    cards:
-      - type: custom:muto-flex-row-card
+    columns:
+      - type: custom:muto-layout-column-card
         cards:
-          - type: custom:muto-flex-column-card
-            cards:
-              - type: custom:muto-image-card
-                image: /local/muto.png
-                css: >
-                  width: 25em;
-
-              - type: custom:muto-image-card
-                image: /local/muto.png
-                css: >
-                  width: 25em;
-                  height: 10em;
+          - type: custom:muto-image-card
+            image: /local/muto.png
+            css: >
+              width: 25em;
+          - type: custom:muto-image-card
+            image: /local/muto.png
+            css: >
+              width: 25em;
+              height: 10em;
