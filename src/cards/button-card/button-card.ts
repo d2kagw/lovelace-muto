@@ -10,15 +10,6 @@ import { deviceTypeForEntity, iconForEntity } from "../../shared/helpers";
 
 @customElement(BUTTON_CARD_NAME)
 export class ButtonCard extends MutoBaseCard {
-    // constructor() {
-    //     super();
-    //     this.config = this.config || {};
-    // }
-
-    // updated(changedProps: PropertyValues): void {
-    //     super.updated(changedProps);
-    // }
-
     public setConfig(config: ButtonCardConfig): void {
         this.config = {
             aspect: "fixed",
@@ -80,7 +71,7 @@ export class ButtonCard extends MutoBaseCard {
                     "muto-button": true,
                     "muto-button-state-off": stateIsOff,
                     "muto-button-image": this.config.image,
-                    "muto-button-fixedaspect": this.config.aspect == "fixed",
+                    "muto-button-fit": this.config.width == "fit",
                 })}
                 style="${cssColor} ${backgroundImage} ${this.config.css ?? ""}"
                 @click=${this.clickAction()}
@@ -96,40 +87,38 @@ export class ButtonCard extends MutoBaseCard {
             css`
                 :host {
                     width: 100%;
-                    aspect-ratio: 1 / 1;
                     display: block;
                 }
+
                 .muto-button {
-                    background: var(--muto-card-background);
+                    background-color: var(--muto-card-background);
 
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    width: 100%;
-                    height: 100%;
-
                     overflow: hidden;
 
-                    filter: brightness(1);
+                    min-width: var(--muto-row-height);
+                    min-height: var(--muto-row-height);
+                }
+                .muto-button-fit {
+                    min-width: auto;
+                }
+
+                .muto-button,
+                .muto-button * {
+                    cursor: pointer;
                 }
                 .muto-button:active {
                     filter: brightness(1.5);
                 }
-                .muto-button.muto-button-image {
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    background-position: center center;
-                }
                 .muto-button.muto-button-image.muto-button-state-off {
-                    opacity: 0.75;
+                    opacity: 0.5;
                     filter: saturate(0);
                 }
                 .muto-button label {
                     text-align: center;
-                }
-                .muto-button.muto-button-fixedaspect {
-                    aspect-ratio: 1 / 1;
                 }
             `,
         ];

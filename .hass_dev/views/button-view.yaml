@@ -8,8 +8,9 @@ cards:
             cards:
               - type: custom:muto-heading-card
                 size: h1
-                text: Lights
+                text: Lights (wrapped)
               - type: custom:muto-layout-row-card
+                fit: wrap
                 cards:
                   - type: custom:muto-light-button-card
                     icon: mdi:party-popper
@@ -35,44 +36,47 @@ cards:
 
           - type: custom:muto-heading-card
             size: h1
-            text: Binary Sensors
+            text: Binary Sensors (scaled)
           - type: custom:muto-layout-row-card
             cards:
               - type: custom:muto-button-card
                 entity: binary_sensor.basement_floor_wet
+                width: fit
               - type: custom:muto-button-card
                 entity: binary_sensor.movement_backyard
+                width: fit
       - cards:
         - type: custom:muto-layout-column-card
           cards:
             - type: custom:muto-heading-card
               size: h1
-              text: Switches
+              text: Switches (scaled)
             - type: custom:muto-layout-row-card
               cards:
                 - type: custom:muto-button-card
                   entity: switch.decorative_lights
+                  width: fit
 
-        - type: custom:muto-layout-column-card
-          cards:
             - type: custom:muto-heading-card
               size: h1
-              text: Climate
+              text: Climate (scaled)
             - type: custom:muto-layout-row-card
               cards:
                 - type: custom:muto-climate-button-card
                   entity: climate.heatpump
+                  width: fit
                 - type: custom:muto-climate-button-card
                   entity: climate.hvac
+                  width: fit
                 - type: custom:muto-climate-button-card
                   entity: climate.ecobee
+                  width: fit
 
-        - type: custom:muto-layout-column-card
-          cards:
             - type: custom:muto-heading-card
               size: h1
-              text: Metric Sensors
+              text: Metric Sensors (scroll)
             - type: custom:muto-layout-row-card
+              fit: scroll
               cards:
                 - type: custom:muto-sensor-button-card
                   entity: sensor.outside_temperature

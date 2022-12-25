@@ -4,6 +4,7 @@ import { MutoBaseCard } from "../../shared/base-card";
 import { LayoutCardConfig } from "./layout-card-config";
 import { LAYOUT_CARD_ROW_NAME, LAYOUT_CARD_COLUMN_NAME, LAYOUT_CARD_NAME } from "./const";
 import { LovelaceCard } from "custom-card-helpers";
+import { classMap } from "lit/directives/class-map.js";
 
 @customElement(LAYOUT_CARD_COLUMN_NAME)
 export class LayoutColumnCard extends MutoBaseCard implements LovelaceCard {
@@ -76,7 +77,16 @@ export class LayoutRowCard extends LayoutColumnCard {
         }
 
         return html`
-            <div class="muto muto-layout-row-card" style=${this.config.css ?? ""}>
+            <div
+                class=${classMap({
+                    muto: true,
+                    "muto-layout-row-card": true,
+                    "muto-layout-fit-scroll": this.config.fit == "scroll",
+                    "muto-layout-fit-wrap": this.config.fit == "wrap",
+                    "muto-layout-fit-scale": this.config.fit == "scale" || !("fit" in this.config),
+                })}
+                style=${this.config.css ?? ""}
+            >
                 ${this._cards.map((card) => card)}
             </div>
         `;
@@ -90,6 +100,26 @@ export class LayoutRowCard extends LayoutColumnCard {
                     display: flex;
                     flex-direction: row;
                     gap: var(--muto-spacing);
+                }
+                .muto-layout-fit-wrap {
+                    flex-wrap: wrap;
+                }
+
+                .muto-layout-fit-wrap > * {
+                    width: auto;
+                }
+
+                .muto-layout-fit-scale > * {
+                    min-width: 1px;
+                }
+
+                .muto-layout-fit-scroll {
+                    overflow-y: scroll;
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+                .muto-layout-fit-scroll::-webkit-scrollbar {
+                    display: none;
                 }
             `,
         ];
