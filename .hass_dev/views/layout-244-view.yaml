@@ -1,0 +1,16 @@
+title: Layout - 244
+panel: true
+cards:
+  - type: custom:muto-244-layout-card
+    cards:
+      - type: custom:muto-image-card
+        image: /local/muto.png
+      - type: custom:muto-block-layout-card
+        cards: 
+          - type: custom:muto-image-card
+            image: /local/muto.png
+          - type: custom:muto-image-card
+            image: /local/muto.png
+      - type: custom:muto-image-card
+        image: /local/muto.png
+          
