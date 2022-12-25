@@ -24,6 +24,7 @@ export class ImageCard extends MutoBaseCard implements LovelaceCard {
             super.styles,
             css`
                 .muto-image {
+                    width: 100%;
                     object-fit: cover;
                 }
             `,
