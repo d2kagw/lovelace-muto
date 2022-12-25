@@ -116,7 +116,7 @@ export class LayoutCard extends MutoBaseCard implements LovelaceCard {
     }
 
     public setConfig(config: LayoutCardConfig): void {
-        if (!config.columns) {
+        if (config.columns.length == 0) {
             throw new Error(`No columns provided`);
         }
 
