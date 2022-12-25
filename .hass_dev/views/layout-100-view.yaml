@@ -1,10 +1,13 @@
-title: Layout - Full
+title: Layout - 1
 panel: true
 cards:
-  - type: custom:muto-100-layout-card
-    cards:
-      - type: custom:muto-image-card
-        image: /local/muto.png
-      - type: custom:muto-image-card
-        image: /local/muto.png
+  - type: custom:muto-layout-card
+    columns:
+      - cards: 
+          - type: custom:muto-image-card
+            image: /local/muto.png
+          - type: custom:muto-image-card
+            image: /local/muto.png
+          - type: custom:muto-image-card
+            image: /local/muto.png
           

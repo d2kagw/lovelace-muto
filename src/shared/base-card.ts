@@ -16,6 +16,11 @@ export class MutoBaseCard extends LitElement implements LovelaceCard {
     hass!: HomeAssistant;
     @property() config!: any;
 
+    constructor() {
+        super();
+        this.config = this.config || {};
+    }
+
     updated(changedProperties: PropertyValues) {
         if (changedProperties.has("hass")) {
             this.hassChanged();

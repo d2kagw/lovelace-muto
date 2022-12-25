@@ -2,16 +2,11 @@ import { css, CSSResultGroup, html, PropertyValues, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { MutoBaseCard } from "../../shared/base-card";
 import { LayoutCardConfig } from "./layout-card-config";
-import {
-    LAYOUT_CARD_100_NAME,
-    LAYOUT_CARD_244_NAME,
-    LAYOUT_CARD_235_NAME,
-    LAYOUT_CARD_BLOCK_NAME,
-} from "./const";
+import { LAYOUT_CARD_ROW_NAME, LAYOUT_CARD_COLUMN_NAME, LAYOUT_CARD_NAME } from "./const";
 import { LovelaceCard } from "custom-card-helpers";
 
-@customElement(LAYOUT_CARD_BLOCK_NAME)
-export class LayoutBlockCard extends MutoBaseCard implements LovelaceCard {
+@customElement(LAYOUT_CARD_COLUMN_NAME)
+export class LayoutColumnCard extends MutoBaseCard implements LovelaceCard {
     @property() public _cards: LovelaceCard[];
 
     constructor() {
@@ -30,19 +25,15 @@ export class LayoutBlockCard extends MutoBaseCard implements LovelaceCard {
     }
 
     public setConfig(config: LayoutCardConfig): void {
-        this.validateConfig(config);
+        if (!config.cards) {
+            throw new Error(`No cards provided`);
+        }
 
         this.config = {
             ...config,
         };
 
         this._createCards();
-    }
-
-    public validateConfig(config: LayoutCardConfig): void {
-        if (!config.cards) {
-            throw new Error(`No cards provided`);
-        }
     }
 
     private async _createCards() {
@@ -57,7 +48,7 @@ export class LayoutBlockCard extends MutoBaseCard implements LovelaceCard {
         }
 
         return html`
-            <div class="muto muto-layout muto-layout-block" style=${this.config.css ?? ""}>
+            <div class="muto muto-layout-column-card" style=${this.config.css ?? ""}>
                 ${this._cards.map((card) => card)}
             </div>
         `;
@@ -67,7 +58,7 @@ export class LayoutBlockCard extends MutoBaseCard implements LovelaceCard {
         return [
             super.styles,
             css`
-                .muto-layout-block {
+                .muto-layout-column-card {
                     display: flex;
                     flex-direction: column;
                     gap: var(--muto-spacing);
@@ -77,18 +68,95 @@ export class LayoutBlockCard extends MutoBaseCard implements LovelaceCard {
     }
 }
 
-@customElement(LAYOUT_CARD_100_NAME)
-export class Layout100Card extends LayoutBlockCard {
+@customElement(LAYOUT_CARD_ROW_NAME)
+export class LayoutRowCard extends LayoutColumnCard {
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
             return html``;
         }
 
         return html`
-            <div class="muto muto-layout muto-layout-100" style=${this.config.css ?? ""}>
-                ${this._cards.map(
-                    (card) => html`<div class="muto muto-layout-child">${card}</div>`
-                )}
+            <div class="muto muto-layout-row-card" style=${this.config.css ?? ""}>
+                ${this._cards.map((card) => card)}
+            </div>
+        `;
+    }
+
+    static get styles(): CSSResultGroup {
+        return [
+            super.styles,
+            css`
+                .muto-layout-row-card {
+                    display: flex;
+                    flex-direction: row;
+                    gap: var(--muto-spacing);
+                }
+            `,
+        ];
+    }
+}
+
+@customElement(LAYOUT_CARD_NAME)
+export class LayoutCard extends MutoBaseCard implements LovelaceCard {
+    @property() public _columns: LovelaceCard[][];
+
+    constructor() {
+        super();
+        this._columns = [];
+        this.config = this.config || {};
+    }
+
+    public hassChanged(): void {
+        this._columns.forEach((column) => column.forEach((card) => (card.hass = this.hass)));
+    }
+
+    updated(changedProperties: PropertyValues): void {
+        super.updated(changedProperties);
+        if (this._columns.length == 0) return;
+    }
+
+    public setConfig(config: LayoutCardConfig): void {
+        if (!config.columns) {
+            throw new Error(`No columns provided`);
+        }
+
+        this.config = {
+            ...config,
+        };
+
+        this._createColumns();
+    }
+
+    private async _createColumns() {
+        this._columns = await Promise.all(
+            this.config!.columns.map(async (column) => this._createColumnCardStack(column))
+        );
+    }
+
+    private async _createColumnCardStack(column): Promise<LovelaceCard[]> {
+        return await Promise.all(column.cards.map(async (card) => this._createCard(card)));
+    }
+
+    protected render(): TemplateResult {
+        if (!this.hass || !this.config) {
+            return html``;
+        }
+
+        return html`
+            <div class="muto muto-layout" style=${this.config.css ?? ""}>
+                ${this._columns.map((column, i) => {
+                    return html`
+                        <div
+                            class="muto-layout-column muto-layout-column-${i + 1}"
+                            style="
+                                flex: ${this.config.columns[i].flex ?? ""};
+                                ${this.config.css ?? ""};
+                            "
+                        >
+                            ${column.map((card) => card)}
+                        </div>
+                    `;
+                })}
             </div>
         `;
     }
@@ -100,56 +168,14 @@ export class Layout100Card extends LayoutBlockCard {
                 :host {
                     display: block;
                 }
-                .muto-layout-100 {
-                    padding: var(--muto-spacing) var(--muto-spacing) 0;
-                    gap: var(--muto-spacing);
-                    display: flex;
-                    flex-direction: column;
-                }
-                .muto-layout-100 .muto-layout-child {
-                    /* no styles */
-                }
-            `,
-        ];
-    }
-}
-
-@customElement(LAYOUT_CARD_244_NAME)
-export class Layout244Card extends LayoutBlockCard {
-    public validateConfig(config: LayoutCardConfig): void {
-        super.validateConfig(config);
-        if (config.cards.length != 3) {
-            console.error(`Muto 244 Layout expects exactly 3 cards`, config);
-            throw new Error(`Muto 244 Layout expects exactly 3 cards`);
-        }
-    }
-
-    protected render(): TemplateResult {
-        if (!this.hass || !this.config) {
-            return html``;
-        }
-
-        return html`
-            <div class="muto muto-layout muto-layout-244" style=${this.config.css ?? ""}>
-                <div class="muto-layout-244-column muto-layout-244-column-0">${this._cards[0]}</div>
-                <div class="muto-layout-244-column muto-layout-244-column-1">${this._cards[1]}</div>
-                <div class="muto-layout-244-column muto-layout-244-column-2">${this._cards[2]}</div>
-            </div>
-        `;
-    }
-
-    static get styles(): CSSResultGroup {
-        return [
-            super.styles,
-            css`
-                .muto-layout-244 {
+                .muto-layout {
                     display: flex;
                     height: 100%;
                     max-height: 93vh;
                     padding: var(--muto-spacing) var(--muto-spacing) 0;
                     gap: var(--muto-spacing);
                 }
-                .muto-layout-244-column {
+                .muto-layout-column {
                     flex-grow: 1;
                     flex-shrink: 1;
                     flex-basis: 30%;
@@ -158,31 +184,24 @@ export class Layout244Card extends LayoutBlockCard {
                     -ms-overflow-style: none;
                     scrollbar-width: none;
                 }
-                .muto-layout-244-column::-webkit-scrollbar {
+                .muto-layout-column::-webkit-scrollbar {
                     display: none;
                 }
-                .muto-layout-244-column-0 {
-                    flex-shrink: 0;
-                    flex-grow: 0;
-                    flex-basis: 20%;
-                    display: flex;
-                    flex-direction: column;
-                }
                 @media only screen and (max-width: 1000px) {
-                    .muto-layout-244 {
+                    .muto-layout {
                         flex-direction: column;
                         height: auto;
                         max-height: none;
                         padding-bottom: var(--muto-spacing);
                     }
-                    .muto-layout-244-column {
+                    .muto-layout-column {
                         overflow: visible;
                         flex-basis: auto;
                     }
-                    .muto-layout-244-column-0 {
-                        flex-shrink: 1;
-                        flex-grow: 1;
-                        flex-basis: auto;
+                    .muto-layout-column-1 {
+                        flex-shrink: 1 !important;
+                        flex-grow: 1 !important;
+                        flex-basis: auto !important;
                     }
                 }
             `,
