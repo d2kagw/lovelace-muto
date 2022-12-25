@@ -1,4 +1,5 @@
 import { css, CSSResultGroup, html, TemplateResult } from "lit";
+import { property } from "lit/decorators.js";
 import { customElement } from "lit/decorators.js";
 import { MutoBaseCard } from "../../shared/base-card";
 import { ImageCardConfig } from "./image-card-config";
@@ -7,6 +8,8 @@ import { LovelaceCard } from "custom-card-helpers";
 
 @customElement(IMAGE_CARD_NAME)
 export class ImageCard extends MutoBaseCard implements LovelaceCard {
+    @property() config!: ImageCardConfig;
+
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
             return html``;

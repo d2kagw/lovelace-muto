@@ -10,7 +10,7 @@ export class SensorButtonCard extends ButtonCard {
     public buttonContent(): TemplateResult {
         if ("icon" in this.config || "label" in this.config) {
             return super.buttonContent();
-        } else {
+        } else if (this.config.entity) {
             if (this.hass.states[this.config.entity]) {
                 let label: string =
                     this.hass.states[this.config.entity].state +
@@ -21,6 +21,8 @@ export class SensorButtonCard extends ButtonCard {
                     icon="${iconForEntity(this.hass, this.config.entity)}"
                 ></muto-icon>`;
             }
+        } else {
+            return html`<label>Unknown Sensor</label>`;
         }
     }
 }

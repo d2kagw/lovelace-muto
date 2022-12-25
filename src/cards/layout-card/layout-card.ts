@@ -1,7 +1,12 @@
 import { css, CSSResultGroup, html, PropertyValues, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { MutoBaseCard } from "../../shared/base-card";
-import { LayoutCardConfig } from "./layout-card-config";
+import {
+    LayoutCardConfig,
+    LayoutColumnCardConfig,
+    LayoutRowCardConfig,
+    LayoutRowFits,
+} from "./layout-card-config";
 import { LAYOUT_CARD_ROW_NAME, LAYOUT_CARD_COLUMN_NAME, LAYOUT_CARD_NAME } from "./const";
 import { LovelaceCard } from "custom-card-helpers";
 import { classMap } from "lit/directives/class-map.js";
@@ -9,6 +14,7 @@ import { classMap } from "lit/directives/class-map.js";
 @customElement(LAYOUT_CARD_COLUMN_NAME)
 export class LayoutColumnCard extends MutoBaseCard implements LovelaceCard {
     @property() public _cards: LovelaceCard[];
+    @property() config!: LayoutColumnCardConfig;
 
     constructor() {
         super();
@@ -71,6 +77,7 @@ export class LayoutColumnCard extends MutoBaseCard implements LovelaceCard {
 
 @customElement(LAYOUT_CARD_ROW_NAME)
 export class LayoutRowCard extends LayoutColumnCard {
+    @property() config!: LayoutRowCardConfig;
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
             return html``;
@@ -81,9 +88,10 @@ export class LayoutRowCard extends LayoutColumnCard {
                 class=${classMap({
                     muto: true,
                     "muto-layout-row-card": true,
-                    "muto-layout-fit-scroll": this.config.fit == "scroll",
-                    "muto-layout-fit-wrap": this.config.fit == "wrap",
-                    "muto-layout-fit-scale": this.config.fit == "scale" || !("fit" in this.config),
+                    "muto-layout-fit-scroll": this.config.fit == LayoutRowFits.SCROLL,
+                    "muto-layout-fit-wrap": this.config.fit == LayoutRowFits.WRAP,
+                    "muto-layout-fit-scale":
+                        this.config.fit == LayoutRowFits.SCALE || !("fit" in this.config),
                 })}
                 style=${this.config.css ?? ""}
             >

@@ -7,9 +7,11 @@ import { BUTTON_CARD_NAME } from "./const";
 import { colorForEntityState } from "../../shared/states";
 import { MutoBaseCard } from "../../shared/base-card";
 import { deviceTypeForEntity, iconForEntity } from "../../shared/helpers";
+import { property } from "lit/decorators.js";
 
 @customElement(BUTTON_CARD_NAME)
 export class ButtonCard extends MutoBaseCard {
+    @property() config!: ButtonCardConfig;
     public setConfig(config: ButtonCardConfig): void {
         this.config = {
             aspect: "fixed",
@@ -24,19 +26,23 @@ export class ButtonCard extends MutoBaseCard {
             ${this.config.image || this.config.icon || this.config.label
                 ? ""
                 : html`<muto-icon
-                      icon="${iconForEntity(this.hass, this.config.entity)}"
+                      icon="${iconForEntity(this.hass, this.config.entity ?? "unknown")}"
                   ></muto-icon>`}
         `;
     }
 
     public clickAction(): Function {
-        switch (deviceTypeForEntity(this.hass.states[this.config.entity])) {
-            case "switch":
-                return this.toggleSwitch();
-            case "light":
-                return this.toggleLight();
-            default:
-                return this.moreInfoAction();
+        if (this.config.entity) {
+            switch (deviceTypeForEntity(this.hass.states[this.config.entity])) {
+                case "switch":
+                    return this.toggleSwitch();
+                case "light":
+                    return this.toggleLight();
+                default:
+                    return this.moreInfoAction();
+            }
+        } else {
+            return () => console.error("No entity provided");
         }
     }
 
@@ -57,6 +63,7 @@ export class ButtonCard extends MutoBaseCard {
 
         let stateIsOff: boolean = false;
         if (
+            this.config.entity &&
             this.hass.states[this.config.entity] &&
             "state" in this.hass.states[this.config.entity]
         ) {
@@ -70,7 +77,7 @@ export class ButtonCard extends MutoBaseCard {
                     "muto-panel": true,
                     "muto-button": true,
                     "muto-button-state-off": stateIsOff,
-                    "muto-button-image": this.config.image,
+                    "muto-button-image": this.config.image ?? false,
                     "muto-button-fit": this.config.width == "fit",
                 })}
                 style="${cssColor} ${backgroundImage} ${this.config.css ?? ""}"

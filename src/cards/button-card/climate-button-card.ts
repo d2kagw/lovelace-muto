@@ -8,10 +8,11 @@ import { iconForEntity } from "../../shared/helpers";
 @customElement(CLIMATE_BUTTON_CARD_NAME)
 export class ClimateButtonCard extends ButtonCard {
     public buttonContent(): TemplateResult {
+        let icon: string = "mdi:help-circle-outline";
         if ("icon" in this.config || "label" in this.config) {
             return super.buttonContent();
-        } else {
-            let icon: string = iconForEntity(this.hass, this.config.entity);
+        } else if (this.config.entity) {
+            icon = iconForEntity(this.hass, this.config.entity);
             if (this.hass.states[this.config.entity]) {
                 switch (this.hass.states[this.config.entity].state) {
                     case "cool":
@@ -38,7 +39,7 @@ export class ClimateButtonCard extends ButtonCard {
                         break;
                 }
             }
-            return html` <muto-icon icon="${icon}"></muto-icon>`;
         }
+        return html` <muto-icon icon="${icon}"></muto-icon>`;
     }
 }
