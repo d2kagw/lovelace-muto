@@ -176,6 +176,8 @@ export class LayoutCard extends MutoBaseCard implements LovelaceCard {
                     gap: var(--muto-spacing);
                 }
                 .muto-layout-column {
+                    display: flex;
+                    flex-direction: column;
                     flex-grow: 1;
                     flex-shrink: 1;
                     flex-basis: 30%;
