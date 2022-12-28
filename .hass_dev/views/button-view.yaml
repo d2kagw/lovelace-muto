@@ -12,26 +12,26 @@ cards:
               - type: custom:muto-layout-row-card
                 fit: wrap
                 cards:
-                  - type: custom:muto-light-button-card
+                  - type: custom:muto-button-card
                     icon: mdi:party-popper
                     entity: light.kitchen_lights
-                  - type: custom:muto-light-button-card
+                  - type: custom:muto-button-card
                     label: Kitchen
                     entity: light.kitchen_lights
-                  - type: custom:muto-light-button-card
+                  - type: custom:muto-button-card
                     image: /local/muto.png
                     entity: light.kitchen_lights
-                  - type: custom:muto-light-button-card
+                  - type: custom:muto-button-card
                     entity: light.kitchen_lights
-                  - type: custom:muto-light-button-card
+                  - type: custom:muto-button-card
                     entity: light.bed_light
-                  - type: custom:muto-light-button-card
+                  - type: custom:muto-button-card
                     entity: light.ceiling_lights
-                  - type: custom:muto-light-button-card
+                  - type: custom:muto-button-card
                     entity: light.office_rgbw_lights
-                  - type: custom:muto-light-button-card
+                  - type: custom:muto-button-card
                     entity: light.living_room_rgbww_lights
-                  - type: custom:muto-light-button-card
+                  - type: custom:muto-button-card
                     entity: light.entrance_color_white_lights
 
           - type: custom:muto-heading-card
@@ -62,13 +62,13 @@ cards:
               text: Climate (scaled)
             - type: custom:muto-layout-row-card
               cards:
-                - type: custom:muto-climate-button-card
+                - type: custom:muto-button-card
                   entity: climate.heatpump
                   width: fit
-                - type: custom:muto-climate-button-card
+                - type: custom:muto-button-card
                   entity: climate.hvac
                   width: fit
-                - type: custom:muto-climate-button-card
+                - type: custom:muto-button-card
                   entity: climate.ecobee
                   width: fit
 
@@ -78,23 +78,23 @@ cards:
             - type: custom:muto-layout-row-card
               fit: scroll
               cards:
-                - type: custom:muto-sensor-button-card
+                - type: custom:muto-button-card
                   entity: sensor.outside_temperature
-                - type: custom:muto-sensor-button-card
+                - type: custom:muto-button-card
                   entity: sensor.outside_humidity
-                - type: custom:muto-sensor-button-card
+                - type: custom:muto-button-card
                   entity: sensor.carbon_monoxide
-                - type: custom:muto-sensor-button-card
+                - type: custom:muto-button-card
                   entity: sensor.carbon_dioxide
-                - type: custom:muto-sensor-button-card
+                - type: custom:muto-button-card
                   entity: sensor.power_consumption
-                - type: custom:muto-sensor-button-card
+                - type: custom:muto-button-card
                   entity: sensor.total_energy_1
-                - type: custom:muto-sensor-button-card
+                - type: custom:muto-button-card
                   entity: sensor.total_energy_2
-                - type: custom:muto-sensor-button-card
+                - type: custom:muto-button-card
                   entity: sensor.total_gas_1
-                - type: custom:muto-sensor-button-card
+                - type: custom:muto-button-card
                   entity: sensor.total_gas_2
-                - type: custom:muto-sensor-button-card
+                - type: custom:muto-button-card
                   entity: sensor.thermostat_mode

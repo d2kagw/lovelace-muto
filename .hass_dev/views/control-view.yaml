@@ -1,0 +1,54 @@
+title: Controls
+panel: true
+cards:
+  - type: custom:muto-layout-card
+    columns:
+      - cards:
+          - type: custom:muto-layout-column-card
+            cards:
+              - type: custom:muto-heading-card
+                size: h1
+                text: Lights
+              - type: custom:muto-slider-control-card
+                entity: light.bed_light
+              - type: custom:muto-slider-control-card
+                entity: light.ceiling_lights
+              - type: custom:muto-slider-control-card
+                entity: light.office_rgbw_lights
+                sensor_entity: light.office_rgbw_lights
+              - type: custom:muto-slider-control-card
+                entity: light.living_room_rgbww_lights
+                sensor_entity: light.living_room_rgbww_lights
+              - type: custom:muto-slider-control-card
+                entity: light.entrance_color_white_lights
+                sensor_entity: light.entrance_color_white_lights
+
+      - cards:
+        - type: custom:muto-layout-column-card
+          cards:
+            - type: custom:muto-heading-card
+              size: h1
+              text: Switches
+            - type: custom:muto-slider-control-card
+              entity: switch.decorative_lights
+              sublabel: "Sublabel"
+
+            - type: custom:muto-heading-card
+              size: h1
+              text: Sensor
+            - type: custom:muto-sensor-control-card
+              entity: sensor.outside_temperature
+
+            - type: custom:muto-heading-card
+              size: h1
+              text: Climate
+            - type: custom:muto-slider-control-card
+              entity: climate.heatpump
+            - type: custom:muto-slider-control-card
+              entity: climate.heatpump
+              sensor_entity: climate.heatpump
+            - type: custom:muto-slider-control-card
+              entity: climate.hvac
+              sensor_entity: sensor.outside_temperature
+            - type: custom:muto-slider-control-card
+              entity: climate.ecobee

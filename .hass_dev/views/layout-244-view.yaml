@@ -13,6 +13,8 @@ cards:
             cards: 
               - type: custom:muto-image-card
                 image: /local/muto.png
+              - type: custom:muto-slider-control-card
+                entity: climate.heatpump
               - type: custom:muto-image-card
                 image: /local/muto.png
       - flex: 2 2 40%
@@ -23,4 +25,8 @@ cards:
                 image: /local/muto.png
               - type: custom:muto-image-card
                 image: /local/muto.png
+              
+          - type: custom:muto-slider-control-card
+            entity: light.living_room_rgbww_lights
+            sensor_entity: light.living_room_rgbww_lights
           

@@ -51,6 +51,7 @@ export class LayoutColumnCard extends MutoBaseCard implements LovelaceCard {
 
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
+            console.error("No hass or config");
             return html``;
         }
 
@@ -80,6 +81,7 @@ export class LayoutRowCard extends LayoutColumnCard {
     @property() config!: LayoutRowCardConfig;
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
+            console.error("No hass or config");
             return html``;
         }
 
@@ -177,6 +179,7 @@ export class LayoutCard extends MutoBaseCard implements LovelaceCard {
 
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
+            console.error("No hass or config");
             return html``;
         }
 
@@ -187,7 +190,9 @@ export class LayoutCard extends MutoBaseCard implements LovelaceCard {
                         <div
                             class="muto-layout-column muto-layout-column-${i + 1}"
                             style="
-                                flex: ${this.config.columns[i].flex ?? ""};
+                                ${this.config.columns[i].flex
+                                ? "flex: ${this.config.columns[i].flex}"
+                                : ""};
                                 ${this.config.css ?? ""};
                             "
                         >

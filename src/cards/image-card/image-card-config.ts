@@ -1,6 +1,6 @@
 import { LovelaceCardConfig } from "custom-card-helpers";
 
 export type ImageCardConfig = LovelaceCardConfig & {
-    image?: string;
+    image: string;
     css?: Text;
 };

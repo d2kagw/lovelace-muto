@@ -27,6 +27,7 @@ export class HeadingCard extends MutoBaseCard implements LovelaceCard {
 
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
+            console.error("No hass or config");
             return html``;
         }
 
@@ -57,6 +58,11 @@ export class HeadingCard extends MutoBaseCard implements LovelaceCard {
         return [
             super.styles,
             css`
+                .muto-heading {
+                    font-family: var(--muto-font);
+                    font-weight: var(--muto-font-weight-bold);
+                    margin: calc(var(--muto-unit) / 2) 0 0;
+                }
                 h1.muto-heading {
                     --mdc-icon-size: 1.5em;
                 }

@@ -15,13 +15,11 @@ export function deviceTypeForEntity(entity: HassEntity): string {
     return type;
 }
 
-export function iconForEntity(hass: HomeAssistant, entity: string): string {
-    if ((hass as any).entities[entity] == undefined) {
+export function iconForEntity(entity: HassEntity): string {
+    if (entity == undefined) {
         return "mdi:help-circle-outline";
-    } else if ((hass as any).entities[entity].icon) {
-        return (hass as any).entities[entity].icon;
     } else {
-        let type: string | undefined = entity.split(".")[0];
+        let type: string = deviceTypeForEntity(entity);
         switch (type) {
             case "light":
                 return "mdi:lightbulb";

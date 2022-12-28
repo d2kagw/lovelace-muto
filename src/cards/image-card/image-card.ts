@@ -12,13 +12,14 @@ export class ImageCard extends MutoBaseCard implements LovelaceCard {
 
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
+            console.error("No hass or config");
             return html``;
         }
 
         return html`<img
             class="muto muto-image"
             style="${this.config.css ?? ""}"
-            src="${this.config.image ?? ""}"
+            src="${this.config.image}"
         />`;
     }
 

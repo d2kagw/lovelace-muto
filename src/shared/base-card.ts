@@ -8,6 +8,8 @@ import {
     LovelaceCardConfig,
 } from "custom-card-helpers";
 import { property } from "lit/decorators.js";
+import { HassEntity } from "home-assistant-js-websocket";
+import { deviceTypeForEntity } from "./helpers";
 
 export class MutoBaseCard extends LitElement implements LovelaceCard {
     @property({
@@ -31,7 +33,36 @@ export class MutoBaseCard extends LitElement implements LovelaceCard {
         return 1;
     }
 
+    public entity(): HassEntity {
+        if (!this.hass || !this.config) {
+            throw new Error("No hass or config");
+        }
+        return this.hass.states[this.config.entity];
+    }
+
     public hassChanged(): void {}
+
+    public clickAction(action?: string): Function {
+        if (this.config.entity) {
+            let finalAction = action ?? this.config.action;
+            switch (finalAction) {
+                case "more-info":
+                    return this.moreInfoAction();
+
+                default: // default = click
+                    switch (deviceTypeForEntity(this.hass.states[this.config.entity])) {
+                        case "switch":
+                            return this.toggleSwitch();
+                        case "light":
+                            return this.toggleLight();
+                        default:
+                            return this.moreInfoAction();
+                    }
+            }
+        } else {
+            return () => console.error("No entity provided");
+        }
+    }
 
     public moreInfoAction(): Function {
         return () => {
