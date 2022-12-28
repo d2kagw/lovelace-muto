@@ -59,6 +59,16 @@ cards:
 
             - type: custom:muto-heading-card
               size: h1
+              text: Media
+            - type: custom:muto-layout-row-card
+              cards:
+                - type: custom:muto-button-card
+                  entity: media_player.kitchen
+                - type: custom:muto-button-card
+                  entity: media_player.walkman
+
+            - type: custom:muto-heading-card
+              size: h1
               text: Climate (scaled)
             - type: custom:muto-layout-row-card
               cards:

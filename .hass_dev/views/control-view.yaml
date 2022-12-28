@@ -23,6 +23,14 @@ cards:
                 entity: light.entrance_color_white_lights
                 sensor_entity: light.entrance_color_white_lights
 
+              - type: custom:muto-heading-card
+                size: h1
+                text: Media
+              - type: custom:muto-slider-control-card
+                entity: media_player.kitchen
+              - type: custom:muto-sensor-control-card
+                entity: media_player.walkman
+
       - cards:
         - type: custom:muto-layout-column-card
           cards:

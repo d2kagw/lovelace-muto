@@ -69,6 +69,10 @@ export class ButtonCard extends MutoBaseCard {
         `;
     }
 
+    public mediaPlayerButtonContent(): TemplateResult {
+        return html``;
+    }
+
     public sensorButtonContent(): TemplateResult {
         if (this.entity()) {
             let label: string = "Unknown";
@@ -80,7 +84,16 @@ export class ButtonCard extends MutoBaseCard {
                     } else {
                         label = this.entity().state;
                     }
+                    break;
 
+                case "media_player":
+                    if (this.entity().attributes.is_volume_muted) {
+                        label = "Muted";
+                    } else if (this.entity().attributes.volume_level) {
+                        label = `${this.entity().attributes.volume_level}%`;
+                    } else {
+                        label = this.entity().state;
+                    }
                     break;
 
                 default:
@@ -90,7 +103,7 @@ export class ButtonCard extends MutoBaseCard {
             }
             return html`<label>${label}</label>`;
         } else {
-            return html` <muto-icon icon="unknown"></muto-icon>`;
+            return html`<muto-icon icon="unknown"></muto-icon>`;
         }
     }
 
@@ -102,6 +115,9 @@ export class ButtonCard extends MutoBaseCard {
             switch (deviceType) {
                 case "climate":
                     return this.climateButtonContent();
+
+                case "media_player":
+                    return this.mediaPlayerButtonContent();
 
                 case "light":
                 case "motion":
@@ -140,20 +156,27 @@ export class ButtonCard extends MutoBaseCard {
         return cssColor;
     }
 
+    public background(): string {
+        let background: string = this.cssColor();
+        if (this.config.image) {
+            return `background-image:url(${this.config.image});`;
+        }
+        if (deviceTypeForEntity(this.entity()) == "media_player") {
+            return `background-image:url(${this.entity().attributes.entity_picture});`;
+        }
+
+        return background;
+    }
+
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
             console.error("No hass or config");
             return html``;
         }
 
-        let background: string = this.cssColor();
-        if (this.config.image) {
-            background = `background-image:url(${this.config.image});`;
-        }
-
         let stateIsOff: boolean = false;
         if (this.config.entity && this.entity() && "state" in this.entity()) {
-            stateIsOff = this.entity().state == "off";
+            stateIsOff = this.entity().state == "off" || this.entity().state == "stopped";
         }
 
         return html`
@@ -166,7 +189,7 @@ export class ButtonCard extends MutoBaseCard {
                     "muto-button-image": this.config.image ?? false,
                     "muto-button-fit": this.config.width == "fit",
                 })}
-                style="${background} ${this.config.css ?? ""}"
+                style="${this.background()} ${this.config.css ?? ""}"
                 @click=${this.clickAction()}
             >
                 ${this.buttonContent()}
@@ -236,6 +259,9 @@ export class SensorButtonCard extends ButtonCard {
         }
     }
     public cssColor(): string {
+        return "";
+    }
+    public background(): string {
         return "";
     }
 }

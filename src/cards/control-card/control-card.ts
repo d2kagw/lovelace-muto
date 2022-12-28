@@ -126,7 +126,7 @@ export class SliderControlCard extends MutoBaseCard {
     }
 
     public renderLabel(): TemplateResult {
-        let friendlyName: string = this.entity().attributes.friendly_name ?? this.config.entity;
+        let label: string = this.entity().attributes.friendly_name ?? this.config.entity;
         let sublabel: string | false = this.config.sublabel ?? false;
 
         if (!sublabel && deviceTypeForEntity(this.entity()) == "climate") {
@@ -137,9 +137,14 @@ export class SliderControlCard extends MutoBaseCard {
             `;
         }
 
+        if (deviceTypeForEntity(this.entity()) == "media_player") {
+            label = this.entity().attributes.media_title;
+            sublabel = this.entity().attributes.media_artist ?? "";
+        }
+
         return html`
             <muto-control-label
-                .labelText=${this.config.label ?? friendlyName}
+                .labelText=${this.config.label ?? label}
                 .subLabelText=${sublabel}
             ></muto-control-label>
         `;
