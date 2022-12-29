@@ -64,8 +64,10 @@ cards:
               cards:
                 - type: custom:muto-button-card
                   entity: media_player.kitchen
+                  aspect_ratio: 16/9
                 - type: custom:muto-button-card
                   entity: media_player.walkman
+                  aspect_ratio: 16/9
 
             - type: custom:muto-heading-card
               size: h1

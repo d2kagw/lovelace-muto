@@ -179,6 +179,8 @@ export class ButtonCard extends MutoBaseCard {
             stateIsOff = this.entity().state == "off" || this.entity().state == "stopped";
         }
 
+        let aspectRatio: string = `aspect-ratio: ${this.config.aspect_ratio};` ?? "";
+
         return html`
             <muto-button
                 class=${classMap({
@@ -189,7 +191,7 @@ export class ButtonCard extends MutoBaseCard {
                     "muto-button-image": this.config.image ?? false,
                     "muto-button-fit": this.config.width == "fit",
                 })}
-                style="${this.background()} ${this.config.css ?? ""}"
+                style="${this.background()} ${aspectRatio} ${this.config.css ?? ""}"
                 @click=${this.clickAction()}
             >
                 ${this.buttonContent()}

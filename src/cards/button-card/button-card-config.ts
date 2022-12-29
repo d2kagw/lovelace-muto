@@ -6,5 +6,6 @@ export type ButtonCardConfig = LovelaceCardConfig & {
     label?: string;
     icon?: string;
     image?: string;
+    aspect_ratio?: string;
     css?: Text;
 };
