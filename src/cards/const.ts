@@ -8,6 +8,8 @@ export const LAYOUT_CARD_COLUMN_NAME = `${PREFIX_NAME}-layout-column-card`;
 
 export const IMAGE_CARD_NAME = `${PREFIX_NAME}-image-card`;
 
+export const CLOCK_CARD_NAME = `${PREFIX_NAME}-clock-card`;
+
 export const HEADING_CARD_NAME = `${PREFIX_NAME}-heading-card`;
 
 export const FLOORPLAN_CARD_NAME = `${PREFIX_NAME}-floorplan-card`;

@@ -1,0 +1,12 @@
+title: Clock
+panel: true
+cards:
+  - type: custom:muto-layout-card
+    columns:
+      - type: custom:muto-layout-column-card
+        cards:
+          - type: custom:muto-clock-card
+          - type: custom:muto-clock-card
+            css: >
+              font-size: 15em;
+              height: 70vh;
