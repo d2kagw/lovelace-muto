@@ -1,0 +1,39 @@
+title: Notifications
+panel: true
+cards:
+  - type: custom:muto-layout-card
+    columns:
+      - cards:
+          - type: custom:muto-layout-column-card
+            cards:
+              - type: custom:muto-heading-card
+                size: h1
+                text: Good Notifications
+              - type: custom:muto-notification-card
+                state: good
+                icon: mdi:walk
+                label: Motion Outside
+                entity: sensor.outside_temperature
+              - type: custom:muto-notification-card
+                state: good
+                icon: mdi:walk
+                label: Motion Outside
+                sublabel: Front camera detected motion
+
+      - cards:
+        - type: custom:muto-layout-column-card
+          cards:
+            - type: custom:muto-heading-card
+              size: h1
+              text: Bad Notifications
+            - type: custom:muto-notification-card
+              state: bad
+              icon: mdi:walk
+              label: Motion Outside
+              entity: sensor.outside_temperature
+            - type: custom:muto-notification-card
+              state: bad
+              icon: mdi:walk
+              label: Motion Outside
+              sublabel: Front camera detected motion
+            
