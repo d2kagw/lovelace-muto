@@ -23,7 +23,3 @@ export type FloorplanCardConfig = LovelaceCardConfig & {
 
     areas: FloorplanAreaConfig[];
 };
-
-export type FloorPlanStatusCardConfig = LovelaceCardConfig & {
-    area: FloorplanAreaConfig;
-};

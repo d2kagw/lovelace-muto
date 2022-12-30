@@ -3,11 +3,7 @@ import { customElement } from "lit/decorators.js";
 import { FLOORPLAN_CARD_NAME, FLOORPLAN_STATUS_CARD_NAME } from "./const";
 import { MutoBaseCard } from "../../shared/base-card";
 import { property } from "lit/decorators.js";
-import {
-    FloorplanAreaConfig,
-    FloorplanCardConfig,
-    FloorPlanStatusCardConfig,
-} from "./floorplan-card-config";
+import { FloorplanAreaConfig, FloorplanCardConfig } from "./floorplan-card-config";
 import { HomeAssistant, LovelaceCard } from "custom-card-helpers";
 import { iconForClimateEntity } from "../../shared/helpers";
 import { colorForEntityState } from "../../shared/states";
