@@ -1,5 +1,6 @@
 import { LovelaceCardConfig, LovelaceConfig } from "custom-card-helpers";
 import { HassEntity } from "home-assistant-js-websocket";
+import { MutoCardConfig } from "../../shared/types";
 
 export type FloorplanAreaConfig = {
     name: string;
@@ -17,9 +18,10 @@ export type FloorplanAreaConfig = {
     card: LovelaceCardConfig;
 };
 
-export type FloorplanCardConfig = LovelaceCardConfig & {
-    floorplan: string;
-    aspect_ratio: string;
+export type FloorplanCardConfig = LovelaceCardConfig &
+    MutoCardConfig & {
+        floorplan: string;
+        aspect_ratio: string;
 
-    areas: FloorplanAreaConfig[];
-};
+        areas: FloorplanAreaConfig[];
+    };

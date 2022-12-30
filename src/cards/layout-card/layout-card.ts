@@ -7,12 +7,12 @@ import {
     LayoutRowCardConfig,
     LayoutRowFits,
 } from "./layout-card-config";
-import { LAYOUT_CARD_ROW_NAME, LAYOUT_CARD_COLUMN_NAME, LAYOUT_CARD_NAME } from "./const";
 import { LovelaceCard } from "custom-card-helpers";
 import { classMap } from "lit/directives/class-map.js";
+import { LAYOUT_CARD_COLUMN_NAME, LAYOUT_CARD_NAME, LAYOUT_CARD_ROW_NAME } from "../const";
 
 @customElement(LAYOUT_CARD_COLUMN_NAME)
-export class LayoutColumnCard extends MutoBaseCard implements LovelaceCard {
+export class LayoutColumnCard extends MutoBaseCard {
     @property() public _cards: LovelaceCard[];
     @property() config!: LayoutColumnCardConfig;
 
@@ -137,7 +137,7 @@ export class LayoutRowCard extends LayoutColumnCard {
 }
 
 @customElement(LAYOUT_CARD_NAME)
-export class LayoutCard extends MutoBaseCard implements LovelaceCard {
+export class LayoutCard extends MutoBaseCard {
     @property() public _columns: LovelaceCard[][];
 
     constructor() {

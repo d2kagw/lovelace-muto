@@ -14,25 +14,52 @@ cards:
                 cards:
                   - type: custom:muto-button-card
                     icon: mdi:party-popper
-                    entity: light.kitchen_lights
+                    status_entity: light.kitchen_lights
+                    action: 
+                      type: "toggle"
+                      entity: light.kitchen_lights
                   - type: custom:muto-button-card
                     label: Kitchen
-                    entity: light.kitchen_lights
+                    status_entity: light.kitchen_lights
+                    action: 
+                      type: "toggle"
+                      entity: light.kitchen_lights
                   - type: custom:muto-button-card
                     image: /local/muto.png
-                    entity: light.kitchen_lights
+                    status_entity: light.kitchen_lights
+                    action: 
+                      type: "toggle"
+                      entity: light.kitchen_lights
                   - type: custom:muto-button-card
-                    entity: light.kitchen_lights
+                    status_entity: light.kitchen_lights
+                    action: 
+                      type: "toggle"
+                      entity: light.kitchen_lights
                   - type: custom:muto-button-card
-                    entity: light.bed_light
+                    status_entity: light.bed_light
+                    action: 
+                      type: "toggle"
+                      entity: light.bed_light
                   - type: custom:muto-button-card
-                    entity: light.ceiling_lights
+                    status_entity: light.ceiling_lights
+                    action: 
+                      type: "toggle"
+                      entity: light.ceiling_lights
                   - type: custom:muto-button-card
-                    entity: light.office_rgbw_lights
+                    status_entity: light.office_rgbw_lights
+                    action: 
+                      type: "toggle"
+                      entity: light.office_rgbw_lights
                   - type: custom:muto-button-card
-                    entity: light.living_room_rgbww_lights
+                    status_entity: light.living_room_rgbww_lights
+                    action: 
+                      type: "toggle"
+                      entity: light.living_room_rgbww_lights
                   - type: custom:muto-button-card
-                    entity: light.entrance_color_white_lights
+                    status_entity: light.entrance_color_white_lights
+                    action: 
+                      type: "toggle"
+                      entity: light.entrance_color_white_lights
 
           - type: custom:muto-heading-card
             size: h1
@@ -40,11 +67,43 @@ cards:
           - type: custom:muto-layout-row-card
             cards:
               - type: custom:muto-button-card
-                entity: binary_sensor.basement_floor_wet
+                status_entity: binary_sensor.basement_floor_wet
+                action: 
+                  type: "more-info"
+                  entity: binary_sensor.basement_floor_wet
+
                 width: fit
               - type: custom:muto-button-card
-                entity: binary_sensor.movement_backyard
+                status_entity: binary_sensor.movement_backyard
+                action: 
+                  type: "more-info"
+                  entity: binary_sensor.movement_backyard
                 width: fit
+
+          - type: custom:muto-heading-card
+            size: h1
+            text: Manual Actions
+          - type: custom:muto-layout-row-card
+            cards:
+              - type: custom:muto-button-card
+                label: "All Lights On"
+                action:
+                  type: "call-service"
+                  service: "light.turn_on"
+                  data:
+                    entity_id:
+                      - light.bed_light
+                      - light.ceiling_lights
+              - type: custom:muto-button-card
+                label: "All Lights Off"
+                action:
+                  type: "call-service"
+                  service: "light.turn_off"
+                  data:
+                    entity_id:
+                      - light.bed_light
+                      - light.ceiling_lights
+
       - cards:
         - type: custom:muto-layout-column-card
           cards:
@@ -54,7 +113,10 @@ cards:
             - type: custom:muto-layout-row-card
               cards:
                 - type: custom:muto-button-card
-                  entity: switch.decorative_lights
+                  status_entity: switch.decorative_lights
+                  action: 
+                    type: "toggle"
+                    entity: switch.decorative_lights
                   width: fit
 
             - type: custom:muto-heading-card
@@ -63,10 +125,16 @@ cards:
             - type: custom:muto-layout-row-card
               cards:
                 - type: custom:muto-button-card
-                  entity: media_player.kitchen
+                  status_entity: media_player.kitchen
+                  action: 
+                    type: "more-info"
+                    entity: media_player.kitchen
                   aspect_ratio: 16/9
                 - type: custom:muto-button-card
-                  entity: media_player.walkman
+                  status_entity: media_player.walkman
+                  action: 
+                    type: "more-info"
+                    entity: media_player.walkman
                   aspect_ratio: 16/9
 
             - type: custom:muto-heading-card
@@ -75,13 +143,22 @@ cards:
             - type: custom:muto-layout-row-card
               cards:
                 - type: custom:muto-button-card
-                  entity: climate.heatpump
+                  status_entity: climate.heatpump
+                  action:
+                    type: "more-info"
+                    entity: climate.heatpump
                   width: fit
                 - type: custom:muto-button-card
-                  entity: climate.hvac
+                  status_entity: climate.hvac
+                  action:
+                    type: "more-info"
+                    entity: climate.hvac
                   width: fit
                 - type: custom:muto-button-card
-                  entity: climate.ecobee
+                  status_entity: climate.ecobee
+                  action:
+                    type: "more-info"
+                    entity: climate.ecobee
                   width: fit
 
             - type: custom:muto-heading-card
@@ -91,22 +168,52 @@ cards:
               fit: scroll
               cards:
                 - type: custom:muto-button-card
-                  entity: sensor.outside_temperature
+                  status_entity: sensor.outside_temperature
+                  action:
+                    type: "more-info"
+                    entity: sensor.outside_temperature
                 - type: custom:muto-button-card
-                  entity: sensor.outside_humidity
+                  status_entity: sensor.outside_humidity
+                  action:
+                    type: "more-info"
+                    entity: sensor.outside_humidity
                 - type: custom:muto-button-card
-                  entity: sensor.carbon_monoxide
+                  status_entity: sensor.carbon_monoxide
+                  action:
+                    type: "more-info"
+                    entity: sensor.carbon_monoxide
                 - type: custom:muto-button-card
-                  entity: sensor.carbon_dioxide
+                  status_entity: sensor.carbon_dioxide
+                  action:
+                    type: "more-info"
+                    entity: sensor.carbon_dioxide
                 - type: custom:muto-button-card
-                  entity: sensor.power_consumption
+                  status_entity: sensor.power_consumption
+                  action:
+                    type: "more-info"
+                    entity: sensor.power_consumption
                 - type: custom:muto-button-card
-                  entity: sensor.total_energy_mwh
+                  status_entity: sensor.total_energy_mwh
+                  action:
+                    type: "more-info"
+                    entity: sensor.total_energy_mwh
                 - type: custom:muto-button-card
-                  entity: sensor.total_energy_kwh
+                  status_entity: sensor.total_energy_kwh
+                  action:
+                    type: "more-info"
+                    entity: sensor.total_energy_kwh
                 - type: custom:muto-button-card
-                  entity: sensor.total_gas_m3
+                  status_entity: sensor.total_gas_m3
+                  action:
+                    type: "more-info"
+                    entity: sensor.total_gas_m3
                 - type: custom:muto-button-card
-                  entity: sensor.total_gas_ft3
+                  status_entity: sensor.total_gas_ft3
+                  action:
+                    type: "more-info"
+                    entity: sensor.total_gas_ft3
                 - type: custom:muto-button-card
-                  entity: sensor.thermostat_mode
+                  status_entity: sensor.thermostat_mode
+                  action:
+                    type: "more-info"
+                    entity: sensor.thermostat_mode

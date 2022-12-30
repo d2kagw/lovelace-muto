@@ -2,13 +2,13 @@ import { css, CSSResultGroup, html, TemplateResult } from "lit";
 import { property } from "lit/decorators.js";
 import { customElement } from "lit/decorators.js";
 import { MutoBaseCard } from "../../shared/base-card";
-import "../../shared/icon";
+import "../icon";
 import { HeadingCardConfig } from "./heading-card-config";
-import { HEADING_CARD_NAME } from "./const";
-import { LovelaceCard } from "custom-card-helpers";
+import { HEADING_CARD_NAME } from "../const";
+import { classMap } from "lit/directives/class-map.js";
 
 @customElement(HEADING_CARD_NAME)
-export class HeadingCard extends MutoBaseCard implements LovelaceCard {
+export class HeadingCard extends MutoBaseCard {
     @property() config!: HeadingCardConfig;
 
     public setConfig(config: HeadingCardConfig): void {
@@ -34,19 +34,43 @@ export class HeadingCard extends MutoBaseCard implements LovelaceCard {
         let tag: TemplateResult;
         switch (this.config.size) {
             case "h2":
-                tag = html`<h2 class="muto muto-heading" style="${this.config.css ?? ""}">
+                tag = html`<h2
+                    class=${classMap({
+                        muto: true,
+                        "muto-heading": true,
+                        "muto-clickable": this.config.action != undefined,
+                    })}
+                    style="${this.config.css ?? ""}"
+                    @click=${this.clickAction()}
+                >
                     ${this.tagContent()}
                 </h2>`;
                 break;
 
             case "h3":
-                tag = html`<h3 class="muto muto-heading" style="${this.config.css ?? ""}">
+                tag = html`<h3
+                    class=${classMap({
+                        muto: true,
+                        "muto-heading": true,
+                        "muto-clickable": this.config.action != undefined,
+                    })}
+                    style="${this.config.css ?? ""}"
+                    @click=${this.clickAction()}
+                >
                     ${this.tagContent()}
                 </h3>`;
                 break;
 
             default: // or h1
-                tag = html`<h1 class="muto muto-heading" style="${this.config.css ?? ""}">
+                tag = html`<h1
+                    class=${classMap({
+                        muto: true,
+                        "muto-heading": true,
+                        "muto-clickable": this.config.action != undefined,
+                    })}
+                    style="${this.config.css ?? ""}"
+                    @click=${this.clickAction()}
+                >
                     ${this.tagContent()}
                 </h1>`;
         }

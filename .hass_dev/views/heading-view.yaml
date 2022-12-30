@@ -8,6 +8,9 @@ cards:
           - type: custom:muto-heading-card
             size: h1
             text: Heading One
+            action:
+              type: more-info
+              entity: binary_sensor.basement_floor_wet
           - type: custom:muto-heading-card
             size: h2
             text: Heading Two

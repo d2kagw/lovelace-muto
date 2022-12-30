@@ -1,13 +1,13 @@
 import { css, CSSResultGroup, html, LitElement, TemplateResult } from "lit";
 import { customElement } from "lit/decorators.js";
-import "../../shared/icon";
+import "../icon";
 import { classMap } from "lit/directives/class-map.js";
 import { ControlCardConfig } from "./control-card-config";
-import { CONTROL_LABEL_NAME, SENSOR_CONTROL_CARD_NAME, SLIDER_CONTROL_CARD_NAME } from "./const";
 import { MutoBaseCard } from "../../shared/base-card";
 import { property } from "lit/decorators.js";
 import "../button-card/button-card";
 import { deviceTypeForEntity } from "../../shared/helpers";
+import { CONTROL_LABEL_NAME, SENSOR_CONTROL_CARD_NAME, SLIDER_CONTROL_CARD_NAME } from "../const";
 
 @customElement(CONTROL_LABEL_NAME)
 export class ControlCardLabel extends LitElement {
@@ -105,19 +105,10 @@ export class ControlCardLabel extends LitElement {
 export class SliderControlCard extends MutoBaseCard {
     @property() config!: ControlCardConfig;
 
-    public setConfig(config: ControlCardConfig): void {
-        if (config.entity == undefined) {
-            throw new Error(`No entity provided`);
-        }
-
-        this.config = {
-            ...config,
-        };
-    }
-
     public renderButton(): TemplateResult {
         let buttonConfig = {
-            entity: this.config.entity,
+            status_entity: this.entity()!.entity_id,
+            action: this.config.action,
         };
         return html`<muto-button-card
             .config=${buttonConfig}
@@ -126,7 +117,7 @@ export class SliderControlCard extends MutoBaseCard {
     }
 
     public renderLabel(): TemplateResult {
-        let label: string = this.entity().attributes.friendly_name ?? this.config.entity;
+        let label: string = this.entity().attributes.friendly_name ?? this.entity().entity_id;
         let sublabel: string | false = this.config.sublabel ?? false;
 
         if (!sublabel && deviceTypeForEntity(this.entity()) == "climate") {
@@ -152,12 +143,15 @@ export class SliderControlCard extends MutoBaseCard {
 
     public renderSensor(sensor?: string): TemplateResult {
         let sensorConfig = {
-            entity: sensor ?? this.config.sensor_entity,
-            action: "more-info",
+            status_entity: sensor ?? this.config.sensor_entity,
+            action: {
+                type: "more-info",
+                entity: sensor ?? this.config.sensor_entity,
+            },
             display: "state",
         };
-        return html` ${sensorConfig.entity
-            ? html` <muto-sensor-button-card
+        return html` ${sensorConfig.status_entity
+            ? html`<muto-sensor-button-card
                   .config=${sensorConfig}
                   .hass=${this.hass}
               ></muto-sensor-button-card>`
@@ -247,19 +241,25 @@ export class SliderControlCard extends MutoBaseCard {
 @customElement(SENSOR_CONTROL_CARD_NAME)
 export class SensorControlCard extends SliderControlCard {
     public renderLabel(): TemplateResult {
-        let friendlyName: string = this.entity().attributes.friendly_name ?? this.config.entity;
+        let friendlyName: string =
+            this.entity().attributes.friendly_name ?? this.entity().entity_id;
         let sublabel: string | false = this.config.sublabel ?? false;
+
+        let action = {
+            type: "more-info",
+            entity: this.entity().entity_id,
+        };
 
         return html`
             <muto-control-label
                 .labelText=${this.config.label ?? friendlyName}
                 .subLabelText=${sublabel}
-                @click=${this.clickAction("more-info")}
+                @click=${this.clickAction(action)}
             ></muto-control-label>
         `;
     }
 
     public renderChildren(): TemplateResult {
-        return html`${this.renderLabel()} ${this.renderSensor(this.config.entity)}`;
+        return html`${this.renderLabel()} ${this.renderSensor(this.config.sensor_entity)}`;
     }
 }

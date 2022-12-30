@@ -1,12 +1,11 @@
 import { css, CSSResultGroup, html, LitElement, TemplateResult } from "lit";
 import { customElement } from "lit/decorators.js";
-import { FLOORPLAN_CARD_NAME, FLOORPLAN_STATUS_CARD_NAME } from "./const";
 import { MutoBaseCard } from "../../shared/base-card";
 import { property } from "lit/decorators.js";
 import { FloorplanAreaConfig, FloorplanCardConfig } from "./floorplan-card-config";
 import { HomeAssistant, LovelaceCard } from "custom-card-helpers";
-import { iconForClimateEntity } from "../../shared/helpers";
-import { colorForEntityState } from "../../shared/states";
+import { colorForEntityState, iconForClimateEntity } from "../../shared/helpers";
+import { FLOORPLAN_CARD_NAME, FLOORPLAN_STATUS_CARD_NAME } from "../const";
 
 @customElement(FLOORPLAN_STATUS_CARD_NAME)
 export class FloorPlanStatusCard extends LitElement {
@@ -228,6 +227,9 @@ export class FloorplanCard extends MutoBaseCard {
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                }
+                .muto-floorplan-map-area:active {
+                    filter: brightness(1.5);
                 }
             `,
         ];

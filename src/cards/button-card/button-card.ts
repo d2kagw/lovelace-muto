@@ -1,37 +1,35 @@
 import { css, CSSResultGroup, html, TemplateResult } from "lit";
 import { customElement } from "lit/decorators.js";
-import "../../shared/icon";
+import "../icon";
 import { classMap } from "lit/directives/class-map.js";
 import { ButtonCardConfig } from "./button-card-config";
-import { BUTTON_CARD_NAME, SENSOR_BUTTON_CARD_NAME } from "./const";
-import { colorForEntityState } from "../../shared/states";
 import { MutoBaseCard } from "../../shared/base-card";
-import { deviceTypeForEntity, iconForClimateEntity, iconForEntity } from "../../shared/helpers";
+import {
+    colorForEntityState,
+    deviceTypeForEntity,
+    iconForClimateEntity,
+    iconForEntity,
+} from "../../shared/helpers";
 import { property } from "lit/decorators.js";
+import { BUTTON_CARD_NAME, SENSOR_BUTTON_CARD_NAME } from "../const";
 
 @customElement(BUTTON_CARD_NAME)
 export class ButtonCard extends MutoBaseCard {
     @property() config!: ButtonCardConfig;
 
-    constructor() {
-        super();
-        this.config = this.config || { action: "click" };
-    }
-
     public setConfig(config: ButtonCardConfig): void {
         this.config = {
-            action: "click",
             ...config,
         };
     }
 
     public climateButtonContent(): TemplateResult {
         let icon: string = "mdi:help-circle-outline";
-        if (this.config.entity) {
-            icon = iconForEntity(this.entity());
-            if (this.entity()) {
-                iconForClimateEntity(this.entity());
-            }
+        if (this.entity()) {
+            icon =
+                iconForClimateEntity(this.entity()) != false
+                    ? (iconForClimateEntity(this.entity()) as string)
+                    : iconForEntity(this.entity());
         }
         return html` <muto-icon icon="${icon}"></muto-icon>`;
     }
@@ -67,7 +65,7 @@ export class ButtonCard extends MutoBaseCard {
                     if (this.entity().attributes.is_volume_muted) {
                         label = "Muted";
                     } else if (this.entity().attributes.volume_level) {
-                        label = `${this.entity().attributes.volume_level}%`;
+                        label = `${this.entity().attributes.volume_level * 100}%`;
                     } else {
                         label = this.entity().state;
                     }
@@ -124,14 +122,14 @@ export class ButtonCard extends MutoBaseCard {
 
     public cssColor(): string {
         let cssColor: string = "";
-        if (this.config.entity) {
+        if (this.entity()) {
             cssColor = `background-color: ${colorForEntityState(this.entity())};`;
 
             if (deviceTypeForEntity(this.entity()) == "light") {
                 if (this.entity().attributes.rgb_color) {
-                    cssColor = `background-color: rgb(${this.hass.states[
-                        this.config.entity
-                    ].attributes.rgb_color.join(",")});`;
+                    cssColor = `background-color: rgb(${this.entity().attributes.rgb_color.join(
+                        ","
+                    )});`;
                 }
             }
         }
@@ -157,13 +155,8 @@ export class ButtonCard extends MutoBaseCard {
             return html``;
         }
 
-        if (this.config.entity == undefined || this.entity() == undefined) {
-            console.error("Entity undefined", this.config, this.entity());
-            return html``;
-        }
-
         let stateIsOff: boolean = false;
-        if (this.config.entity && this.entity() && "state" in this.entity()) {
+        if (this.entity() && "state" in this.entity()) {
             stateIsOff = this.entity().state == "off" || this.entity().state == "stopped";
         }
 
@@ -237,10 +230,6 @@ export class ButtonCard extends MutoBaseCard {
 
 @customElement(SENSOR_BUTTON_CARD_NAME)
 export class SensorButtonCard extends ButtonCard {
-    constructor() {
-        super();
-        this.config = this.config || { action: "more-info" };
-    }
     public buttonContent(): TemplateResult {
         if (this.config.icon || this.config.label || this.config.image) {
             return this.defaultButtonContent();

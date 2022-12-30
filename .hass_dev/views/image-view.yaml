@@ -14,3 +14,6 @@ cards:
             css: >
               width: 25em;
               height: 10em;
+            action:
+              type: more-info
+              entity: binary_sensor.basement_floor_wet

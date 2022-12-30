@@ -2,14 +2,14 @@ import { css, CSSResultGroup, html, TemplateResult } from "lit";
 import { property } from "lit/decorators.js";
 import { customElement } from "lit/decorators.js";
 import { MutoBaseCard } from "../../shared/base-card";
-import "../../shared/icon";
+import "../icon";
 import { NotificationCardConfig } from "./notification-card-config";
-import { NOTIFICATION_CARD_NAME } from "./const";
 import { LovelaceCard } from "custom-card-helpers";
 import { classMap } from "lit/directives/class-map.js";
+import { NOTIFICATION_CARD_NAME } from "../const";
 
 @customElement(NOTIFICATION_CARD_NAME)
-export class NotificationCard extends MutoBaseCard implements LovelaceCard {
+export class NotificationCard extends MutoBaseCard {
     @property() config!: NotificationCardConfig;
 
     public setConfig(config: NotificationCardConfig): void {
@@ -19,11 +19,20 @@ export class NotificationCard extends MutoBaseCard implements LovelaceCard {
     }
 
     public cssColor(): string {
-        if (this.config.state) {
-            switch (this.config.state) {
-                case "bad":
+        // supports: error, warn, success, or info (which is represented as debug)
+        if (this.config.level) {
+            switch (this.config.level) {
+                case "error":
                     return "background-color: var(--muto-color-negative)";
 
+                case "warn":
+                case "warning":
+                    return "background-color: var(--muto-color-alert)";
+
+                case "success":
+                    return "background-color: var(--muto-color-positive)";
+
+                case "info":
                 default:
                     return "background-color: var(--muto-card-background)";
             }
@@ -43,10 +52,10 @@ export class NotificationCard extends MutoBaseCard implements LovelaceCard {
                 class=${classMap({
                     muto: true,
                     "muto-notification": true,
-                    "muto-notification-clickable": this.config.entity != undefined,
+                    "muto-clickable": this.config.action != undefined,
                 })}
                 style=${this.cssColor()}
-                @click=${this.clickAction("more-info")}
+                @click=${this.clickAction()}
             >
                 <muto-notification-icon class="muto muto-notification-icon">
                     <muto-icon .icon=${this.config.icon}></muto-icon>
@@ -77,10 +86,8 @@ export class NotificationCard extends MutoBaseCard implements LovelaceCard {
                     border-radius: var(--muto-border-radius);
 
                     display: flex;
+                    align-items: center;
                     flex-direction: row;
-                }
-                .muto-notification-clickable {
-                    cursor: pointer;
                 }
                 .muto-notification-icon {
                     flex-grow: 0;

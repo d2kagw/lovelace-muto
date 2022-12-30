@@ -6,7 +6,7 @@ export const colorsCSS = css``;
 
 export const motoCSS = css`
     .muto {
-        transition: filter 0.4s, background 0.4s, opacity 0.4s;
+        transition: filter 0.2s, background 0.4s, opacity 0.4s;
 
         --muto-row-height: calc(var(--muto-unit) * 5);
 
