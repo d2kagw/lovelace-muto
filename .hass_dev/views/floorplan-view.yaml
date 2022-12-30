@@ -1,0 +1,104 @@
+title: Floorplan
+panel: true
+cards:  
+  - type: custom:muto-floorplan-card
+    floorplan: /local/muto.png
+    aspect_ratio: 16/9
+    areas:
+      - name: Bedroom
+        floorplan: /local/muto.png
+        top: 10%
+        left: 10%
+        width: 20%
+        height: 20%
+
+        motion: binary_sensor.movement_backyard
+        climate: climate.hvac
+    
+        card:
+          type: custom:muto-layout-card
+          columns:
+            - flex: 0 0 20%
+              cards: 
+                - type: custom:muto-image-card
+                  image: /local/muto.png
+            - flex: 2 2 40%
+              cards: 
+                - type: custom:muto-layout-column-card
+                  cards: 
+                    - type: custom:muto-image-card
+                      image: /local/muto.png
+                    - type: custom:muto-slider-control-card
+                      entity: climate.heatpump
+                    - type: custom:muto-image-card
+                      image: /local/muto.png
+            - flex: 2 2 40%
+              cards:
+                - type: custom:muto-layout-row-card
+                  cards: 
+                    - type: custom:muto-image-card
+                      image: /local/muto.png
+                    - type: custom:muto-image-card
+                      image: /local/muto.png
+                    
+                - type: custom:muto-slider-control-card
+                  entity: light.living_room_rgbww_lights
+                  sensor_entity: light.living_room_rgbww_lights
+            - flex: 2 2 40%
+              cards:
+                - type: custom:muto-layout-row-card
+                  cards: 
+                    - type: custom:muto-image-card
+                      image: /local/muto.png
+                    - type: custom:muto-image-card
+                      image: /local/muto.png
+                    
+                - type: custom:muto-slider-control-card
+                  entity: light.living_room_rgbww_lights
+                  sensor_entity: light.living_room_rgbww_lights
+
+      - name: Guest Bedroom
+        floorplan: /local/muto.png
+        top: 20%
+        left: 20%
+        width: 15%
+        height: 25%
+
+        temperature: sensor.outside_temperature
+        motion: binary_sensor.movement_backyard
+        climate: climate.hvac
+    
+        card:
+          type: custom:muto-layout-card
+          columns:
+            - flex: 0 0 20%
+              cards: 
+                - type: custom:muto-image-card
+                  image: /local/muto.png
+            - flex: 2 2 40%
+              cards: 
+                - type: custom:muto-layout-column-card
+                  cards: 
+                    - type: custom:muto-image-card
+                      image: /local/muto.png
+                    - type: custom:muto-slider-control-card
+                      entity: climate.heatpump
+                    - type: custom:muto-image-card
+                      image: /local/muto.png
+            - flex: 2 2 40%
+              cards:
+                - type: custom:muto-slider-control-card
+                  entity: light.living_room_rgbww_lights
+                  sensor_entity: light.living_room_rgbww_lights
+            - flex: 2 2 40%
+              cards:
+                - type: custom:muto-layout-row-card
+                  cards: 
+                    - type: custom:muto-image-card
+                      image: /local/muto.png
+                    - type: custom:muto-image-card
+                      image: /local/muto.png
+                    
+                - type: custom:muto-slider-control-card
+                  entity: light.living_room_rgbww_lights
+                  sensor_entity: light.living_room_rgbww_lights

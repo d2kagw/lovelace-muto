@@ -42,7 +42,7 @@ export class ControlCardLabel extends LitElement {
 
     public slideStop(event: PointerEvent): void {
         if (this.isSliding) {
-            console.info("slid to", this.slidingPercent);
+            console.info("slid to", this.slidingPercent, event);
         }
         this.isSliding = false;
         this.startingX = null;
@@ -52,7 +52,7 @@ export class ControlCardLabel extends LitElement {
 
     public slideCancel(event: PointerEvent): void {
         if (this.isSliding) {
-            console.info("slid to", this.slidingPercent);
+            console.info("slid to", this.slidingPercent, event);
         }
         this.isSliding = false;
         this.startingX = null;
