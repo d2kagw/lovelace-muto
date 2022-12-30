@@ -6,7 +6,7 @@ import { ButtonCardConfig } from "./button-card-config";
 import { BUTTON_CARD_NAME, SENSOR_BUTTON_CARD_NAME } from "./const";
 import { colorForEntityState } from "../../shared/states";
 import { MutoBaseCard } from "../../shared/base-card";
-import { deviceTypeForEntity, iconForEntity } from "../../shared/helpers";
+import { deviceTypeForEntity, iconForClimateEntity, iconForEntity } from "../../shared/helpers";
 import { property } from "lit/decorators.js";
 
 @customElement(BUTTON_CARD_NAME)
@@ -30,30 +30,7 @@ export class ButtonCard extends MutoBaseCard {
         if (this.config.entity) {
             icon = iconForEntity(this.entity());
             if (this.entity()) {
-                switch (this.entity().state) {
-                    case "cool":
-                        icon = "mdi:snowflake";
-                        break;
-
-                    case "heat":
-                        icon = "mdi:fire";
-                        break;
-
-                    case "dry":
-                        icon = "mdi:fan";
-                        break;
-
-                    case "fan_only":
-                        icon = "mdi:fan";
-                        break;
-
-                    case "heat_dry":
-                        icon = "mdi:fire";
-                        break;
-
-                    default:
-                        break;
-                }
+                iconForClimateEntity(this.entity());
             }
         }
         return html` <muto-icon icon="${icon}"></muto-icon>`;
@@ -142,13 +119,13 @@ export class ButtonCard extends MutoBaseCard {
     public cssColor(): string {
         let cssColor: string = "";
         if (this.config.entity) {
-            cssColor = colorForEntityState(this.entity());
+            cssColor = `background-color: ${colorForEntityState(this.entity())};`;
 
             if (deviceTypeForEntity(this.entity()) == "light") {
                 if (this.entity().attributes.rgb_color) {
                     cssColor = `background-color: rgb(${this.hass.states[
                         this.config.entity
-                    ].attributes.rgb_color.join(",")})`;
+                    ].attributes.rgb_color.join(",")});`;
                 }
             }
         }

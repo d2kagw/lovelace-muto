@@ -15,6 +15,28 @@ export function deviceTypeForEntity(entity: HassEntity): string {
     return type;
 }
 
+export function iconForClimateEntity(entity: HassEntity): string | false {
+    switch (entity.state) {
+        case "cool":
+            return "mdi:snowflake";
+
+        case "heat":
+            return "mdi:fire";
+
+        case "dry":
+            return "mdi:fan";
+
+        case "fan_only":
+            return "mdi:fan";
+
+        case "heat_dry":
+            return "mdi:fire";
+
+        default:
+            return false;
+    }
+}
+
 export function iconForEntity(entity: HassEntity): string {
     if (entity == undefined) {
         return "mdi:help-circle-outline";

@@ -87,7 +87,7 @@ export function colorForEntityState(entity: HassEntity): string {
         if (deviceStateColors) {
             cssColor = deviceStateColors[entity.state];
             if (cssColor) {
-                styleString = `background-color: ${cssColor};`;
+                styleString = cssColor;
             }
         } else {
             console.error("Could not find device type", deviceType);
@@ -97,31 +97,31 @@ export function colorForEntityState(entity: HassEntity): string {
     if (deviceType == "climate") {
         switch (entity.state) {
             case "heat":
-                styleString = `background-color: ${stateColors.warm};`;
+                styleString = stateColors.warm;
                 break;
 
             case "cool":
-                styleString = `background-color: ${stateColors.cold};`;
+                styleString = stateColors.cold;
                 break;
 
             case "dry":
-                styleString = `background-color: ${stateColors.positive};`;
+                styleString = stateColors.positive;
                 break;
 
             case "fan_only":
-                styleString = `background-color: ${stateColors.positive};`;
+                styleString = stateColors.positive;
                 break;
 
             case "heat_dry":
-                styleString = `background-color: ${stateColors.positive};`;
+                styleString = stateColors.positive;
                 break;
 
             case "heat_cool":
-                styleString = `background-color: ${stateColors.positive};`;
+                styleString = stateColors.positive;
                 break;
 
             case "auto":
-                styleString = `background-color: ${stateColors.positive};`;
+                styleString = stateColors.positive;
                 break;
 
             default:

@@ -8,7 +8,7 @@ export class MutoIcon extends LitElement {
     protected render(): TemplateResult {
         return html`
             <div class="muto muto-icon">
-                <ha-icon .icon=${this.icon}></ha-icon>
+                <ha-icon .icon=${this.icon} .style="${this.style ?? ""}"></ha-icon>
             </div>
         `;
     }
