@@ -77,7 +77,6 @@ export const deviceStateColor = {
 
 export function colorForEntityState(entity: HassEntity): string {
     let styleString: string = "";
-    let cssColor: string = stateColors.blank;
     let deviceType = deviceTypeForEntity(entity);
     let deviceStateColors = deviceStateColor[deviceType];
 
