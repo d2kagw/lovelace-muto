@@ -4,12 +4,11 @@ import { HassEntity } from "home-assistant-js-websocket";
 export function deviceTypeForEntity(entity: HassEntity): string {
     let type: string = "unknown";
 
-    if (entity && entity.attributes) {
-        if (entity.attributes.device_class) {
-            type = entity.attributes.device_class;
-        } else {
-            type = entity.entity_id.split(".")[0];
-        }
+    if (entity && entity.attributes && entity.attributes.device_class) {
+        type = entity.attributes.device_class;
+    }
+    if (entity && type == "unknown") {
+        type = entity.entity_id.split(".")[0];
     }
 
     return type;
@@ -51,6 +50,10 @@ export function iconForEntity(entity: HassEntity): string {
                 return "mdi:air-conditioner";
             case "switch":
                 return "mdi:toggle-switch-off-outline";
+            case "moisture":
+                return "mdi:water";
+            case "motion":
+                return "mdi:walk";
             default:
                 console.warn("Unknown entity icon type:", type);
                 return "mdi:help-circle-outline";

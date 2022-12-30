@@ -101,12 +101,12 @@ cards:
                 - type: custom:muto-button-card
                   entity: sensor.power_consumption
                 - type: custom:muto-button-card
-                  entity: sensor.total_energy_1
+                  entity: sensor.total_energy_mwh
                 - type: custom:muto-button-card
-                  entity: sensor.total_energy_2
+                  entity: sensor.total_energy_kwh
                 - type: custom:muto-button-card
-                  entity: sensor.total_gas_1
+                  entity: sensor.total_gas_m3
                 - type: custom:muto-button-card
-                  entity: sensor.total_gas_2
+                  entity: sensor.total_gas_ft3
                 - type: custom:muto-button-card
                   entity: sensor.thermostat_mode

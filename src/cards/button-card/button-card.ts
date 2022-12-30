@@ -107,10 +107,16 @@ export class ButtonCard extends MutoBaseCard {
                 case "carbon_monoxide":
                 case "carbon_dioxide":
                 case "power":
+                case "energy":
+                case "gas":
                     return this.sensorButtonContent();
 
                 default:
-                    console.error(`Unsupported device type: ${deviceType}`, this.config);
+                    console.error(
+                        `Unsupported device type: ${deviceType}`,
+                        this.config,
+                        this.entity()
+                    );
                     return this.defaultButtonContent();
             }
         }
@@ -148,6 +154,11 @@ export class ButtonCard extends MutoBaseCard {
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
             console.error("No hass or config");
+            return html``;
+        }
+
+        if (this.config.entity == undefined || this.entity() == undefined) {
+            console.error("Entity undefined", this.config, this.entity());
             return html``;
         }
 

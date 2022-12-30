@@ -2,7 +2,7 @@ import { HassEntity } from "home-assistant-js-websocket";
 import { deviceTypeForEntity } from "./helpers";
 
 export const stateColors = {
-    blank: false,
+    blank: "",
     positive: "var(--muto-color-positive)",
     negative: "var(--muto-color-negative)",
     alert: "var(--muto-color-alert)",
@@ -33,7 +33,7 @@ const defaultStateColors = {
     },
 };
 
-export const ignoreStateColor = ["unknown", "temperature", "humidity", "carbon_dioxide"];
+export const ignoreStateColor = ["unknown", "temperature", "humidity", "carbon_dioxide", "energy"];
 
 export const deviceStateColor = {
     unknown: defaultStateColors.on_is_good,
@@ -77,7 +77,7 @@ export const deviceStateColor = {
 
 export function colorForEntityState(entity: HassEntity): string {
     let styleString: string = "";
-    let cssColor: string | boolean = stateColors.blank;
+    let cssColor: string = stateColors.blank;
     let deviceType = deviceTypeForEntity(entity);
     let deviceStateColors = deviceStateColor[deviceType];
 
@@ -85,12 +85,9 @@ export function colorForEntityState(entity: HassEntity): string {
         return "";
     } else {
         if (deviceStateColors) {
-            cssColor = deviceStateColors[entity.state];
-            if (cssColor) {
-                styleString = cssColor;
-            }
+            styleString = deviceStateColors[entity.state];
         } else {
-            console.error("Could not find device type", deviceType);
+            console.info("No device state colors for device type", deviceType);
         }
     }
 
