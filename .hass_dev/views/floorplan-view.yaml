@@ -20,42 +20,50 @@ cards:
           columns:
             - flex: 0 0 20%
               cards: 
-                - type: custom:muto-image-card
-                  image: /local/muto.png
+                - type: custom:muto-button-card
+                  label: "All Lights On"
+                  action:
+                    type: "call-service"
+                    service: "light.turn_on"
+                    data:
+                      entity_id:
+                        - light.bed_light
+                        - light.ceiling_lights
+            
             - flex: 2 2 40%
               cards: 
-                - type: custom:muto-layout-column-card
-                  cards: 
-                    - type: custom:muto-image-card
-                      image: /local/muto.png
-                    - type: custom:muto-slider-control-card
-                      entity: climate.heatpump
-                    - type: custom:muto-image-card
-                      image: /local/muto.png
+                - type: custom:muto-button-card
+                  label: "All Lights On"
+                  action:
+                    type: "call-service"
+                    service: "light.turn_on"
+                    data:
+                      entity_id:
+                        - light.bed_light
+                        - light.ceiling_lights
+            
             - flex: 2 2 40%
               cards:
                 - type: custom:muto-layout-row-card
                   cards: 
-                    - type: custom:muto-image-card
-                      image: /local/muto.png
-                    - type: custom:muto-image-card
-                      image: /local/muto.png
-                    
-                - type: custom:muto-slider-control-card
-                  entity: light.living_room_rgbww_lights
-                  sensor_entity: light.living_room_rgbww_lights
+                    - type: custom:muto-button-card
+                      status_entity: light.bed_light
+                      action: 
+                        type: "toggle"
+                        entity: light.bed_light
+                    - type: custom:muto-button-card
+                      status_entity: light.office_rgbw_lights
+                      action: 
+                        type: "toggle"
+                        entity: light.office_rgbw_lights
+            
             - flex: 2 2 40%
               cards:
-                - type: custom:muto-layout-row-card
-                  cards: 
-                    - type: custom:muto-image-card
-                      image: /local/muto.png
-                    - type: custom:muto-image-card
-                      image: /local/muto.png
-                    
                 - type: custom:muto-slider-control-card
-                  entity: light.living_room_rgbww_lights
-                  sensor_entity: light.living_room_rgbww_lights
+                  status_entity: media_player.kitchen
+                  action:
+                    type: more-info
+                    entity: media_player.kitchen
 
       - name: Guest Bedroom
         floorplan: /local/muto.png
@@ -73,32 +81,35 @@ cards:
           columns:
             - flex: 0 0 20%
               cards: 
-                - type: custom:muto-image-card
-                  image: /local/muto.png
-            - flex: 2 2 40%
-              cards: 
-                - type: custom:muto-layout-column-card
-                  cards: 
-                    - type: custom:muto-image-card
-                      image: /local/muto.png
-                    - type: custom:muto-slider-control-card
-                      entity: climate.heatpump
-                    - type: custom:muto-image-card
-                      image: /local/muto.png
-            - flex: 2 2 40%
-              cards:
-                - type: custom:muto-slider-control-card
-                  entity: light.living_room_rgbww_lights
-                  sensor_entity: light.living_room_rgbww_lights
+                - type: custom:muto-button-card
+                  label: "All Lights On"
+                  action:
+                    type: "call-service"
+                    service: "light.turn_on"
+                    data:
+                      entity_id:
+                        - light.bed_light
+                        - light.ceiling_lights
+            
             - flex: 2 2 40%
               cards:
                 - type: custom:muto-layout-row-card
                   cards: 
-                    - type: custom:muto-image-card
-                      image: /local/muto.png
-                    - type: custom:muto-image-card
-                      image: /local/muto.png
-                    
+                    - type: custom:muto-button-card
+                      status_entity: light.bed_light
+                      action: 
+                        type: "toggle"
+                        entity: light.bed_light
+                    - type: custom:muto-button-card
+                      status_entity: light.office_rgbw_lights
+                      action: 
+                        type: "toggle"
+                        entity: light.office_rgbw_lights
+            
+            - flex: 2 2 40%
+              cards:
                 - type: custom:muto-slider-control-card
-                  entity: light.living_room_rgbww_lights
-                  sensor_entity: light.living_room_rgbww_lights
+                  status_entity: media_player.kitchen
+                  action:
+                    type: more-info
+                    entity: media_player.kitchen
