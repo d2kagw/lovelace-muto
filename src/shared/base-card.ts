@@ -39,11 +39,11 @@ export class MutoBaseCard extends LitElement implements LovelaceCard {
         return 1;
     }
 
-    public entity(): HassEntity {
+    public entity(_id?: string): HassEntity {
         if (!this.hass || !this.config) {
             throw new Error("No hass or config");
         }
-        return this.hass.states[this.config.status_entity];
+        return _id ? this.hass.states[_id] : this.hass.states[this.config.status_entity];
     }
 
     public hassChanged(): void {}
