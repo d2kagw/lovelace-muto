@@ -6,38 +6,41 @@
 ![build][build-badge]
 
 ## TODO
-- UI Editor
-- Themeing
-- Components
-  - Muto-Layout, Muto-SideBar, Muto-Body
-    - 30/70 layout of sidebar and body 
-    - mobile responsive to put a header and footer in place
-  - Muto-FlexVertical, Muto-FlexHorizontal
-    - Basic componentry to make complex layouts
-    - Vertical MTF’s scroll
-  - Muto-Button
-    - has an aspect ratio of 1:1, can be disabled
-    - has a background color to represent status
-    - can accept an icon, emoji, or text
-  - Muto-Label
-    - Heading and Sub-Heading label
-        - over two rows
-    - Left or Center Aligned
-  - Muto-Stat
-    - Larger labels
-    - Center Aligned
-  - Muto-RangeInput
-    - when dragged sets a value
-    - has a min and max which might not be 0-100
-    - has a visualisation of the selected range
-    - will require a default state
-    - can contain labels and stats
-    - could contain future complex states - i.e. an RGB gradient
-  - Muto-Combo
-    - brings together buttons, labels, stats, buttons
-  - Muto-Group
-    - removes unnecessary rounded corners from children
-    - should allow rows of buttons
+
+-   UI Editor
+-   Themeing
+-   Components
+    -   [] Muto-Layout, Muto-SideBar, Muto-Body
+        -   [] 30/70 layout of sidebar and body
+        -   [] mobile responsive to put a header and footer in place
+    -   [x] Muto-FlexVertical, Muto-FlexHorizontal
+        -   [x] Basic componentry to make complex layouts
+        -   [] Vertical MTF’s scroll
+    -   [] Muto-Button
+        -   [x] has an aspect ratio of 1:1, can be disabled
+        -   [] has a background and foreground status to represent state
+        -   [] can show an icon, text, or both
+        -   [] can show an image (filled)
+        -   [] has a click state
+    -   Muto-Label
+        -   Heading and Sub-Heading label
+            -   over two rows
+        -   Left or Center Aligned
+    -   Muto-Stat
+        -   Larger labels
+        -   Center Aligned
+    -   Muto-RangeInput
+        -   when dragged sets a value
+        -   has a min and max which might not be 0-100
+        -   has a visualisation of the selected range
+        -   will require a default state
+        -   can contain labels and stats
+        -   could contain future complex states - i.e. an RGB gradient
+    -   Muto-Combo
+        -   brings together buttons, labels, stats, buttons
+    -   Muto-Group
+        -   removes unnecessary rounded corners from children
+        -   should allow rows of buttons
 
 ## What is Muto?
 
@@ -51,10 +54,9 @@ Note: Muto has been built and designed for my personal use, so there are likely 
 
 -   🛠 A basic set of components to build complete custom UIs
 -   😍 tablet focused designs and interactions - with expectations of horizontal layouts, finger-control and scrolling
--   🖌 Consistent placement of Clocks, Alerts and Security cameras 
+-   🖌 Consistent placement of Clocks, Alerts and Security cameras
 -   🚀 0 dependencies : no need to install another card.
 -   🌈 Themeable without external themes
-
 
 ## Installation
 

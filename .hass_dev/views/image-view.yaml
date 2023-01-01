@@ -1,0 +1,19 @@
+title: Images
+panel: true
+cards:
+  - type: custom:muto-layout-card
+    columns:
+      - type: custom:muto-layout-column-card
+        cards:
+          - type: custom:muto-image-card
+            image: /local/muto.png
+            css: >
+              width: 25em;
+          - type: custom:muto-image-card
+            image: /local/muto.png
+            css: >
+              width: 25em;
+              height: 10em;
+            action:
+              type: more-info
+              entity: binary_sensor.basement_floor_wet

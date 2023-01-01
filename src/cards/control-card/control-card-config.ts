@@ -5,12 +5,12 @@ import {
     MutoStatusedCardConfig,
 } from "../../shared/types";
 
-export type ButtonCardConfig = LovelaceCardConfig &
+export type ControlCardConfig = LovelaceCardConfig &
     MutoCardConfig &
     MutoActionableCardConfig &
     MutoStatusedCardConfig & {
+        sensor_entity?: string;
         label?: string;
+        sublabel?: string;
         icon?: string;
-        image?: string;
-        aspect_ratio?: string;
     };

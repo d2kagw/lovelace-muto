@@ -1,0 +1,46 @@
+title: Headings
+panel: true
+cards:
+  - type: custom:muto-layout-card
+    columns:
+      - type: custom:muto-layout-column-card
+        cards:
+          - type: custom:muto-heading-card
+            size: h1
+            text: Heading One
+            action:
+              type: more-info
+              entity: binary_sensor.basement_floor_wet
+          - type: custom:muto-heading-card
+            size: h2
+            text: Heading Two
+          - type: custom:muto-heading-card
+            size: h3
+            text: Heading Three
+          - type: custom:muto-heading-card
+            size: h1
+            text: Heading One /w Icon
+            icon: mdi:account-check
+          - type: custom:muto-heading-card
+            size: h1
+            icon: mdi:account-check
+          - type: custom:muto-heading-card
+            size: h2
+            text: Heading Two /w Icon
+            icon: mdi:account-check
+          - type: custom:muto-heading-card
+            size: h2
+            icon: mdi:account-check
+          - type: custom:muto-heading-card
+            size: h3
+            text: Heading Three /w Icon
+            icon: mdi:account-check
+          - type: custom:muto-heading-card
+            size: h3
+            icon: mdi:account-check
+          - type: custom:muto-heading-card
+            size: h1
+            text: Custom CSS
+            css: >
+              background: #0f0;
+              color: #f00;

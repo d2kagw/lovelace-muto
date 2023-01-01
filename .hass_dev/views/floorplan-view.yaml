@@ -1,0 +1,136 @@
+title: Floorplan
+panel: true
+cards:  
+  - type: custom:muto-floorplan-card
+    floorplan: /local/muto.png
+    aspect_ratio: 16/9
+    areas:
+      - name: Guest Bedroom
+        floorplan: /local/muto.png
+        top: 20%
+        left: 10%
+        width: 15%
+        height: 25%
+
+        temperature: sensor.outside_temperature
+        motion: binary_sensor.movement_backyard
+        climate: climate.hvac
+    
+        card:
+          type: custom:muto-layout-card
+          columns:
+            - flex: 0 0 20%
+              cards:
+                - type: custom:muto-button-card
+                  label: "All Lights On"
+                  action:
+                    type: "call-service"
+                    service: "light.turn_on"
+                    data:
+                      entity_id:
+                        - light.bed_light
+                        - light.ceiling_lights
+                - type: custom:muto-button-card
+                  label: "All Lights On"
+                  action:
+                    type: "call-service"
+                    service: "light.turn_on"
+                    data:
+                      entity_id:
+                        - light.bed_light
+                        - light.ceiling_lights
+                - type: custom:muto-button-card
+                  label: "All Lights On"
+                  action:
+                    type: "call-service"
+                    service: "light.turn_on"
+                    data:
+                      entity_id:
+                        - light.bed_light
+                        - light.ceiling_lights
+            
+            - flex: 2 2 40%
+              cards:
+                - type: custom:muto-layout-row-card
+                  cards: 
+                    - type: custom:muto-button-card
+                      status_entity: light.bed_light
+                      action: 
+                        type: "toggle"
+                        entity: light.bed_light
+                    - type: custom:muto-button-card
+                      status_entity: light.office_rgbw_lights
+                      action: 
+                        type: "toggle"
+                        entity: light.office_rgbw_lights
+            
+            - flex: 2 2 40%
+              cards:
+                - type: custom:muto-slider-control-card
+                  status_entity: media_player.kitchen
+                  action:
+                    type: more-info
+                    entity: media_player.kitchen
+
+
+      - name: Bedroom
+        floorplan: /local/muto.png
+        top: 45%
+        left: 10%
+        width: 20%
+        height: 20%
+
+        motion: binary_sensor.movement_backyard
+        climate: climate.hvac
+    
+        card:
+          type: custom:muto-layout-card
+          columns:
+            - flex: 0 0 20%
+              cards: 
+                - type: custom:muto-button-card
+                  label: "All Lights On"
+                  action:
+                    type: "call-service"
+                    service: "light.turn_on"
+                    data:
+                      entity_id:
+                        - light.bed_light
+                        - light.ceiling_lights
+            
+            - flex: 2 2 40%
+              cards: 
+                - type: custom:muto-button-card
+                  label: "All Lights On"
+                  action:
+                    type: "call-service"
+                    service: "light.turn_on"
+                    data:
+                      entity_id:
+                        - light.bed_light
+                        - light.ceiling_lights
+            
+            - flex: 2 2 40%
+              cards:
+                - type: custom:muto-layout-row-card
+                  cards: 
+                    - type: custom:muto-button-card
+                      status_entity: light.bed_light
+                      action: 
+                        type: "toggle"
+                        entity: light.bed_light
+                    - type: custom:muto-button-card
+                      status_entity: light.office_rgbw_lights
+                      action: 
+                        type: "toggle"
+                        entity: light.office_rgbw_lights
+            
+            - flex: 2 2 40%
+              cards:
+                - type: custom:muto-slider-control-card
+                  status_entity: media_player.kitchen
+                  action:
+                    type: more-info
+                    entity: media_player.kitchen
+
+      

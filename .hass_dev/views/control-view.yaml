@@ -1,0 +1,87 @@
+title: Controls
+panel: true
+cards:
+  - type: custom:muto-layout-card
+    columns:
+      - cards:
+          - type: custom:muto-layout-column-card
+            cards:
+              - type: custom:muto-heading-card
+                size: h1
+                text: Lights
+              - type: custom:muto-slider-control-card
+                status_entity: light.bed_light
+                action:
+                  type: toggle
+                  entity: light.bed_light
+              - type: custom:muto-slider-control-card
+                status_entity: light.ceiling_lights
+                action:
+                  type: toggle
+                  entity: light.ceiling_lights
+              - type: custom:muto-slider-control-card
+                status_entity: light.office_rgbw_lights
+                action:
+                  type: toggle
+                  entity: light.office_rgbw_lights
+                sensor_entity: light.office_rgbw_lights
+              - type: custom:muto-slider-control-card
+                status_entity: light.living_room_rgbww_lights
+                action:
+                  type: toggle
+                  entity: light.living_room_rgbww_lights
+                sensor_entity: light.living_room_rgbww_lights
+              - type: custom:muto-slider-control-card
+                status_entity: light.entrance_color_white_lights
+                action:
+                  type: toggle
+                  entity: light.entrance_color_white_lights
+                sensor_entity: light.entrance_color_white_lights
+              - type: custom:muto-heading-card
+                size: h1
+                text: Media
+              - type: custom:muto-slider-control-card
+                status_entity: media_player.kitchen
+                action:
+                  type: more-info
+                  entity: media_player.kitchen
+              - type: custom:muto-slider-control-card
+                status_entity: media_player.walkman
+                sensor_entity: media_player.walkman
+                action:
+                  type: more-info
+                  entity: media_player.walkman
+
+      - cards:
+        - type: custom:muto-layout-column-card
+          cards:
+            - type: custom:muto-heading-card
+              size: h1
+              text: Switches
+            - type: custom:muto-slider-control-card
+              status_entity: switch.decorative_lights
+              action:
+                type: "toggle"
+                entity: switch.decorative_lights
+              sublabel: "Sublabel"
+
+            - type: custom:muto-heading-card
+              size: h1
+              text: Sensor
+            - type: custom:muto-sensor-control-card
+              status_entity: sensor.outside_temperature
+              sensor_entity: sensor.outside_temperature
+
+            - type: custom:muto-heading-card
+              size: h1
+              text: Climate
+            - type: custom:muto-slider-control-card
+              status_entity: climate.heatpump
+            - type: custom:muto-slider-control-card
+              status_entity: climate.heatpump
+              sensor_entity: climate.heatpump
+            - type: custom:muto-slider-control-card
+              status_entity: climate.hvac
+              sensor_entity: sensor.outside_temperature
+            - type: custom:muto-slider-control-card
+              status_entity: climate.ecobee

@@ -7,8 +7,7 @@ import { terser } from "rollup-plugin-terser";
 import serve from "rollup-plugin-serve";
 import ignore from "./rollup-plugins/rollup-ignore-plugin.js";
 
-const IGNORED_FILES = [
-];
+const IGNORED_FILES = [];
 
 const dev = process.env.ROLLUP_WATCH;
 

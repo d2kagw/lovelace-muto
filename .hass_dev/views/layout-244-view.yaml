@@ -1,0 +1,36 @@
+title: Layout - 2,3,5
+panel: true
+cards:
+  - type: custom:muto-layout-card
+    columns:
+      - flex: 0 0 20%
+        cards: 
+          - type: custom:muto-image-card
+            image: /local/muto.png
+      - flex: 2 2 40%
+        cards: 
+          - type: custom:muto-layout-column-card
+            cards: 
+              - type: custom:muto-image-card
+                image: /local/muto.png
+              - type: custom:muto-slider-control-card
+                status_entity: light.office_rgbw_lights
+                action:
+                  type: toggle
+                  entity: light.office_rgbw_lights
+                sensor_entity: light.office_rgbw_lights
+              - type: custom:muto-image-card
+                image: /local/muto.png
+      - flex: 2 2 40%
+        cards:
+          - type: custom:muto-layout-row-card
+            cards: 
+              - type: custom:muto-image-card
+                image: /local/muto.png
+              - type: custom:muto-image-card
+                image: /local/muto.png
+              
+          - type: custom:muto-slider-control-card
+            entity: light.living_room_rgbww_lights
+            sensor_entity: light.living_room_rgbww_lights
+          

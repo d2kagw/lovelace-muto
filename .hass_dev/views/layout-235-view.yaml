@@ -1,0 +1,113 @@
+title: Layout - 2,3,5
+panel: true
+cards:
+  - type: custom:muto-layout-card
+    columns:
+      - flex: 0 0 20%
+        cards: 
+          - type: custom:muto-image-card
+            image: /local/muto.png
+      - flex: 2 2 30%
+        cards: 
+          - type: custom:muto-layout-column-card
+            cards: 
+              - type: custom:muto-image-card
+                image: /local/muto.png
+              - type: custom:muto-slider-control-card
+                status_entity: light.office_rgbw_lights
+                action:
+                  type: toggle
+                  entity: light.office_rgbw_lights
+                sensor_entity: light.office_rgbw_lights
+              - type: custom:muto-slider-control-card
+                status_entity: switch.decorative_lights
+                action:
+                  type: "toggle"
+                  entity: switch.decorative_lights
+                sublabel: "Sublabel"
+              - type: custom:muto-image-card
+                image: /local/muto.png
+      - flex: 4 4 50%
+        cards:
+          - type: custom:muto-layout-row-card
+            cards: 
+              - type: custom:muto-image-card
+                image: /local/muto.png
+              - type: custom:muto-image-card
+                image: /local/muto.png
+          
+          - type: custom:muto-layout-column-card
+            cards:
+              - type: custom:muto-layout-row-card
+                cards:
+                  - type: custom:muto-button-card
+                    entity: sensor.outside_temperature
+                    width: fit
+                  - type: custom:muto-button-card
+                    entity: sensor.outside_humidity
+                    width: fit
+                  - type: custom:muto-button-card
+                    entity: sensor.carbon_monoxide
+                    width: fit
+                  - type: custom:muto-button-card
+                    entity: sensor.carbon_dioxide
+                    width: fit
+                  - type: custom:muto-button-card
+                    entity: sensor.power_consumption
+                    width: fit
+                  - type: custom:muto-button-card
+                    entity: sensor.total_energy_mwh
+                    width: fit
+                  - type: custom:muto-button-card
+                    entity: sensor.total_energy_kwh
+                    width: fit
+                  - type: custom:muto-button-card
+                    entity: sensor.total_gas_m3
+                    width: fit
+                  - type: custom:muto-button-card
+                    entity: sensor.total_gas_ft3
+                    width: fit
+
+              - type: custom:muto-layout-row-card
+                fit: scroll
+                cards:
+                  - type: custom:muto-button-card
+                    entity: sensor.outside_temperature
+                  - type: custom:muto-button-card
+                    entity: sensor.outside_humidity
+                  - type: custom:muto-button-card
+                    entity: sensor.carbon_monoxide
+                  - type: custom:muto-button-card
+                    entity: sensor.carbon_dioxide
+                  - type: custom:muto-button-card
+                    entity: sensor.power_consumption
+                  - type: custom:muto-button-card
+                    entity: sensor.total_energy_mwh
+                  - type: custom:muto-button-card
+                    entity: sensor.total_energy_kwh
+                  - type: custom:muto-button-card
+                    entity: sensor.total_gas_m3
+                  - type: custom:muto-button-card
+                    entity: sensor.total_gas_ft3
+
+              - type: custom:muto-layout-row-card
+                fit: wrap
+                cards:
+                  - type: custom:muto-button-card
+                    entity: sensor.outside_temperature
+                  - type: custom:muto-button-card
+                    entity: sensor.outside_humidity
+                  - type: custom:muto-button-card
+                    entity: sensor.carbon_monoxide
+                  - type: custom:muto-button-card
+                    entity: sensor.carbon_dioxide
+                  - type: custom:muto-button-card
+                    entity: sensor.power_consumption
+                  - type: custom:muto-button-card
+                    entity: sensor.total_energy_mwh
+                  - type: custom:muto-button-card
+                    entity: sensor.total_energy_kwh
+                  - type: custom:muto-button-card
+                    entity: sensor.total_gas_m3
+                  - type: custom:muto-button-card
+                    entity: sensor.total_gas_ft3
