@@ -5,43 +5,6 @@
 ![downloads][downloads-badge]
 ![build][build-badge]
 
-## TODO
-
--   UI Editor
--   Themeing
--   Components
-    -   [] Muto-Layout, Muto-SideBar, Muto-Body
-        -   [] 30/70 layout of sidebar and body
-        -   [] mobile responsive to put a header and footer in place
-    -   [x] Muto-FlexVertical, Muto-FlexHorizontal
-        -   [x] Basic componentry to make complex layouts
-        -   [] Vertical MTF’s scroll
-    -   [] Muto-Button
-        -   [x] has an aspect ratio of 1:1, can be disabled
-        -   [] has a background and foreground status to represent state
-        -   [] can show an icon, text, or both
-        -   [] can show an image (filled)
-        -   [] has a click state
-    -   Muto-Label
-        -   Heading and Sub-Heading label
-            -   over two rows
-        -   Left or Center Aligned
-    -   Muto-Stat
-        -   Larger labels
-        -   Center Aligned
-    -   Muto-RangeInput
-        -   when dragged sets a value
-        -   has a min and max which might not be 0-100
-        -   has a visualisation of the selected range
-        -   will require a default state
-        -   can contain labels and stats
-        -   could contain future complex states - i.e. an RGB gradient
-    -   Muto-Combo
-        -   brings together buttons, labels, stats, buttons
-    -   Muto-Group
-        -   removes unnecessary rounded corners from children
-        -   should allow rows of buttons
-
 ## What is Muto?
 
 Muto stands for Multi-Tool - a combination of basic UI elements that enable user interaction designed for tablet use.
