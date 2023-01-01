@@ -90,7 +90,7 @@ npm run build
 [hacs-badge]: https://img.shields.io/badge/hacs-default-orange.svg?style=flat-square
 [release-badge]: https://img.shields.io/github/v/release/d2kagw/lovelace-muto?style=flat-square
 [downloads-badge]: https://img.shields.io/github/downloads/d2kagw/lovelace-muto/total?style=flat-square
-[build-badge]: https://img.shields.io/github/workflow/status/d2kagw/lovelace-muto/Build?style=flat-square
+[build-badge]: https://img.shields.io/github/actions/workflow/status/d2kagw/lovelace-muto/build.yml?branch=main&style=flat-square
 
 <!-- References -->
 
