@@ -92,6 +92,64 @@ For more details on flex shorthand: [read this from css-tricks](https://css-tric
 
 <img src="./docs/floorplan-card.png" alt="card screenshot" width="320"/>
 
+### Description
+
+Presents a full-width floor plan of the house, with clickable areas that present cards related to the area that you configure.
+
+**Note:** for best outcomes, set the layout type to `panel: true`.
+
+The component is responsive, and will move to a single column layout on narrow devices.
+
+The Floorplan Card is provided `Areas` which represent rooms or areas that you can define.
+
+Example use of the card is as follows:
+
+```yaml
+- type: custom:muto-floorplan-card
+  floorplan: /local/muto.png
+  aspect_ratio: 16/9
+  areas:
+      - name: Bedroom
+        floorplan: /local/muto.png
+        top: 20%
+        left: 10%
+        width: 15%
+        height: 25%
+
+        temperature: sensor.outside_temperature
+        motion: binary_sensor.movement_backyard
+        climate: climate.hvac
+
+        card:
+            type: custom:muto-layout-card
+            columns:
+                - flex: 0 0 20%
+                  cards: ...
+```
+
+### Configuration
+
+| Name           | Type   | Default  | Description                                                           |
+| :------------- | :----- | :------- | :-------------------------------------------------------------------- |
+| `floorplan`    | url    | Required | The location of the floorplan to be shown underneath all the areas    |
+| `aspect_ratio` | number | Reqiured | The aspect ratio of the floowplan, used to determine the layout rules |
+| `areas`        | array  | required | an array of areas to be rendered                                      |
+
+Areas are made up as follows:
+
+| Name          | Type       | Default  | Description                                                                         |
+| :------------ | :--------- | :------- | :---------------------------------------------------------------------------------- |
+| `name`        | string     | Optional | The name of the area                                                                |
+| `floorplan`   | url        | Required | The image of the areas floorplan, rendered over the top of the background floorplan |
+| `top`         | percentage | Required | the top position of the area. represented as a % of the whole floorplan             |
+| `left`        | percentage | Required | the left position of the area. represented as a % of the whole floorplan            |
+| `width`       | percentage | Required | the width of the area. represented as a % of the whole floorplan                    |
+| `height`      | percentage | Required | the height of the area. represented as a % of the whole floorplan                   |
+| `temperature` | string     | Optional | The id of a temperature entity to be used to show quick stats on the area           |
+| `motion`      | string     | Optional | The id of a motion entity to be used to show quick stats on the area                |
+| `climate`     | string     | Optional | The id of a climate entity to be used to show quick stats on the area               |
+| `card`        | card       | Required | the card to show when the area is clicked                                           |
+
 ## Button Card
 
 <img src="./docs/button-card.png" alt="card screenshot" width="320"/>
