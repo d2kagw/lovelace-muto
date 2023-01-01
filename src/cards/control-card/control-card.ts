@@ -90,6 +90,13 @@ export class ControlCardLabel extends LitElement {
                     font-family: var(--muto-font);
                     font-weight: var(--muto-font-weight-bold);
                     font-size: calc(var(--muto-unit) * 1.2);
+
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    word-break: "none";
+                    overflow: hidden;
+                    hyphens: auto;
                 }
 
                 .muto-control-label-subheading {
@@ -223,15 +230,6 @@ export class SliderControlCard extends MutoBaseCard {
                     justify-content: space-evenly;
                     height: 100%;
                     padding: var(--muto-spacing);
-                }
-
-                .muto-control-label-heading {
-                    font-family: var(--muto-font);
-                    font-weight: var(--muto-font-weight-bold);
-                }
-
-                .muto-control-label-subheading {
-                    font-family: var(--muto-font);
                 }
             `,
         ];
