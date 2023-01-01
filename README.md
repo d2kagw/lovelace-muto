@@ -48,13 +48,69 @@ Note: Muto has been built and designed for my personal use, so there are likely 
 5. Reload themes by restarting home assistant, or using the keyboard shortcut `c`, then type `reload themes`
 6. Set the `Muto` theme for all users by going to _Developer Tools_ → _Services_. Select the service `Home Assistant Frontend: Set theme`. Select `Muto` from the list of themes, and press _Call Service_.
 
-## Usage
+# Cards
 
-TBC
+## Layout Card
 
-### Cards
+<img src="./docs/layout-card.png" alt="card screenshot" width="320"/>
 
-tbc
+### Description
+
+Exposes Flexbox (css) styling to home assistant through simple row and column cards.
+
+**Note:** for best outcomes, set the layout type to `panel: true`.
+
+The component is responsive, and will move to a single column layout on narrow devices.
+
+Example use of the card is as follows:
+
+```yaml
+- type: custom:muto-layout-card
+  columns:
+      - flex: 0 0 20%
+        cards: ...
+      - flex: 2 2 30%
+        cards: ...
+```
+
+### Configuration
+
+| Name      | Type  | Default  | Description         |
+| :-------- | :---- | :------- | :------------------ |
+| `columns` | array | Required | An array of columns |
+
+Each column accepts the following configuration:
+
+| Name    | Type   | Default  | Description                                      |
+| :------ | :----- | :------- | :----------------------------------------------- |
+| `cards` | array  | Required | An array of lovelace cards                       |
+| `flex`  | string | Optional | A flex shorthand on how the column should behave |
+
+For more details on flex shorthand: [read this from css-tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flex).
+
+## Floorplan Card
+
+<img src="./docs/floorplan-card.png" alt="card screenshot" width="320"/>
+
+## Button Card
+
+<img src="./docs/button-card.png" alt="card screenshot" width="320"/>
+
+## Control Card
+
+<img src="./docs/control-card.png" alt="card screenshot" width="320"/>
+
+## Clock Card
+
+<img src="./docs/clock-card.png" alt="card screenshot" width="320"/>
+
+## Notification Card
+
+<img src="./docs/notification-card.png" alt="card screenshot" width="320"/>
+
+## Image Card
+
+## Heading Card
 
 ## Development server
 
