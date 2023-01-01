@@ -88,12 +88,15 @@ export class HeadingCard extends MutoBaseCard {
                     margin: calc(var(--muto-unit) / 2) 0 0;
                 }
                 h1.muto-heading {
-                    --mdc-icon-size: 1.5em;
+                    font-size: 1.4em;
+                    --mdc-icon-size: 1em;
                 }
                 h2.muto-heading {
+                    font-size: 1.2em;
                     --mdc-icon-size: 1.17em;
                 }
                 h3.muto-heading {
+                    font-size: 1em;
                     --mdc-icon-size: 1em;
                 }
             `,
