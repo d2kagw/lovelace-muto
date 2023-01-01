@@ -23,8 +23,6 @@ Note: Muto has been built and designed for my personal use, so there are likely 
 
 ## Installation
 
-### Manual
-
 1. Download `muto.js` file from the [latest-release].
 2. Put `muto.js` file into your `config/www` folder.
 3. Add reference to `muto.js` in Dashboard. There's two way to do that:
@@ -36,6 +34,19 @@ Note: Muto has been built and designed for my personal use, so there are likely 
             - url: /local/muto.js
               type: module
         ```
+4. _(Optional)_ Install the `Barlow` font from Google Fonts using one of the two methods mentioned in step 3
+
+    - **Using UI:** _Settings_ → _Dashboards_ → _More Options icon_ → _Resources_ → _Add Resource_ → Set _Url_ as `https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700&display=swap` → Set _Resource type_ as `Stylesheet`.
+      **Note:** If you do not see the Resources menu, you will need to enable _Advanced Mode_ in your _User Profile_
+    - **Using YAML:** Add following code to `lovelace` section.
+        ```yaml
+        resources:
+            - url: https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700&display=swap
+              type: stylesheet
+        ```
+
+5. Reload themes by restarting home assistant, or using the keyboard shortcut `c`, then type `reload themes`
+6. Set the `Muto` theme for all users by going to _Developer Tools_ → _Services_. Select the service `Home Assistant Frontend: Set theme`. Select `Muto` from the list of themes, and press _Call Service_.
 
 ## Usage
 
@@ -94,8 +105,5 @@ npm run build
 
 <!-- References -->
 
-[home-assistant]: https://www.home-assistant.io/
-[home-assitant-theme-docs]: https://www.home-assistant.io/integrations/frontend/#defining-themes
 [hacs]: https://hacs.xyz
-[button-card]: https://github.com/custom-cards/button-card
 [release-url]: https://github.com/d2kagw/lovelace-muto/releases
