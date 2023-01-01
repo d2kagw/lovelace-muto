@@ -177,7 +177,7 @@ export class FloorplanCard extends MutoBaseCard {
                         return this.renderAreaImage(area, index);
                     })}
                 </muto-floorplan-map>
-                <muto-floorplan-map class="muto muto-floorplan-card">
+                <muto-floorplan-map class="muto muto-floorplan-cards">
                     ${this.areaCards[this.selectedAreaIndex]}
                 </muto-floorplan-map>
             </muto-floorplan>
@@ -194,7 +194,9 @@ export class FloorplanCard extends MutoBaseCard {
                     display: block;
                 }
                 .muto-floorplan {
-                    display: block;
+                    display: flex;
+                    max-height: var(--muto-max-height);
+                    flex-direction: column;
                 }
                 .muto-floorplan-map,
                 .muto-floorplan-cards {
@@ -219,9 +221,10 @@ export class FloorplanCard extends MutoBaseCard {
                     flex-grow: 0;
                     flex-shrink: 0;
                     flex-basis: auto;
+                    position: relative;
                 }
                 .muto-floorplan-map-area {
-                    position: relative;
+                    position: absolute;
                     background-size: 100% 100%;
 
                     display: flex;

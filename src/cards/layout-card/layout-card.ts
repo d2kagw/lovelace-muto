@@ -191,8 +191,8 @@ export class LayoutCard extends MutoBaseCard {
                             class="muto-layout-column muto-layout-column-${i + 1}"
                             style="
                                 ${this.config.columns[i].flex
-                                ? "flex: ${this.config.columns[i].flex}"
-                                : ""};
+                                ? `flex: ${this.config.columns[i].flex}`
+                                : ``};
                                 ${this.config.css ?? ""};
                             "
                         >
@@ -209,12 +209,15 @@ export class LayoutCard extends MutoBaseCard {
             super.styles,
             css`
                 :host {
-                    display: block;
+                    display: flex;
+                    flex: 1 1 1%;
+                    overflow: hidden;
+                    max-height: var(--muto-max-height);
                 }
                 .muto-layout {
                     display: flex;
-                    height: 100%;
-                    max-height: 93vh;
+                    flex: 1 1 1%;
+                    overflow: hidden;
                     padding: var(--muto-spacing) var(--muto-spacing) 0;
                     gap: var(--muto-spacing);
                 }
@@ -225,6 +228,7 @@ export class LayoutCard extends MutoBaseCard {
                     flex-shrink: 1;
                     flex-basis: 30%;
                     gap: var(--muto-spacing);
+                    padding-bottom: var(--muto-spacing);
                     overflow: hidden scroll;
                     -ms-overflow-style: none;
                     scrollbar-width: none;
