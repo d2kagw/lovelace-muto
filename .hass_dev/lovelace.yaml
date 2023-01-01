@@ -5,4 +5,4 @@
       title: Muto Showcase
       icon: mdi:hammer-wrench
       show_in_sidebar: true
-      filename: lovelace-muto-showcase.yaml
+      filename: showcase.yaml

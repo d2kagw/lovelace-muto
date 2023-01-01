@@ -1,0 +1,12 @@
+title: Showcase
+views:
+  - !include views/button-view.yaml
+  - !include views/clock-view.yaml
+  - !include views/control-view.yaml
+  - !include views/floorplan-view.yaml
+  - !include views/heading-view.yaml
+  - !include views/image-view.yaml
+  - !include views/layout-100-view.yaml
+  - !include views/layout-235-view.yaml
+  - !include views/layout-244-view.yaml
+  
