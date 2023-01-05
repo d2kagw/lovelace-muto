@@ -1,6 +1,6 @@
 {
     "name": "Muto",
     "filename": "muto.js",
-    "homeassistant": "2023.12.7",
+    "homeassistant": "2023.1.0",
     "render_readme": true
 }

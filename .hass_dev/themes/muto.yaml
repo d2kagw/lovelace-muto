@@ -1,0 +1,42 @@
+muto: 
+  muto-unit: '12px'
+
+  muto-spacing: 'var(--muto-unit)'
+  muto-border-radius: '16px'
+  
+  muto-row-height: 'calc(var(--muto-unit) * 5)'
+  muto-max-height: 'calc(100vh - var(--header-height, 56px))'
+  
+  muto-font: 'Barlow, sans-serif'
+  muto-font-weight-bold: 700
+  muto-font-weight-light: 300
+
+  muto-card-background: 'rgba(39, 168, 224, 0.25)'
+  muto-color-positive: '#99DD2A'
+  muto-color-negative: '#ED2664'
+  muto-color-alert: '#D6C64B'
+  muto-color-cold: '#819AFF'
+  muto-color-warm: '#E87D3E'
+  
+  primary-background-color: '#05354A'
+  secondary-background-color: '#0C455D'
+  card-background-color: 'var(--secondary-background-color)'
+  sidebar-background-color: 'var(--secondary-background-color)'
+  app-header-background-color: 'var(--secondary-background-color)'
+  primary-text-color: '#ffffff'
+
+  # --secondary-text-color: #727272;
+  # --text-primary-color: #ffffff;
+  # --text-light-primary-color: #212121;
+  # --disabled-text-color: #bdbdbd;
+  # --primary-color: #03a9f4;
+  # --dark-primary-color: #0288d1;
+  # --light-primary-color: #b3e5fC;
+  # --accent-color: #ff9800;
+  # --divider-color: rgba(0, 0, 0, .12);
+  # --scrollbar-thumb-color: rgb(194, 194, 194);
+  # --error-color: #db4437;
+  # --warning-color: #ffa600;
+  # --success-color: #43a047;
+  # --info-color: #039be5;
+  # --card-background-color: #ffffff;
