@@ -60,6 +60,11 @@ cards:
                     action: 
                       type: "toggle"
                       entity: light.entrance_color_white_lights
+                  - type: custom:muto-button-card
+                    label: All Off
+                    action:
+                      type: "call-service"
+                      service: script.all_lights_off
 
           - type: custom:muto-heading-card
             size: h1

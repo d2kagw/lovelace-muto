@@ -126,7 +126,7 @@ export class MutoBaseCard extends LitElement implements LovelaceCard {
 
     public callService(action: MutoActionConfig): Function {
         return () => {
-            let serviceDetails: string[] = action.service!.split(".");
+            let serviceDetails: string[] = (action.service || action.entity)!.split(".");
             let domain: string = serviceDetails[0];
             let service: string = serviceDetails[1];
             this.hass.callService(domain, service, action.data);
