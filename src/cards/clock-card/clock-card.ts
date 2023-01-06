@@ -35,7 +35,7 @@ export class ClockCard extends MutoBaseCard {
         };
 
         return html`
-            <muto-clock class="muto muto-panel muto-clock">
+            <muto-clock class="muto muto-clock">
                 <muto-clock-time class="muto muto-clock-time" .style=${this.config.css}>
                     ${new Intl.DateTimeFormat(undefined, timeFormatter).format(this.date)}
                 </muto-clock-time>

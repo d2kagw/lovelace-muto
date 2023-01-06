@@ -158,6 +158,29 @@ Areas are made up as follows:
 
 <img src="./docs/control-card.png" alt="card screenshot" width="320"/>
 
+## Panel Card
+
+### Description
+
+A helper card if you want to use other lovelace cards in your layout but have them visually framed like the rest of Muto.
+
+Example use of the card is as follows:
+
+```yaml
+- type: custom:muto-panel-card
+  cards:
+      - type: markdown
+        content: >
+            I am inside a muto panel
+```
+
+### Configuration
+
+| Name     | Type    | Default                     | Description                              |
+| :------- | :------ | :-------------------------- | :--------------------------------------- |
+| `cards`  | array   | Required                    | An array of lovelace cards               |
+| `padded` | boolean | Optional (defaults to true) | Wether the panel should be padded or not |
+
 ## Clock Card
 
 <img src="./docs/clock-card.png" alt="card screenshot" width="320"/>

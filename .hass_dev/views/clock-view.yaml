@@ -8,5 +8,16 @@ cards:
           - type: custom:muto-clock-card
           - type: custom:muto-clock-card
             css: >
-              font-size: 15em;
+              font-size: 12em;
               height: 70vh;
+      - type: custom:muto-layout-column-card
+        cards:
+          - type: custom:muto-panel-card
+            cards:
+              - type: custom:muto-clock-card
+          - type: custom:muto-panel-card
+            cards:
+                - type: custom:muto-clock-card
+                  css: >
+                    font-size: 12em;
+                    height: 70vh;
