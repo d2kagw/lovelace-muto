@@ -69,6 +69,9 @@ export class PanelCard extends MutoBaseCard {
         return [
             super.styles,
             css`
+                :host {
+                    width: 100%;
+                }
                 .muto-panel {
                     padding: var(--muto-unit);
                     overflow: hidden;

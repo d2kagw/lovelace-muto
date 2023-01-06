@@ -3,7 +3,7 @@ panel: true
 cards:  
   - type: custom:muto-floorplan-card
     floorplan: /local/muto.png
-    aspect_ratio: 16/9
+    aspect_ratio: 77/29
     areas:
       - name: Guest Bedroom
         floorplan: /local/muto.png
