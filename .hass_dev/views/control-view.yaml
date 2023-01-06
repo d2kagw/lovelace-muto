@@ -77,6 +77,9 @@ cards:
               text: Climate
             - type: custom:muto-slider-control-card
               status_entity: climate.heatpump
+              action:
+                type: "toggle"
+                entity: climate.heatpump
             - type: custom:muto-slider-control-card
               status_entity: climate.heatpump
               sensor_entity: climate.heatpump
