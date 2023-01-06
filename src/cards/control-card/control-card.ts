@@ -128,11 +128,21 @@ export class SliderControlCard extends MutoBaseCard {
         let sublabel: string | false = this.config.sublabel ?? false;
 
         if (!sublabel && deviceTypeForEntity(this.entity()) == "climate") {
-            sublabel = `
-                ${this.entity().attributes.fan_mode ?? ""}
-                ${this.entity().attributes.hvac_action ?? ""}
-                ${this.entity().attributes.swing_mode ?? ""}
-            `;
+            sublabel = [
+                this.entity().attributes.temperature
+                    ? `${this.entity().attributes.temperature}º`
+                    : "",
+                this.entity().attributes.fan_mode
+                    ? `Fan on ${this.entity().attributes.fan_mode}`
+                    : "",
+                this.entity().attributes.hvac_action ?? "",
+                this.entity().attributes.swing_mode
+                    ? `Swing ${this.entity().attributes.swing_mode}`
+                    : "",
+            ]
+                .filter((n) => n)
+                .join(", ")
+                .toLowerCase();
         }
 
         if (deviceTypeForEntity(this.entity()) == "media_player") {
