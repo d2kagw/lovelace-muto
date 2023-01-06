@@ -31,7 +31,7 @@ Note: Muto has been built and designed for my personal use, so there are likely 
     - **Using YAML:** Add following code to `lovelace` section.
         ```yaml
         resources:
-            - url: /local/muto.js
+            - url: /hacsfiles/lovelace-muto/muto.js
               type: module
         ```
 4. _(Optional)_ Install the `Barlow` font from Google Fonts using one of the two methods mentioned in step 3
@@ -42,7 +42,7 @@ Note: Muto has been built and designed for my personal use, so there are likely 
         ```yaml
         resources:
             - url: https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700&display=swap
-              type: stylesheet
+              type: css
         ```
 
 5. Reload themes by restarting home assistant, or using the keyboard shortcut `c`, then type `reload themes`
