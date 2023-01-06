@@ -17,3 +17,23 @@ cards:
             action:
               type: more-info
               entity: binary_sensor.basement_floor_wet
+      - type: custom:muto-layout-column-card
+        cards:
+          - type: custom:muto-panel-card
+            cards:
+              - type: custom:muto-image-card
+                image: /local/muto.png
+                css: >
+                  width: 25em;
+          - type: custom:muto-panel-card
+            padded: false
+            cards:
+              - type: custom:muto-image-card
+                image: /local/muto.png
+                css: >
+                  width: 5em;
+              - type: custom:muto-image-card
+                image: /local/muto.png
+                action:
+                  type: more-info
+                  entity: binary_sensor.basement_floor_wet
