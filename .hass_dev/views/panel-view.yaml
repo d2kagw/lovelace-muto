@@ -1,0 +1,31 @@
+title: Panels
+panel: true
+cards:
+  - type: custom:muto-layout-card
+    columns:
+      - type: custom:muto-layout-column-card
+        cards:
+          - type: custom:muto-panel-card
+            cards:
+              - type: markdown
+                content: >
+                  Hello world
+          - type: custom:muto-panel-card
+            padded: false
+            cards:
+              - type: markdown
+                content: >
+                  Hello world
+      - type: custom:muto-layout-column-card
+        cards:
+          - type: custom:muto-panel-card
+            cards:
+              - type: entities
+                entities:
+                  - light.bed_light
+                  - light.ceiling_lights
+                  - light.christmas_tree_lights
+                  - light.entrance_color_white_lights
+                  - light.kitchen_lights
+                  - light.living_room_rgbww_lights
+                  - light.office_rgbw_lights

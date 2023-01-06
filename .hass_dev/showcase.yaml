@@ -5,6 +5,7 @@ views:
   - !include views/control-view.yaml
   - !include views/notification-view.yaml
   - !include views/floorplan-view.yaml
+  - !include views/panel-view.yaml
   - !include views/image-view.yaml
   - !include views/heading-view.yaml
   - !include views/layout-100-view.yaml
