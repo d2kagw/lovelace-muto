@@ -37,7 +37,13 @@ export class ButtonCard extends MutoBaseCard {
     public defaultButtonContent(): TemplateResult {
         return html`
             ${this.config.icon ? html`<muto-icon icon="${this.config.icon}"></muto-icon>` : ""}
-            ${this.config.label ? html`<label>${this.config.label}</label>` : ""}
+            ${this.config.label
+                ? html`<label
+                      >${(this.config.label as any) == true
+                          ? this.entity().attributes.friendly_name
+                          : this.config.label}</label
+                  >`
+                : ""}
             ${this.config.image || this.config.icon || this.config.label
                 ? ""
                 : html`<muto-icon icon="${iconForEntity(this.entity())}"></muto-icon>`}

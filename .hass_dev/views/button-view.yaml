@@ -19,6 +19,12 @@ cards:
                       type: "toggle"
                       entity: light.kitchen_lights
                   - type: custom:muto-button-card
+                    label: true
+                    status_entity: light.kitchen_lights
+                    action: 
+                      type: "toggle"
+                      entity: light.kitchen_lights
+                  - type: custom:muto-button-card
                     label: Kitchen
                     status_entity: light.kitchen_lights
                     action: 
