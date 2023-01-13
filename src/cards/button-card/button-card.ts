@@ -51,7 +51,16 @@ export class ButtonCard extends MutoBaseCard {
     }
 
     public mediaPlayerButtonContent(): TemplateResult {
-        return html``;
+        switch (this.entity().state) {
+            case "idle":
+                return html` <muto-icon icon="mdi:speaker"></muto-icon>`;
+
+            case "unavailable":
+                return html` <muto-icon icon="mdi:speaker-off"></muto-icon>`;
+
+            default:
+                return html``;
+        }
     }
 
     public sensorButtonContent(): TemplateResult {
