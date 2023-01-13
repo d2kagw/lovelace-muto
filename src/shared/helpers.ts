@@ -118,6 +118,9 @@ export function colorForEntityState(entity: HassEntity): string {
                 styleString = stateColors.positive;
                 break;
 
+            case "off":
+                break;
+
             default:
                 console.info("Unsupported climate state", entity.state);
                 break;
@@ -156,6 +159,9 @@ export function iconForClimateEntity(entity: HassEntity): string | false {
 
         case "heat_dry":
             return "mdi:fire";
+
+        case "off":
+            return "mdi:fan-off";
 
         default:
             return false;

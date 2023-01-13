@@ -8,6 +8,7 @@ import { property } from "lit/decorators.js";
 import "../button-card/button-card";
 import { deviceTypeForEntity } from "../../shared/helpers";
 import { CONTROL_LABEL_NAME, SENSOR_CONTROL_CARD_NAME, SLIDER_CONTROL_CARD_NAME } from "../const";
+import { ButtonCardConfig } from "../button-card/button-card-config";
 
 @customElement(CONTROL_LABEL_NAME)
 export class ControlCardLabel extends LitElement {
@@ -116,7 +117,9 @@ export class SliderControlCard extends MutoBaseCard {
         let buttonConfig = {
             status_entity: this.entity()!.entity_id,
             action: this.config.action,
+            icon: undefined as any,
         };
+
         return html`<muto-button-card
             .config=${buttonConfig}
             .hass=${this.hass}
@@ -128,11 +131,21 @@ export class SliderControlCard extends MutoBaseCard {
         let sublabel: string | false = this.config.sublabel ?? false;
 
         if (!sublabel && deviceTypeForEntity(this.entity()) == "climate") {
-            sublabel = `
-                ${this.entity().attributes.fan_mode ?? ""}
-                ${this.entity().attributes.hvac_action ?? ""}
-                ${this.entity().attributes.swing_mode ?? ""}
-            `;
+            sublabel = [
+                this.entity().attributes.temperature
+                    ? `${this.entity().attributes.temperature}º`
+                    : "",
+                this.entity().attributes.fan_mode
+                    ? `Fan on ${this.entity().attributes.fan_mode}`
+                    : "",
+                this.entity().attributes.hvac_action ?? "",
+                this.entity().attributes.swing_mode
+                    ? `Swing ${this.entity().attributes.swing_mode}`
+                    : "",
+            ]
+                .filter((n) => n)
+                .join(", ")
+                .toLowerCase();
         }
 
         if (deviceTypeForEntity(this.entity()) == "media_player") {
@@ -169,7 +182,7 @@ export class SliderControlCard extends MutoBaseCard {
         return html`${this.renderButton()} ${this.renderLabel()} ${this.renderSensor()}`;
     }
 
-    protected render(): TemplateResult {
+    public render(): TemplateResult {
         if (!this.hass || !this.config) {
             console.error("No hass or config");
             return html``;

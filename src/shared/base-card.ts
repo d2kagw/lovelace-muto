@@ -107,14 +107,26 @@ export class MutoBaseCard extends LitElement implements LovelaceCard {
                         entity_id: action.entity,
                     },
                 });
+            case "climate":
+                return this.callService({
+                    type: "service",
+                    service:
+                        this.entity(action.entity).state == "off"
+                            ? "climate.turn_on"
+                            : "climate.turn_off",
+                    data: {
+                        entity_id: action.entity,
+                    },
+                });
             default:
+                console.info("Unsupported toogle action");
                 return this.moreInfoAction(action);
         }
     }
 
     public callService(action: MutoActionConfig): Function {
         return () => {
-            let serviceDetails: string[] = action.service!.split(".");
+            let serviceDetails: string[] = (action.service || action.entity)!.split(".");
             let domain: string = serviceDetails[0];
             let service: string = serviceDetails[1];
             this.hass.callService(domain, service, action.data);

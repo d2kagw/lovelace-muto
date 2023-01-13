@@ -37,7 +37,13 @@ export class ButtonCard extends MutoBaseCard {
     public defaultButtonContent(): TemplateResult {
         return html`
             ${this.config.icon ? html`<muto-icon icon="${this.config.icon}"></muto-icon>` : ""}
-            ${this.config.label ? html`<label>${this.config.label}</label>` : ""}
+            ${this.config.label
+                ? html`<label
+                      >${(this.config.label as any) == true
+                          ? this.entity().attributes.friendly_name
+                          : this.config.label}</label
+                  >`
+                : ""}
             ${this.config.image || this.config.icon || this.config.label
                 ? ""
                 : html`<muto-icon icon="${iconForEntity(this.entity())}"></muto-icon>`}
@@ -71,6 +77,12 @@ export class ButtonCard extends MutoBaseCard {
                     }
                     break;
 
+                case "weather":
+                    label =
+                        this.entity().attributes.temperature +
+                        (this.entity().attributes.temperature_unit ?? "");
+                    break;
+
                 default:
                     label =
                         this.entity().state + (this.entity().attributes.unit_of_measurement ?? "");
@@ -100,6 +112,7 @@ export class ButtonCard extends MutoBaseCard {
                 case "switch":
                     return this.defaultButtonContent();
 
+                case "weather":
                 case "temperature":
                 case "humidity":
                 case "carbon_monoxide":
