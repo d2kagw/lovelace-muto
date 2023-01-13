@@ -71,7 +71,7 @@ export class ButtonCard extends MutoBaseCard {
                     if (this.entity().attributes.is_volume_muted) {
                         label = "Muted";
                     } else if (this.entity().attributes.volume_level) {
-                        label = `${this.entity().attributes.volume_level * 100}%`;
+                        label = `${(this.entity().attributes.volume_level * 100).toFixed()}%`;
                     } else {
                         label = this.entity().state;
                     }
