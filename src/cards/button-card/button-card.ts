@@ -77,6 +77,12 @@ export class ButtonCard extends MutoBaseCard {
                     }
                     break;
 
+                case "weather":
+                    label =
+                        this.entity().attributes.temperature +
+                        (this.entity().attributes.temperature_unit ?? "");
+                    break;
+
                 default:
                     label =
                         this.entity().state + (this.entity().attributes.unit_of_measurement ?? "");
@@ -106,6 +112,7 @@ export class ButtonCard extends MutoBaseCard {
                 case "switch":
                     return this.defaultButtonContent();
 
+                case "weather":
                 case "temperature":
                 case "humidity":
                 case "carbon_monoxide":

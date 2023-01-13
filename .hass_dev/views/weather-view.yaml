@@ -1,0 +1,12 @@
+title: Weather
+panel: true
+cards:
+  - type: custom:muto-layout-card
+    columns:
+      - type: custom:muto-layout-column-card
+        cards:
+          - type: custom:muto-weather-card
+            sensor_entity: weather.demo_weather_north
+          - type: custom:muto-weather-card
+            sensor_entity: weather.demo_weather_south
+          
