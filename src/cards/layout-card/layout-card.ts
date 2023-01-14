@@ -111,6 +111,7 @@ export class LayoutRowCard extends LayoutColumnCard {
                     flex-direction: row;
                     gap: var(--muto-spacing);
                 }
+
                 .muto-layout-fit-wrap {
                     flex-wrap: wrap;
                 }
@@ -128,6 +129,7 @@ export class LayoutRowCard extends LayoutColumnCard {
                     -ms-overflow-style: none;
                     scrollbar-width: none;
                 }
+
                 .muto-layout-fit-scroll::-webkit-scrollbar {
                     display: none;
                 }
@@ -182,6 +184,8 @@ export class LayoutCard extends MutoBaseCard {
             console.error("No hass or config");
             return html``;
         }
+
+        console.warn(this.config);
 
         return html`
             <div class="muto muto-layout" style=${this.config.css ?? ""}>
