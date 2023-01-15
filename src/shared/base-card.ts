@@ -169,6 +169,28 @@ export class MutoBaseCard extends LitElement implements LovelaceCard {
                 .muto-clickable:active {
                     filter: brightness(1.5);
                 }
+                .muto-row {
+                    display: flex;
+                    flex-direction: row;
+                    gap: var(--muto-spacing);
+                }
+                .muto-row-fit-wrap {
+                    flex-wrap: wrap;
+                }
+                .muto-row-fit-wrap > * {
+                    width: auto;
+                }
+                .muto-row-fit-scale > * {
+                    min-width: 1px;
+                }
+                .muto-row-fit-scroll {
+                    overflow-y: scroll;
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+                .muto-row-fit-scroll::-webkit-scrollbar {
+                    display: none;
+                }
             `,
         ];
     }

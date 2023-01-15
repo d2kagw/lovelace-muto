@@ -149,8 +149,10 @@ export class SliderControlCard extends MutoBaseCard {
         }
 
         if (deviceTypeForEntity(this.entity()) == "media_player") {
-            label = this.entity().attributes.media_title;
-            sublabel = this.entity().attributes.media_artist ?? "";
+            label = this.entity().attributes.friendly_name ?? this.entity().entity_id;
+            sublabel = `${this.entity().attributes.media_title ?? "Unknown"} - ${
+                this.entity().attributes.media_artist ?? "Unknown"
+            }`;
         }
 
         return html`
@@ -170,7 +172,7 @@ export class SliderControlCard extends MutoBaseCard {
             },
             display: "state",
         };
-        return html` ${sensorConfig.status_entity
+        return html`${sensorConfig.status_entity
             ? html`<muto-sensor-button-card
                   .config=${sensorConfig}
                   .hass=${this.hass}

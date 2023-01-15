@@ -3,5 +3,7 @@ import { MutoCardConfig } from "../../shared/types";
 
 export type WeatherCardConfig = LovelaceCardConfig &
     MutoCardConfig & {
-        sensor_entity?: string;
+        weather_entity: string;
+        moon_entity?: string;
+        sun_entity?: string;
     };
