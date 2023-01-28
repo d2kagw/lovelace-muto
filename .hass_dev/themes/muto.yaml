@@ -1,15 +1,11 @@
-muto: 
+muto:
   muto-unit: '12px'
 
   muto-spacing: 'var(--muto-unit)'
   muto-border-radius: '16px'
-  
+
   muto-row-height: 'calc(var(--muto-unit) * 5)'
   muto-max-height: 'calc(100vh - var(--header-height, 56px))'
-  
-  muto-font: 'Barlow, sans-serif'
-  muto-font-weight-bold: 700
-  muto-font-weight-light: 300
 
   muto-card-background: 'rgba(39, 168, 224, 0.25)'
   muto-color-positive: '#99DD2A'
@@ -17,13 +13,62 @@ muto:
   muto-color-alert: '#D6C64B'
   muto-color-cold: '#819AFF'
   muto-color-warm: '#E87D3E'
-  
+
+  accent-color: '#1598D2'
+
   primary-background-color: '#05354A'
+  background-color: 'var(--primary-background-color)'
   secondary-background-color: '#0C455D'
   card-background-color: 'var(--secondary-background-color)'
   sidebar-background-color: 'var(--secondary-background-color)'
-  app-header-background-color: 'var(--secondary-background-color)'
-  primary-text-color: '#ffffff'
+  app-header-background-color: 'var(--secondary-background-color)'  
+
+  # Fonts
+  muto-font: 'Barlow, sans-serif'
+  muto-font-weight-bold: 700
+  muto-font-weight-light: 300
+
+  primary-font-family: 'var(--muto-font)'
+  paper-font-common-base_-_font-family: 'var(--muto-font)'
+  paper-font-common-code_-_font-family: 'var(--muto-font)'
+  paper-font-body1_-_font-family: 'var(--muto-font)'
+  paper-font-subhead_-_font-family: 'var(--muto-font)'
+  paper-font-headline_-_font-family: 'var(--muto-font)'
+  paper-font-caption_-_font-family: 'var(--muto-font)'
+  paper-font-title_-_font-family: 'var(--muto-font)'
+  ha-card-header-font-family: 'var(--muto-font)'
+
+  # Text Color
+  text-color: '#ffffff'
+  primary-text-color: 'var(--text-color)'
+  text-primary-color: 'var(--text-color)'
+  secondary-text-color: '#4A8BA8'
+  text-medium-light-color: '#83B4C9'
+  text-medium-color: '#83B4C9'
+  disabled-text-color: '#0E5270'
+  primary-color: 'var(--accent-color)'
+  
+  sidebar-icon-color: 'var(--text-color)'
+  sidebar-selected-icon-color: 'var(--accent-color)'
+  paper-item-icon-color: 'var(--text-color)'
+  paper-item-icon-active-color: 'var(--accent-color)'
+
+  # Text Fields an Dropdown
+  mdc-text-field-fill-color: 'var(--muto-card-background)'
+  mdc-text-field-ink-color: 'var(--text-color)'
+  mdc-select-fill-color: 'var(--muto-card-background)'
+  mdc-text-field-label-ink-color: 'var(--secondary-text-color)'
+  input-fill-color: 'var(--background-color)'
+  input-ink-color: 'var(--text-color)'
+  input-label-ink-color: 'var(--text-color)'
+  input-disabled-fill-color: 'var(--background-color)'
+  input-disabled-ink-color: 'var(--disabled-text-color)'
+  input-disabled-label-ink-color: 'var(--disabled-text-color)'
+  input-idle-line-color: 'var(--background-color)'
+  input-dropdown-icon-color: 'var(--secondary-text-color)'
+  input-hover-line-color: 'var(--primary-color)'
+  code-editor-background-color: '#0C455D'
+  codemirror-property: 'var(--accent-color)'
 
   # --secondary-text-color: #727272;
   # --text-primary-color: #ffffff;
@@ -32,7 +77,6 @@ muto:
   # --primary-color: #03a9f4;
   # --dark-primary-color: #0288d1;
   # --light-primary-color: #b3e5fC;
-  # --accent-color: #ff9800;
   # --divider-color: rgba(0, 0, 0, .12);
   # --scrollbar-thumb-color: rgb(194, 194, 194);
   # --error-color: #db4437;
