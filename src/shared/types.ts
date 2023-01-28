@@ -7,7 +7,8 @@ export type MutoActionConfig = {
 
 export type MutoSensorState = {
     entity: string;
-    state: string | boolean;
+    state?: string | boolean;
+    not_state?: string | boolean;
 };
 
 export type MutoCardConfig = {

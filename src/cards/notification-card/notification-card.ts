@@ -47,23 +47,13 @@ export class NotificationCard extends MutoBaseCard {
             return true;
         } else {
             let stateEntity: HassEntity = this.entity(this.config.state_entity.entity);
-            switch (this.config.state_entity.state) {
-                case true:
-                case "on":
-                    return stateEntity.state == "on";
-
-                case false:
-                case "off":
-                    return stateEntity.state == "off";
-
-                default:
-                    console.error(
-                        `Muto Notification Card`,
-                        `Unsupported state_entity state`,
-                        this.config.state_entity,
-                        stateEntity
-                    );
-                    return true;
+            if (this.config.state_entity.state != undefined) {
+                return this.config.state_entity.state == stateEntity.state;
+            } else if (this.config.state_entity.not_state != undefined) {
+                return !(this.config.state_entity.not_state == stateEntity.state);
+            } else {
+                console.error(`Muto Notification Card`, `No state or not_state defined`);
+                return true;
             }
         }
     }
