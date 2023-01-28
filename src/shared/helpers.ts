@@ -88,6 +88,26 @@ export function colorForEntityState(entity: HassEntity): string {
         }
     }
 
+    if (deviceType == "garage") {
+        switch (entity.state) {
+            case "open":
+                styleString = stateColors.negative;
+                break;
+
+            case "opening":
+            case "closing":
+                styleString = stateColors.alert;
+                break;
+
+            case "closed":
+                break;
+
+            default:
+                console.info(`Muto`, `Unsupported garage state`, entity.state, entity);
+                break;
+        }
+    }
+
     if (deviceType == "climate") {
         switch (entity.state) {
             case "heat":
