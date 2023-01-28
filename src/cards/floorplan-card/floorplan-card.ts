@@ -161,7 +161,7 @@ export class FloorplanCard extends MutoBaseCard {
 
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
-            console.error("No hass or config");
+            console.error(`Muto Floorplan Card`, `No hass or config`);
             return html``;
         }
 

@@ -47,7 +47,6 @@ export class NotificationCard extends MutoBaseCard {
             return true;
         } else {
             let stateEntity: HassEntity = this.entity(this.config.state_entity.entity);
-            console.info(stateEntity, this.config.state_entity);
             switch (this.config.state_entity.state) {
                 case true:
                 case "on":
@@ -59,7 +58,8 @@ export class NotificationCard extends MutoBaseCard {
 
                 default:
                     console.error(
-                        "Unsupported state_entity state",
+                        `Muto Notification Card`,
+                        `Unsupported state_entity state`,
                         this.config.state_entity,
                         stateEntity
                     );
@@ -70,7 +70,7 @@ export class NotificationCard extends MutoBaseCard {
 
     protected render(): TemplateResult | void {
         if (!this.hass || !this.config) {
-            console.error("No hass or config");
+            console.error(`Muto Notification Card`, `No hass or config`);
             return html``;
         }
 
