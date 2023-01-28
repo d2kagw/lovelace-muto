@@ -82,7 +82,9 @@ export class FloorPlanStatusCard extends LitElement {
                 .style=${this.hass.states[this.area.motion].state == "on"
                     ? "color: var(--muto-color-positive);"
                     : ""}
-                .icon=${"mdi:walk"}
+                .icon=${this.hass.states[this.area.motion].state == "on"
+                    ? "mdi:walk"
+                    : "mdi:account-off-outline"}
             ></muto-icon>
         </div>`;
     }
