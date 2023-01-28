@@ -24,10 +24,10 @@ export class FloorPlanStatusCard extends LitElement {
         if (!this.area.climate) {
             return html``;
         }
-        if (!this.hass.states[this.area.climate].state) {
+        if (this.hass.states[this.area.climate] == undefined) {
             console.error(
                 `Muto FloorPlan Card`,
-                `No state for climate sensor`,
+                `Can't find climate entity`,
                 this.area.motion,
                 this.area,
                 this
@@ -47,10 +47,10 @@ export class FloorPlanStatusCard extends LitElement {
         if (!this.area.temperature) {
             return html``;
         }
-        if (!this.hass.states[this.area.temperature].state) {
+        if (this.hass.states[this.area.temperature] == undefined) {
             console.error(
                 `Muto FloorPlan Card`,
-                `No state for temperature sensor`,
+                `Can't find temperature entity`,
                 this.area.motion,
                 this.area,
                 this
@@ -67,10 +67,10 @@ export class FloorPlanStatusCard extends LitElement {
         if (!this.area.motion) {
             return html``;
         }
-        if (!this.hass.states[this.area.motion].state) {
+        if (this.hass.states[this.area.motion] == undefined) {
             console.error(
                 `Muto FloorPlan Card`,
-                `No state for motion sensor`,
+                `Can't find motion entity`,
                 this.area.motion,
                 this.area,
                 this
