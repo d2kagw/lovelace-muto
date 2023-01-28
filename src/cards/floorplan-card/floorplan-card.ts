@@ -24,7 +24,7 @@ export class FloorPlanStatusCard extends LitElement {
         if (!this.area.climate) {
             return html``;
         }
-        if (this.hass.states[this.area.climate]) {
+        if (!this.hass.states[this.area.climate]) {
             console.error(
                 `Muto FloorPlan Card`,
                 `No state for climate sensor`,
@@ -47,7 +47,7 @@ export class FloorPlanStatusCard extends LitElement {
         if (!this.area.temperature) {
             return html``;
         }
-        if (this.hass.states[this.area.temperature]) {
+        if (!this.hass.states[this.area.temperature]) {
             console.error(
                 `Muto FloorPlan Card`,
                 `No state for temperature sensor`,
@@ -67,7 +67,7 @@ export class FloorPlanStatusCard extends LitElement {
         if (!this.area.motion) {
             return html``;
         }
-        if (this.hass.states[this.area.motion]) {
+        if (!this.hass.states[this.area.motion]) {
             console.error(
                 `Muto FloorPlan Card`,
                 `No state for motion sensor`,
