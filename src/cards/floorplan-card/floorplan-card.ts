@@ -21,44 +21,70 @@ export class FloorPlanStatusCard extends LitElement {
     }
 
     public renderClimate(): TemplateResult {
-        if (this.area.climate) {
-            let cssColor: string = colorForEntityState(this.hass.states[this.area.climate]);
-            return html`<div class="muto muto-floorplan-status-card-entry">
-                <muto-icon
-                    .icon=${iconForClimateEntity(this.hass.states[this.area.climate]) ||
-                    "mdi:close"}
-                    .style=${`color: ${cssColor};`}
-                ></muto-icon>
-            </div>`;
-        } else {
+        if (!this.area.climate) {
             return html``;
         }
+        if (this.hass.states[this.area.climate]) {
+            console.error(
+                `Muto FloorPlan Card`,
+                `No state for climate sensor`,
+                this.area.motion,
+                this.area,
+                this
+            );
+            return html``;
+        }
+        let cssColor: string = colorForEntityState(this.hass.states[this.area.climate]);
+        return html`<div class="muto muto-floorplan-status-card-entry">
+            <muto-icon
+                .icon=${iconForClimateEntity(this.hass.states[this.area.climate]) || "mdi:close"}
+                .style=${`color: ${cssColor};`}
+            ></muto-icon>
+        </div>`;
     }
 
     public renderTemperature(): TemplateResult {
-        if (this.area.temperature) {
-            return html`<div class="muto muto-floorplan-status-card-entry">
-                ${this.hass.states[this.area.temperature].state +
-                (this.hass.states[this.area.temperature].attributes.unit_of_measurement ?? "")}
-            </div>`;
-        } else {
+        if (!this.area.temperature) {
             return html``;
         }
+        if (this.hass.states[this.area.temperature]) {
+            console.error(
+                `Muto FloorPlan Card`,
+                `No state for temperature sensor`,
+                this.area.motion,
+                this.area,
+                this
+            );
+            return html``;
+        }
+        return html`<div class="muto muto-floorplan-status-card-entry">
+            ${this.hass.states[this.area.temperature].state +
+            (this.hass.states[this.area.temperature].attributes.unit_of_measurement ?? "")}
+        </div>`;
     }
 
     public renderMotion(): TemplateResult {
-        if (this.area.motion) {
-            return html`<div class="muto muto-floorplan-status-card-entry">
-                <muto-icon
-                    .style=${this.hass.states[this.area.motion].state == "on"
-                        ? "color: var(--muto-color-positive);"
-                        : ""}
-                    .icon=${"mdi:walk"}
-                ></muto-icon>
-            </div>`;
-        } else {
+        if (!this.area.motion) {
             return html``;
         }
+        if (this.hass.states[this.area.motion]) {
+            console.error(
+                `Muto FloorPlan Card`,
+                `No state for motion sensor`,
+                this.area.motion,
+                this.area,
+                this
+            );
+            return html``;
+        }
+        return html`<div class="muto muto-floorplan-status-card-entry">
+            <muto-icon
+                .style=${this.hass.states[this.area.motion].state == "on"
+                    ? "color: var(--muto-color-positive);"
+                    : ""}
+                .icon=${"mdi:walk"}
+            ></muto-icon>
+        </div>`;
     }
 
     protected render(): TemplateResult {
