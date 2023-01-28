@@ -87,10 +87,14 @@ export class ButtonCard extends MutoBaseCard {
                     break;
 
                 case "weather":
-                case "temperature":
                     label =
                         this.entity().attributes.temperature +
                         (this.entity().attributes.temperature_unit ?? "");
+                    break;
+
+                case "temperature":
+                    label =
+                        this.entity().state + (this.entity().attributes.unit_of_measurement ?? "");
                     break;
 
                 default:
