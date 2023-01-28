@@ -58,7 +58,7 @@ export class FloorPlanStatusCard extends LitElement {
             return html``;
         }
         return html`<div class="muto muto-floorplan-status-card-entry">
-            ${Math.round(this.hass.states[this.area.temperature].state) +
+            ${parseInt(this.hass.states[this.area.temperature].state) +
             (this.hass.states[this.area.temperature].attributes.unit_of_measurement ?? "")}
         </div>`;
     }
