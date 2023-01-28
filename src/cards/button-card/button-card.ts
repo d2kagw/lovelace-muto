@@ -135,6 +135,7 @@ export class ButtonCard extends MutoBaseCard {
                 case "energy":
                 case "gas":
                 case "sensor":
+                case "garage":
                     return this.sensorButtonContent();
 
                 default:
