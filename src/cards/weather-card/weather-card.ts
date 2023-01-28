@@ -114,7 +114,7 @@ export class WeatherCard extends SliderControlCard {
 
     public render(): TemplateResult {
         if (!this.hass || !this.config) {
-            console.error("No hass or config");
+            console.error(`Muto Weather Card`, `No hass or config`);
             return html``;
         }
 

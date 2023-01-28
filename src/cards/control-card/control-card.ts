@@ -28,7 +28,7 @@ export class ControlCardLabel extends LitElement {
     }
 
     public slideStart(event: PointerEvent): void {
-        console.warn("slideStart", event.clientX);
+        // console.warn("slideStart", event.clientX);
         this.boundingRect = this.getBoundingClientRect();
         this.isSliding = true;
     }
@@ -43,7 +43,7 @@ export class ControlCardLabel extends LitElement {
 
     public slideStop(event: PointerEvent): void {
         if (this.isSliding) {
-            console.info("slid to", this.slidingPercent, event);
+            // console.info("slid to", this.slidingPercent, event);
         }
         this.isSliding = false;
         this.startingX = null;
@@ -53,7 +53,7 @@ export class ControlCardLabel extends LitElement {
 
     public slideCancel(event: PointerEvent): void {
         if (this.isSliding) {
-            console.info("slid to", this.slidingPercent, event);
+            // console.info("slid to", this.slidingPercent, event);
         }
         this.isSliding = false;
         this.startingX = null;
@@ -186,7 +186,7 @@ export class SliderControlCard extends MutoBaseCard {
 
     public render(): TemplateResult {
         if (!this.hass || !this.config) {
-            console.error("No hass or config");
+            console.error(`Muto Control Card`, `No hass or config`);
             return html``;
         }
 

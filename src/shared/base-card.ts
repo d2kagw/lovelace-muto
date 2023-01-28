@@ -51,7 +51,7 @@ export class MutoBaseCard extends LitElement implements LovelaceCard {
     public clickAction(actionConfig?: MutoActionConfig): Function {
         let finalAction = actionConfig || this.config.action;
         if (finalAction == undefined) {
-            return () => console.info("No action for click");
+            return () => console.info(`Muto Base Card`, `No action for click`, this);
         } else {
             if (finalAction != undefined && "type" in finalAction) {
                 switch (finalAction.type ?? undefined) {
@@ -67,14 +67,15 @@ export class MutoBaseCard extends LitElement implements LovelaceCard {
                     default:
                         return () =>
                             console.info(
-                                "Action not supported or uspecified",
+                                `Muto Base Card`,
+                                `Action not supported or uspecified`,
                                 finalAction,
                                 this.config,
                                 this
                             );
                 }
             } else {
-                return () => console.error("Action malformed", finalAction);
+                return () => console.error(`Muto Base Card`, `Action malformed`, finalAction, this);
             }
         }
     }

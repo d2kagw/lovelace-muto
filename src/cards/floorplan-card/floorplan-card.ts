@@ -21,44 +21,72 @@ export class FloorPlanStatusCard extends LitElement {
     }
 
     public renderClimate(): TemplateResult {
-        if (this.area.climate) {
-            let cssColor: string = colorForEntityState(this.hass.states[this.area.climate]);
-            return html`<div class="muto muto-floorplan-status-card-entry">
-                <muto-icon
-                    .icon=${iconForClimateEntity(this.hass.states[this.area.climate]) ||
-                    "mdi:close"}
-                    .style=${`color: ${cssColor};`}
-                ></muto-icon>
-            </div>`;
-        } else {
+        if (!this.area.climate) {
             return html``;
         }
+        if (this.hass.states[this.area.climate] == undefined) {
+            console.error(
+                `Muto FloorPlan Card`,
+                `Can't find climate entity`,
+                this.area.motion,
+                this.area,
+                this
+            );
+            return html``;
+        }
+        let cssColor: string = colorForEntityState(this.hass.states[this.area.climate]);
+        return html`<div class="muto muto-floorplan-status-card-entry">
+            <muto-icon
+                .icon=${iconForClimateEntity(this.hass.states[this.area.climate]) || "mdi:close"}
+                .style=${`color: ${cssColor};`}
+            ></muto-icon>
+        </div>`;
     }
 
     public renderTemperature(): TemplateResult {
-        if (this.area.temperature) {
-            return html`<div class="muto muto-floorplan-status-card-entry">
-                ${this.hass.states[this.area.temperature].state +
-                (this.hass.states[this.area.temperature].attributes.unit_of_measurement ?? "")}
-            </div>`;
-        } else {
+        if (!this.area.temperature) {
             return html``;
         }
+        if (this.hass.states[this.area.temperature] == undefined) {
+            console.error(
+                `Muto FloorPlan Card`,
+                `Can't find temperature entity`,
+                this.area.motion,
+                this.area,
+                this
+            );
+            return html``;
+        }
+        return html`<div class="muto muto-floorplan-status-card-entry">
+            ${parseInt(this.hass.states[this.area.temperature].state) +
+            (this.hass.states[this.area.temperature].attributes.unit_of_measurement ?? "")}
+        </div>`;
     }
 
     public renderMotion(): TemplateResult {
-        if (this.area.motion) {
-            return html`<div class="muto muto-floorplan-status-card-entry">
-                <muto-icon
-                    .style=${this.hass.states[this.area.motion].state == "on"
-                        ? "color: var(--muto-color-positive);"
-                        : ""}
-                    .icon=${"mdi:walk"}
-                ></muto-icon>
-            </div>`;
-        } else {
+        if (!this.area.motion) {
             return html``;
         }
+        if (this.hass.states[this.area.motion] == undefined) {
+            console.error(
+                `Muto FloorPlan Card`,
+                `Can't find motion entity`,
+                this.area.motion,
+                this.area,
+                this
+            );
+            return html``;
+        }
+        return html`<div class="muto muto-floorplan-status-card-entry">
+            <muto-icon
+                .style=${this.hass.states[this.area.motion].state == "on"
+                    ? "color: var(--muto-color-positive);"
+                    : ""}
+                .icon=${this.hass.states[this.area.motion].state == "on"
+                    ? "mdi:walk"
+                    : "mdi:account-off-outline"}
+            ></muto-icon>
+        </div>`;
     }
 
     protected render(): TemplateResult {
@@ -161,7 +189,7 @@ export class FloorplanCard extends MutoBaseCard {
 
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
-            console.error("No hass or config");
+            console.error(`Muto Floorplan Card`, `No hass or config`);
             return html``;
         }
 

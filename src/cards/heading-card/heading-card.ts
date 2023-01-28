@@ -27,7 +27,7 @@ export class HeadingCard extends MutoBaseCard {
 
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
-            console.error("No hass or config");
+            console.error(`Muto Heading Card`, `No hass or config`);
             return html``;
         }
 

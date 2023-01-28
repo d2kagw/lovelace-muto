@@ -92,6 +92,11 @@ export class ButtonCard extends MutoBaseCard {
                         (this.entity().attributes.temperature_unit ?? "");
                     break;
 
+                case "temperature":
+                    label =
+                        this.entity().state + (this.entity().attributes.unit_of_measurement ?? "");
+                    break;
+
                 default:
                     label =
                         this.entity().state + (this.entity().attributes.unit_of_measurement ?? "");
@@ -129,10 +134,13 @@ export class ButtonCard extends MutoBaseCard {
                 case "power":
                 case "energy":
                 case "gas":
+                case "sensor":
+                case "garage":
                     return this.sensorButtonContent();
 
                 default:
                     console.error(
+                        `Muto Button Card`,
                         `Unsupported device type: ${deviceType}`,
                         this.config,
                         this.entity()
@@ -173,7 +181,7 @@ export class ButtonCard extends MutoBaseCard {
 
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
-            console.error("No hass or config");
+            console.error(`Muto Button Card`, `No hass or config`);
             return html``;
         }
 

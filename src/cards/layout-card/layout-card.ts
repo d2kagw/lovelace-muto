@@ -51,7 +51,7 @@ export class LayoutColumnCard extends MutoBaseCard {
 
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
-            console.error("No hass or config");
+            console.error(`Muto Layout Column Card`, `No hass or config`);
             return html``;
         }
 
@@ -81,7 +81,7 @@ export class LayoutRowCard extends LayoutColumnCard {
     @property() config!: LayoutRowCardConfig;
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
-            console.error("No hass or config");
+            console.error(`Muto Layout Row Card`, `No hass or config`);
             return html``;
         }
 
@@ -181,11 +181,9 @@ export class LayoutCard extends MutoBaseCard {
 
     protected render(): TemplateResult {
         if (!this.hass || !this.config) {
-            console.error("No hass or config");
+            console.error(`Muto Layout Card`, `No hass or config`);
             return html``;
         }
-
-        console.warn(this.config);
 
         return html`
             <div class="muto muto-layout" style=${this.config.css ?? ""}>

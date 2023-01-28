@@ -84,7 +84,27 @@ export function colorForEntityState(entity: HassEntity): string {
         if (deviceStateColors) {
             styleString = deviceStateColors[entity.state];
         } else {
-            console.info("No device state colors for device type", deviceType);
+            console.info(`Muto`, `No device state colors for device type`, deviceType);
+        }
+    }
+
+    if (deviceType == "garage") {
+        switch (entity.state) {
+            case "open":
+                styleString = stateColors.negative;
+                break;
+
+            case "opening":
+            case "closing":
+                styleString = stateColors.alert;
+                break;
+
+            case "closed":
+                break;
+
+            default:
+                console.info(`Muto`, `Unsupported garage state`, entity.state, entity);
+                break;
         }
     }
 
@@ -122,7 +142,7 @@ export function colorForEntityState(entity: HassEntity): string {
                 break;
 
             default:
-                console.info("Unsupported climate state", entity.state);
+                console.info(`Muto`, `Unsupported climate state`, entity.state, entity);
                 break;
         }
     }
@@ -187,7 +207,7 @@ export function iconForEntity(entity: HassEntity): string {
             case "motion":
                 return "mdi:walk";
             default:
-                console.warn("Unknown entity icon type:", type);
+                console.warn(`Muto`, `Unknown entity icon type:`, type, entity);
                 return "mdi:help-circle-outline";
         }
     }
