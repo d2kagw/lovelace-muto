@@ -122,7 +122,7 @@ export class FloorPlanStatusCard extends LitElement {
                     font-size: 0.75rem;
                     --mdc-icon-size: 1.25rem;
                 }
-                @media only screen and (max-width: 1000px) {
+                @media only screen and (max-width: 768px) {
                     .muto-floorplan-status-frame {
                         display: none;
                     }
@@ -250,7 +250,7 @@ export class FloorplanCard extends MutoBaseCard {
                 .muto-floorplan-map {
                     background-size: cover;
                     background-position: left top;
-                    margin: 0;
+                    margin: var(--muto-spacing) 0 0;
                     flex-grow: 0;
                     flex-shrink: 0;
                     flex-basis: auto;

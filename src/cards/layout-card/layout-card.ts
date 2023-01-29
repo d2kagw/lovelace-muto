@@ -238,7 +238,7 @@ export class LayoutCard extends MutoBaseCard {
                 .muto-layout-column::-webkit-scrollbar {
                     display: none;
                 }
-                @media only screen and (max-width: 1000px) {
+                @media only screen and (max-width: 768px) {
                     .muto-layout {
                         flex-direction: column;
                         height: auto;
