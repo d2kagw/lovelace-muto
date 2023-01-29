@@ -14,6 +14,8 @@ export const WEATHER_CARD_NAME = `${PREFIX_NAME}-weather-card`;
 
 export const CLOCK_CARD_NAME = `${PREFIX_NAME}-clock-card`;
 
+export const RESPONSIVE_CARD_NAME = `${PREFIX_NAME}-responsive-card`;
+
 export const HEADING_CARD_NAME = `${PREFIX_NAME}-heading-card`;
 
 export const FLOORPLAN_CARD_NAME = `${PREFIX_NAME}-floorplan-card`;

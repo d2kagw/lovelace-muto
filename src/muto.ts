@@ -14,6 +14,8 @@ export { NotificationCard } from "./cards/notification-card/notification-card";
 
 export { WeatherCard } from "./cards/weather-card/weather-card";
 
+export { ResponsiveCard } from "./cards/responsive-card/responsive-card";
+
 export { PanelCard } from "./cards/panel-card/panel-card";
 
 console.info(`%c🛠️ Muto 🛠️ - ${version}`, "color: #ef5350; font-weight: 700;");
