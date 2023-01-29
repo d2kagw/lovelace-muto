@@ -4,6 +4,7 @@ views:
   - !include views/clock-view.yaml
   - !include views/control-view.yaml
   - !include views/notification-view.yaml
+  - !include views/responsive-view.yaml
   - !include views/floorplan-view.yaml
   - !include views/weather-view.yaml
   - !include views/panel-view.yaml

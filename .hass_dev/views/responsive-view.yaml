@@ -1,0 +1,32 @@
+title: Responsive
+panel: true
+cards:
+  - type: custom:muto-layout-card
+    columns:
+      - cards:
+          - type: custom:muto-layout-column-card
+            cards:
+              - type: custom:muto-responsive-card
+                hide_on_mobile: true
+                cards:
+                  - type: custom:muto-notification-card
+                    level: info
+                    icon: mdi:snowflake
+                    label: Motion Outside Boolean
+                  - type: custom:muto-notification-card
+                    level: info
+                    icon: mdi:snowflake
+                    label: Motion Outside
+              - type: custom:muto-responsive-card
+                show_on_mobile: true
+                cards:
+                  - type: custom:muto-notification-card
+                    level: warning
+                    icon: mdi:water
+                    label: Motion Outside 
+                    sublabel: Front camera detected motion
+                  - type: custom:muto-notification-card
+                    level: warning
+                    icon: mdi:water
+                    label: Motion Outside Boolean
+                    sublabel: Front camera detected motion
