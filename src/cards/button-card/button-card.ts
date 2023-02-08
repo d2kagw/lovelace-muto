@@ -77,6 +77,7 @@ export class ButtonCard extends MutoBaseCard {
                     break;
 
                 case "media_player":
+                case "speaker":
                     if (this.entity().attributes.is_volume_muted) {
                         label = "Muted";
                     } else if (this.entity().attributes.volume_level) {
@@ -118,6 +119,7 @@ export class ButtonCard extends MutoBaseCard {
                     return this.climateButtonContent();
 
                 case "media_player":
+                case "speaker":
                     return this.mediaPlayerButtonContent();
 
                 case "light":
@@ -172,7 +174,7 @@ export class ButtonCard extends MutoBaseCard {
         if (this.config.image) {
             return `background-image:url(${this.config.image});`;
         }
-        if (deviceTypeForEntity(this.entity()) == "media_player") {
+        if (["media_player", "speaker"].includes(deviceTypeForEntity(this.entity()))) {
             return `background-image:url(${this.entity().attributes.entity_picture});`;
         }
 

@@ -148,7 +148,7 @@ export class SliderControlCard extends MutoBaseCard {
                 .toLowerCase();
         }
 
-        if (deviceTypeForEntity(this.entity()) == "media_player") {
+        if (["media_player", "speaker"].includes(deviceTypeForEntity(this.entity()))) {
             label = this.entity().attributes.friendly_name ?? this.entity().entity_id;
             sublabel = `${this.entity().attributes.media_title ?? "Unknown"} - ${
                 this.entity().attributes.media_artist ?? "Unknown"

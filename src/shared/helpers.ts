@@ -31,6 +31,7 @@ export const ignoreStateColor = [
     "carbon_dioxide",
     "energy",
     "media_player",
+    "speaker",
 ];
 
 export const deviceStateColor = {
@@ -139,6 +140,7 @@ export function colorForEntityState(entity: HassEntity): string {
                 break;
 
             case "off":
+            case "unavailable":
                 break;
 
             default:
