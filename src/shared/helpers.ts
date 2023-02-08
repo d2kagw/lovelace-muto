@@ -31,6 +31,7 @@ export const ignoreStateColor = [
     "carbon_dioxide",
     "energy",
     "media_player",
+    "speaker",
 ];
 
 export const deviceStateColor = {
