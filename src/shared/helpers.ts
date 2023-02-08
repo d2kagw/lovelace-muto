@@ -139,6 +139,7 @@ export function colorForEntityState(entity: HassEntity): string {
                 break;
 
             case "off":
+            case "unavailable":
                 break;
 
             default:
