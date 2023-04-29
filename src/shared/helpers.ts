@@ -62,6 +62,7 @@ export const deviceStateColor = {
 
     climate: defaultStateColors.on_is_good,
     switch: defaultStateColors.on_is_good,
+    sensor: defaultStateColors.on_is_good,
 
     battery_charging: defaultStateColors.off_is_good,
     connectivity: defaultStateColors.off_is_bad,
