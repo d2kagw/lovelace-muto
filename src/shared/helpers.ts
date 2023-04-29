@@ -84,7 +84,11 @@ export function colorForEntityState(entity: HassEntity): string {
         return "";
     } else {
         if (deviceStateColors) {
-            styleString = deviceStateColors[entity.state];
+            let state: string = entity.state;
+            state = state == "True" ? "on" : state;
+            state = state == "False" ? "off" : state;
+     
+            styleString = deviceStateColors[state];
         } else {
             console.info(`Muto`, `No device state colors for device type`, deviceType);
         }
