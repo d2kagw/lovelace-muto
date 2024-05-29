@@ -126,6 +126,7 @@ export class ButtonCard extends MutoBaseCard {
                 case "motion":
                 case "moisture":
                 case "switch":
+                case "input_boolean":
                     return this.defaultButtonContent();
 
                 case "weather":
